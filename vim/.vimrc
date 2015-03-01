@@ -105,6 +105,9 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \     'insert': 1,
             \ }}
 NeoBundle 'kana/vim-operator-user'
+NeoBundle 'rhysd/vim-operator-surround', {
+            \ 'depends': 'kana/vim-operator-user',
+            \ }
 NeoBundle 'kana/vim-submode'
 NeoBundleLazy 'lilydjwg/colorizer', {
             \ 'autoload': {
@@ -133,7 +136,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundleLazy 'kannokanno/previm', {
             \ 'depends': 'tyru/open-browser.vim',
@@ -302,6 +304,16 @@ if neobundle#tap('vim-quickhl')
     xmap <Space>M <Plug>(quickhl-manual-reset)
     nmap <Space>j <Plug>(quickhl-cword-toggle)
     nmap <Space>] <Plug>(quickhl-tag-toggle)
+
+    call neobundle#untap()
+endif " }}}
+
+" vim-operator-surround {{{
+if neobundle#tap('vim-operator-surround')
+    " keymap
+    map <silent>sa <Plug>(operator-surround-append)
+    map <silent>sd <Plug>(operator-surround-delete)
+    map <silent>sr <Plug>(operator-surround-replace)
 
     call neobundle#untap()
 endif " }}}
