@@ -89,6 +89,7 @@ NeoBundleLazy 'Shougo/vimshell.vim', {
             \     'commands': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
             \                  'VimShellPop'],
             \ }}
+NeoBundle 'cohama/vim-hier'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundleLazy 'h1mesuke/vim-alignta', {
             \ 'autoload': {
