@@ -108,6 +108,10 @@ NeoBundle 'kana/vim-operator-user'
 NeoBundle 'rhysd/vim-operator-surround', {
             \ 'depends': 'kana/vim-operator-user',
             \ }
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent', {
+            \ 'depends': 'kana/vim-textobj-user'
+            \ }
 NeoBundle 'kana/vim-submode'
 NeoBundleLazy 'lilydjwg/colorizer', {
             \ 'autoload': {
