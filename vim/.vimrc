@@ -19,6 +19,11 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleLazy 'Shougo/junkfile.vim', {
+            \ 'autoload': {
+            \     'unite_source': 'junkfile',
+            \     'commands': ['JunkfileOpen']
+            \ }}
 NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'Shougo/neosnippet.vim', {
             \ 'autoload': {
