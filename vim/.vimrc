@@ -117,6 +117,9 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent', {
             \ 'depends': 'kana/vim-textobj-user'
             \ }
+NeoBundle 'thinca/vim-textobj-between', {
+            \ 'depends': 'kana/vim-textobj-user'
+            \ }
 NeoBundle 'kana/vim-submode'
 NeoBundleLazy 'lilydjwg/colorizer', {
             \ 'autoload': {
@@ -353,6 +356,20 @@ if neobundle#tap('vim-submode')
     call submode#map('winsize', 'n', '', '<', '<C-w><')
     call submode#map('winsize', 'n', '', '+', '<C-w>+')
     call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+    call neobundle#untap()
+endif " }}}
+
+" vim-textobj-between {{{
+if neobundle#tap('vim-textobj-between')
+    " disable default keymap
+    let g:textobj_between_no_default_key_mappings=1
+
+    " keymap
+    omap aS <Plug>(textobj-between-a)
+    xmap aS <Plug>(textobj-between-a)
+    omap iS <Plug>(textobj-between-i)
+    xmap iS <Plug>(textobj-between-i)
 
     call neobundle#untap()
 endif " }}}
