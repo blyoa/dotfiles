@@ -148,6 +148,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tyru/caw.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundleLazy 'kannokanno/previm', {
             \ 'depends': 'tyru/open-browser.vim',
@@ -250,6 +251,15 @@ endif
 
 
 " plugin settings {{{
+" caw.vim {{{
+if neobundle#tap('caw.vim') 
+    " keymap
+    nmap <Leader>c <Plug>(caw:I:toggle)
+    vmap <Leader>c <Plug>(caw:I:toggle)
+
+    call neobundle#untap()
+endif " }}}
+
 " emmet-vim {{{
 if neobundle#tap('emmet-vim')
     let g:user_emmet_settings={
