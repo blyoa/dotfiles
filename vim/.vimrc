@@ -110,6 +110,9 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \     'insert': 1,
             \ }}
 NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace', {
+            \ 'dependes': 'kana/vim-operator-user'
+            \ }
 NeoBundle 'rhysd/vim-operator-surround', {
             \ 'depends': 'kana/vim-operator-user',
             \ }
@@ -326,6 +329,14 @@ if neobundle#tap('vim-quickhl')
     xmap <Space>M <Plug>(quickhl-manual-reset)
     nmap <Space>j <Plug>(quickhl-cword-toggle)
     nmap <Space>] <Plug>(quickhl-tag-toggle)
+
+    call neobundle#untap()
+endif " }}}
+
+" vim-operator-replace {{{
+if neobundle#tap('vim-operator-replace')
+    " keymap
+    map _ <Plug>(operator-replace)
 
     call neobundle#untap()
 endif " }}}
