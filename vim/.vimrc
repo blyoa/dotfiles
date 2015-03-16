@@ -109,6 +109,7 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \     'filetypes': ['python', 'python3', 'djangohtml'],
             \     'insert': 1,
             \ }}
+NeoBundle 'kana/vim-altr'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', {
             \ 'dependes': 'kana/vim-operator-user'
@@ -329,6 +330,15 @@ if neobundle#tap('vim-quickhl')
     xmap <Space>M <Plug>(quickhl-manual-reset)
     nmap <Space>j <Plug>(quickhl-cword-toggle)
     nmap <Space>] <Plug>(quickhl-tag-toggle)
+
+    call neobundle#untap()
+endif " }}}
+
+" vim-altr {{{
+if neobundle#tap('vim-altr')
+    " keymap
+    nmap <F2> <Plug>(altr-forward)
+    nmap <S-F2> <Plug>(altr-back)
 
     call neobundle#untap()
 endif " }}}
