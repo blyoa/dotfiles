@@ -204,7 +204,9 @@ set pumheight=20
 " colorscheme
 syntax enable
 set synmaxcol=500
-colorscheme Tomorrow-Night
+if !s:is_windows || has('gui_running')
+    colorscheme Tomorrow-Night
+endif
 
 " window
 set splitbelow
