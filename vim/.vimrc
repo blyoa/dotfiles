@@ -96,6 +96,10 @@ NeoBundleLazy 'Shougo/vimshell.vim', {
             \ }}
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'flazz/vim-colorschemes'
+NeoBundleLazy 'glidenote/memolist.vim', {
+            \ 'autoload': {
+            \      'commands': ['MemoNew', 'MemoList', 'MemoGrep'],
+            \ }}
 NeoBundleLazy 'h1mesuke/vim-alignta', {
             \ 'autoload': {
             \     'commands': ['Alignta'],
@@ -274,8 +278,28 @@ if neobundle#tap('emmet-vim')
                 \ }}
 
     call neobundle#untap()
-endif
-" }}}
+endif " }}}
+
+" memolist.vim {{{
+if neobundle#tap('memolist.vim')
+    " memodir
+    if isdirectory(expand('~/Dropbox/share_for_me/'))
+        let g:memolist_path=expand('~/Dropbox/share_for_me/memolist')
+    else
+        let g:memolist_path=expand('~/.vim/memolist')
+    endif
+
+    " suffix type
+    let g:memolist_memo_suffix='mkd'
+
+    " settings to use unite
+    if neobundle#is_installed('unite.vim')
+        let g:memolist_unite=1
+        let g:memolist_unite_option='-auto-preview'
+    endif
+
+    call neobundle#untap()
+endif " }}}
 
 " neocomplcache.vim {{{
 if neobundle#tap('neocomplcache.vim')
