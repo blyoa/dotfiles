@@ -1,0 +1,11 @@
+snippet     iftap
+abbr        if neobundle#tap() endif
+options     head
+	" ${1:plugin_name} {{{
+	if neobundle#tap('$1')
+		${0:TARGET}
+
+		call neobundle#untap()
+	endif "}}}
+
+# vim: noexpandtab
