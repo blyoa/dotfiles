@@ -21,7 +21,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleLazy 'Shougo/junkfile.vim', {
             \ 'commands': ['JunkfileOpen'],
-            \ 'unite_source': 'junkfile',
+            \ 'unite_sources': 'junkfile',
             \ }
 NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'Shougo/neosnippet.vim', {
@@ -49,11 +49,11 @@ NeoBundleLazy 'Shougo/unite-help', {
             \ }
 NeoBundleLazy 'Shougo/unite-outline', {
             \ 'depends': 'Shougo/unite.vim',
-            \ 'unite_source': 'outline',
+            \ 'unite_sources': 'outline',
             \ }
 NeoBundleLazy 'Shougo/unite-session', {
             \ 'commands': ['UniteSessionSave', 'UniteSessionLoad'],
-            \ 'unite_source': 'settion',
+            \ 'unite_sources': 'settion',
             \ }
 NeoBundleLazy 'osyo-manga/unite-quickfix', {
             \ 'depends': 'Shougo/unite.vim',
