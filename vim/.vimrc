@@ -23,7 +23,9 @@ NeoBundleLazy 'Shougo/junkfile.vim', {
             \ 'commands': ['JunkfileOpen'],
             \ 'unite_sources': 'junkfile',
             \ }
-NeoBundle 'Shougo/neomru.vim'
+NeoBundleLazy 'Shougo/neomru.vim', {
+            \ 'filetypes': 'all',
+            \ }
 NeoBundleLazy 'Shougo/neosnippet.vim', {
             \ 'filetypes': 'snippet',
             \ 'insert': 1,
@@ -97,22 +99,31 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \ 'filetypes': ['python', 'python3', 'djangohtml'],
             \ 'insert': 1,
             \ }
-NeoBundle 'kana/vim-altr'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace', {
+NeoBundleLazy 'kana/vim-altr', {
+            \ 'mappings': '<Plug>',
+            \ }
+NeoBundleLazy 'kana/vim-operator-user', {
+            \ 'functions': 'operator#user#define',
+            \ }
+NeoBundleLazy 'kana/vim-operator-replace', {
             \ 'dependes': 'kana/vim-operator-user',
+            \ 'mappings': '<Plug>',
             \ }
-NeoBundle 'rhysd/vim-operator-surround', {
+NeoBundleLazy 'rhysd/vim-operator-surround', {
             \ 'depends': 'kana/vim-operator-user',
+            \ 'mappings': '<Plug>',
             \ }
-NeoBundle 'kana/vim-textobj-user'
+NeoBundleLazy 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent', {
             \ 'depends': 'kana/vim-textobj-user',
             \ }
-NeoBundle 'thinca/vim-textobj-between', {
+NeoBundleLazy 'thinca/vim-textobj-between', {
             \ 'depends': 'kana/vim-textobj-user',
+            \ 'mappings': '<Plug>',
             \ }
-NeoBundle 'kana/vim-submode'
+NeoBundleLazy 'kana/vim-submode', {
+            \ 'mappings': '<Plug>',
+            \ }
 NeoBundleLazy 'lilydjwg/colorizer', {
             \ 'filetypes': ['html', 'djangohtml',
             \               'css', 'sass', 'scss', 'less'],
@@ -127,7 +138,9 @@ NeoBundleLazy 'othree/html5.vim', {
 NeoBundleLazy 'pangloss/vim-javascript', {
             \ 'filetypes': ['html', 'djangohtml', 'javascript'],
             \ }
-NeoBundle 't9md/vim-quickhl'
+NeoBundleLazy 't9md/vim-quickhl', {
+            \ 'mappings': '<Plug>',
+            \ }
 NeoBundleLazy 'thinca/vim-qfreplace', {
             \ 'filetypes': ['unite', 'quickfix'],
             \ }
@@ -135,8 +148,12 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/caw.vim', {
+            \ 'mappings': '<Plug>',
+            \ }
+NeoBundleLazy 'tyru/open-browser.vim', {
+            \ 'mappings': '<Plug>(openbrowser-',
+            \ }
 NeoBundleLazy 'kannokanno/previm', {
             \ 'depends': 'tyru/open-browser.vim',
             \ 'filetypes': ['markdown', 'mkd', 'rst'],
