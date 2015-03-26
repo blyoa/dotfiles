@@ -38,9 +38,7 @@ options		head
 
 snippet		c_expr
 abbr		c_expr [] {}
-	c_expr ${1:#:[assertion]} {
-		${0:TARGET}
-	}
+	c_expr ${1:#:[assertion]} {${0:TARGET}}
 
 snippet		c_state
 abbr		c_state "" ""
