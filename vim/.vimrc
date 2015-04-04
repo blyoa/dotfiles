@@ -85,6 +85,7 @@ NeoBundleLazy 'Shougo/vimshell.vim', {
             \              'VimShellPop'],
             \ }
 NeoBundle 'cohama/vim-hier'
+NeoBundle 'deris/vim-visualinc'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundleLazy 'glidenote/memolist.vim', {
             \ 'commands': ['MemoNew', 'MemoList', 'MemoGrep'],
