@@ -96,6 +96,9 @@ NeoBundleLazy 'h1mesuke/vim-alignta', {
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'filetypes': ['css', 'sass', 'scss', 'less'],
             \ }
+NeoBundleLazy 'haya14busa/vim-asterisk', {
+            \ 'mappings': '<Plug>(asterisk-',
+            \ }
 NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \ 'filetypes': ['python', 'python3', 'djangohtml'],
             \ 'insert': 1,
@@ -147,7 +150,6 @@ NeoBundleLazy 'thinca/vim-qfreplace', {
             \ }
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'tyru/caw.vim', {
             \ 'mappings': '<Plug>',
@@ -364,6 +366,24 @@ if neobundle#tap('vim-altr')
 
     call neobundle#untap()
 endif " }}}
+
+" vim-asterisk {{{
+if neobundle#tap('vim-asterisk')
+    " enable keepCursor feature
+    let g:asterisk#keeppos = 1
+
+    " keymap
+    map *   <Plug>(asterisk-*)
+    map #   <Plug>(asterisk-#)
+    map g*  <Plug>(asterisk-g*)
+    map g#  <Plug>(asterisk-g#)
+    map z*  <Plug>(asterisk-z*)
+    map gz* <Plug>(asterisk-gz*)
+    map z#  <Plug>(asterisk-z#)
+    map gz# <Plug>(asterisk-gz#) 
+
+    call neobundle#untap()
+endif "}}}
 
 " vim-operator-replace {{{
 if neobundle#tap('vim-operator-replace')
