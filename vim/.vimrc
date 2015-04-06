@@ -103,6 +103,7 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \ 'filetypes': ['python', 'python3', 'djangohtml'],
             \ 'insert': 1,
             \ }
+NeoBundle 'kana/vim-niceblock'
 NeoBundleLazy 'kana/vim-altr', {
             \ 'mappings': '<Plug>',
             \ }
