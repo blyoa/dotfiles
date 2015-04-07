@@ -27,150 +27,155 @@ endif
 " load neobundle {{{
 call neobundle#begin(expand(s:vimfiles . '/bundle/'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundleLazy 'Shougo/junkfile.vim', {
-            \ 'commands': ['JunkfileOpen'],
-            \ 'unite_sources': 'junkfile',
-            \ }
-NeoBundleLazy 'Shougo/neomru.vim', {
-            \ 'filetypes': 'all',
-            \ }
-NeoBundleLazy 'Shougo/neosnippet.vim', {
-            \ 'filetypes': 'snippet',
-            \ 'insert': 1,
-            \ }
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimproc.vim', {
-            \ 'build': {
-            \     'windows': 'tools\\update-dll-mingw',
-            \     'cygwin': 'make -f make_cygwin.mak',
-            \     'mac': 'make -f make_mac.mak',
-            \     'linux': 'make',
-            \     'unix': 'gmake',
-            \ }}
-NeoBundleLazy 'Shougo/unite.vim', {
-            \ 'commands': [
-            \     {'name': 'Unite',
-            \      'complete': 'customlist,unite#complete_source'},
-            \     'UniteWithCursorWord', 'UniteWithInput'],
-            \ }
-NeoBundleLazy 'Shougo/unite-help', {
-            \ 'depends': 'Shougo/unite.vim',
-            \ 'unite_sources': 'help',
-            \ }
-NeoBundleLazy 'Shougo/unite-outline', {
-            \ 'depends': 'Shougo/unite.vim',
-            \ 'unite_sources': 'outline',
-            \ }
-NeoBundleLazy 'Shougo/unite-session', {
-            \ 'commands': ['UniteSessionSave', 'UniteSessionLoad'],
-            \ 'unite_sources': 'settion',
-            \ }
-NeoBundleLazy 'osyo-manga/unite-quickfix', {
-            \ 'depends': 'Shougo/unite.vim',
-            \ 'unite_sources': 'quickfix',
-            \ }
-NeoBundleLazy 'ujihisa/unite-colorscheme', {
-            \ 'depends': 'Shougo/unite.vim',
-            \ 'unite_sources': 'colorscheme',
-            \ }
-if has('lua')
-    NeoBundleLazy 'Shougo/neocomplete.vim', {
-                \ 'insert': 1,
-                \ }
+if neobundle#has_fresh_cache()
+    NeoBundleLoadCache
 else
-    NeoBundleLazy 'Shougo/neocomplcache.vim', {
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    NeoBundleLazy 'Shougo/junkfile.vim', {
+                \ 'commands': ['JunkfileOpen'],
+                \ 'unite_sources': 'junkfile',
+                \ }
+    NeoBundleLazy 'Shougo/neomru.vim', {
+                \ 'filetypes': 'all',
+                \ }
+    NeoBundleLazy 'Shougo/neosnippet.vim', {
+                \ 'filetypes': 'snippet',
                 \ 'insert': 1,
                 \ }
+    NeoBundle 'Shougo/neosnippet-snippets'
+    NeoBundle 'Shougo/vimproc.vim', {
+                \ 'build': {
+                \     'windows': 'tools\\update-dll-mingw',
+                \     'cygwin': 'make -f make_cygwin.mak',
+                \     'mac': 'make -f make_mac.mak',
+                \     'linux': 'make',
+                \     'unix': 'gmake',
+                \ }}
+    NeoBundleLazy 'Shougo/unite.vim', {
+                \ 'commands': [
+                \     {'name': 'Unite',
+                \      'complete': 'customlist,unite#complete_source'},
+                \     'UniteWithCursorWord', 'UniteWithInput'],
+                \ }
+    NeoBundleLazy 'Shougo/unite-help', {
+                \ 'depends': 'Shougo/unite.vim',
+                \ 'unite_sources': 'help',
+                \ }
+    NeoBundleLazy 'Shougo/unite-outline', {
+                \ 'depends': 'Shougo/unite.vim',
+                \ 'unite_sources': 'outline',
+                \ }
+    NeoBundleLazy 'Shougo/unite-session', {
+                \ 'commands': ['UniteSessionSave', 'UniteSessionLoad'],
+                \ 'unite_sources': 'settion',
+                \ }
+    NeoBundleLazy 'osyo-manga/unite-quickfix', {
+                \ 'depends': 'Shougo/unite.vim',
+                \ 'unite_sources': 'quickfix',
+                \ }
+    NeoBundleLazy 'ujihisa/unite-colorscheme', {
+                \ 'depends': 'Shougo/unite.vim',
+                \ 'unite_sources': 'colorscheme',
+                \ }
+    if has('lua')
+        NeoBundleLazy 'Shougo/neocomplete.vim', {
+                    \ 'insert': 1,
+                    \ }
+    else
+        NeoBundleLazy 'Shougo/neocomplcache.vim', {
+                    \ 'insert': 1,
+                    \ }
+    endif
+    NeoBundleLazy 'Shougo/vimfiler', {
+                \ 'commands': [
+                \     {'name': 'VimFiler',
+                \      'complete': 'customlist,vimfiler#complete'},
+                \      'VimFilerExplorer', 'VimFilerTab'],
+                \ }
+    NeoBundleLazy 'Shougo/vimshell.vim', {
+                \ 'commands': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
+                \              'VimShellPop'],
+                \ }
+    NeoBundle 'cohama/vim-hier'
+    NeoBundle 'deris/vim-visualinc'
+    NeoBundle 'flazz/vim-colorschemes'
+    NeoBundleLazy 'glidenote/memolist.vim', {
+                \ 'commands': ['MemoNew', 'MemoList', 'MemoGrep'],
+                \ }
+    NeoBundleLazy 'h1mesuke/vim-alignta', {
+                \ 'commands': ['Alignta'],
+                \ }
+    NeoBundleLazy 'hail2u/vim-css3-syntax', {
+                \ 'filetypes': ['css', 'sass', 'scss', 'less'],
+                \ }
+    NeoBundleLazy 'haya14busa/vim-asterisk', {
+                \ 'mappings': '<Plug>(asterisk-',
+                \ }
+    NeoBundleLazy 'hynek/vim-python-pep8-indent', {
+                \ 'filetypes': ['python', 'python3', 'djangohtml'],
+                \ 'insert': 1,
+                \ }
+    NeoBundle 'kana/vim-niceblock'
+    NeoBundleLazy 'kana/vim-altr', {
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'kana/vim-operator-user', {
+                \ 'functions': 'operator#user#define',
+                \ }
+    NeoBundleLazy 'kana/vim-operator-replace', {
+                \ 'dependes': 'kana/vim-operator-user',
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'rhysd/vim-operator-surround', {
+                \ 'depends': 'kana/vim-operator-user',
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'kana/vim-textobj-user'
+    NeoBundle 'kana/vim-textobj-indent', {
+                \ 'depends': 'kana/vim-textobj-user',
+                \ }
+    NeoBundleLazy 'thinca/vim-textobj-between', {
+                \ 'depends': 'kana/vim-textobj-user',
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'kana/vim-submode', {
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'lilydjwg/colorizer', {
+                \ 'filetypes': ['html', 'djangohtml',
+                \               'css', 'sass', 'scss', 'less'],
+                \ }
+    NeoBundleLazy 'mattn/emmet-vim', {
+                \ 'filetypes': ['html', 'djangohtml',
+                \               'css', 'sass', 'scss', 'less'],
+                \ }
+    NeoBundleLazy 'othree/html5.vim', {
+                \ 'filetypes': ['html', 'djangohtml'],
+                \ }
+    NeoBundleLazy 'pangloss/vim-javascript', {
+                \ 'filetypes': ['html', 'djangohtml', 'javascript'],
+                \ }
+    NeoBundleLazy 't9md/vim-quickhl', {
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'thinca/vim-qfreplace', {
+                \ 'filetypes': ['unite', 'quickfix'],
+                \ }
+    NeoBundle 'thinca/vim-quickrun'
+    NeoBundle 'thinca/vim-ref'
+    NeoBundle 'tpope/vim-fugitive'
+    NeoBundleLazy 'tyru/caw.vim', {
+                \ 'mappings': '<Plug>',
+                \ }
+    NeoBundleLazy 'tyru/open-browser.vim', {
+                \ 'mappings': '<Plug>(openbrowser-',
+                \ }
+    NeoBundleLazy 'kannokanno/previm', {
+                \ 'depends': 'tyru/open-browser.vim',
+                \ 'filetypes': ['markdown', 'mkd', 'rst'],
+                \ }
+    NeoBundleSaveCache
 endif
-NeoBundleLazy 'Shougo/vimfiler', {
-            \ 'commands': [
-            \     {'name': 'VimFiler',
-            \      'complete': 'customlist,vimfiler#complete'},
-            \      'VimFilerExplorer', 'VimFilerTab'],
-            \ }
-NeoBundleLazy 'Shougo/vimshell.vim', {
-            \ 'commands': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
-            \              'VimShellPop'],
-            \ }
-NeoBundle 'cohama/vim-hier'
-NeoBundle 'deris/vim-visualinc'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundleLazy 'glidenote/memolist.vim', {
-            \ 'commands': ['MemoNew', 'MemoList', 'MemoGrep'],
-            \ }
-NeoBundleLazy 'h1mesuke/vim-alignta', {
-            \ 'commands': ['Alignta'],
-            \ }
-NeoBundleLazy 'hail2u/vim-css3-syntax', {
-            \ 'filetypes': ['css', 'sass', 'scss', 'less'],
-            \ }
-NeoBundleLazy 'haya14busa/vim-asterisk', {
-            \ 'mappings': '<Plug>(asterisk-',
-            \ }
-NeoBundleLazy 'hynek/vim-python-pep8-indent', {
-            \ 'filetypes': ['python', 'python3', 'djangohtml'],
-            \ 'insert': 1,
-            \ }
-NeoBundle 'kana/vim-niceblock'
-NeoBundleLazy 'kana/vim-altr', {
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'kana/vim-operator-user', {
-            \ 'functions': 'operator#user#define',
-            \ }
-NeoBundleLazy 'kana/vim-operator-replace', {
-            \ 'dependes': 'kana/vim-operator-user',
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'rhysd/vim-operator-surround', {
-            \ 'depends': 'kana/vim-operator-user',
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent', {
-            \ 'depends': 'kana/vim-textobj-user',
-            \ }
-NeoBundleLazy 'thinca/vim-textobj-between', {
-            \ 'depends': 'kana/vim-textobj-user',
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'kana/vim-submode', {
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'lilydjwg/colorizer', {
-            \ 'filetypes': ['html', 'djangohtml',
-            \               'css', 'sass', 'scss', 'less'],
-            \ }
-NeoBundleLazy 'mattn/emmet-vim', {
-            \ 'filetypes': ['html', 'djangohtml',
-            \               'css', 'sass', 'scss', 'less'],
-            \ }
-NeoBundleLazy 'othree/html5.vim', {
-            \ 'filetypes': ['html', 'djangohtml'],
-            \ }
-NeoBundleLazy 'pangloss/vim-javascript', {
-            \ 'filetypes': ['html', 'djangohtml', 'javascript'],
-            \ }
-NeoBundleLazy 't9md/vim-quickhl', {
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'thinca/vim-qfreplace', {
-            \ 'filetypes': ['unite', 'quickfix'],
-            \ }
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundleLazy 'tyru/caw.vim', {
-            \ 'mappings': '<Plug>',
-            \ }
-NeoBundleLazy 'tyru/open-browser.vim', {
-            \ 'mappings': '<Plug>(openbrowser-',
-            \ }
-NeoBundleLazy 'kannokanno/previm', {
-            \ 'depends': 'tyru/open-browser.vim',
-            \ 'filetypes': ['markdown', 'mkd', 'rst'],
-            \ }
 
 call neobundle#end()
 " }}}
