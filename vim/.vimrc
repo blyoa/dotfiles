@@ -6,17 +6,26 @@ let s:is_cygwin=has('win32unix')
 " }}}
 
 
+" variables {{{
+let s:share_dir='~/Dropbox/share_for_me'
+let s:vimfiles='~/.vim'
+" for portable use
+"let s:vimfiles=$VIM/.vim
+"
+" }}}
+
+
 " initialization {{{
 " language
 language C
 set langmenu=none
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    let &runtimepath.=',' . s:vimfiles . '/bundle/neobundle.vim/'
 endif
 
 " load neobundle {{{
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand(s:vimfiles . '/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleLazy 'Shougo/junkfile.vim', {
@@ -282,10 +291,10 @@ endif " }}}
 " memolist.vim {{{
 if neobundle#tap('memolist.vim')
     " memodir
-    if isdirectory(expand('~/Dropbox/share_for_me/'))
-        let g:memolist_path=expand('~/Dropbox/share_for_me/memolist')
+    if isdirectory(expand(s:share_dir))
+        let g:memolist_path=expand(s:share_dir . '/memolist')
     else
-        let g:memolist_path=expand('~/.vim/memolist')
+        let g:memolist_path=expand(s:vimfiles . '/memolist')
     endif
 
     " suffix type
@@ -317,7 +326,7 @@ endif " }}}
 " neosnippet.vim {{{
 if neobundle#tap('neosnippet.vim')
     " addtional snippet directory
-    let g:neosnippet#snippets_directory='~/.vim/snippets'
+    let g:neosnippet#snippets_directory=s:vimfiles . '/snippets'
 
     " keymap
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
