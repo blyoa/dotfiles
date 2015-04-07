@@ -37,6 +37,7 @@ else
                 \ }
     NeoBundleLazy 'Shougo/neomru.vim', {
                 \ 'filetypes': 'all',
+                \ 'unite_sources': ['neomru/file', 'neomru/directory'],
                 \ }
     NeoBundleLazy 'Shougo/neosnippet.vim', {
                 \ 'filetypes': 'snippet',
