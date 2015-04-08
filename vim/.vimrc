@@ -109,6 +109,9 @@ else
     NeoBundleLazy 'hail2u/vim-css3-syntax', {
                 \ 'filetypes': ['css', 'sass', 'scss', 'less'],
                 \ }
+    NeoBundleLazy 'haya14busa/incsearch.vim', {
+                \ 'mappings': '<Plug>',
+                \ }
     NeoBundleLazy 'haya14busa/vim-asterisk', {
                 \ 'mappings': '<Plug>(asterisk-',
                 \ }
@@ -293,6 +296,16 @@ if neobundle#tap('emmet-vim')
 
     call neobundle#untap()
 endif " }}}
+
+" incsearch.vim {{{
+if neobundle#tap('incsearch.vim')
+    " keymap
+    map /  <Plug>(incsearch-forward)
+    map ?  <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+
+    call neobundle#untap()
+endif "}}}
 
 " memolist.vim {{{
 if neobundle#tap('memolist.vim')
