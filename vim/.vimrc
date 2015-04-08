@@ -168,6 +168,11 @@ else
     NeoBundle 'thinca/vim-quickrun'
     NeoBundle 'thinca/vim-ref'
     NeoBundle 'tpope/vim-fugitive'
+    NeoBundleLazy 'tyru/capture.vim', {
+                \ 'commands': [
+                \     {'name': 'Capture',
+                \      'complete': 'command'}],
+                \ }
     NeoBundleLazy 'tyru/caw.vim', {
                 \ 'mappings': '<Plug>',
                 \ }
