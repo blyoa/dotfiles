@@ -217,6 +217,8 @@ set title
 set t_Co=256
 set display=lastline
 set showcmd
+set list
+set listchars=extends:>,precedes:<,trail:_
 
 " statusline
 set laststatus=2
