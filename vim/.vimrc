@@ -286,7 +286,7 @@ endif
 
 " plugin settings {{{
 " caw.vim {{{
-if neobundle#tap('caw.vim') 
+if neobundle#tap('caw.vim')
     " keymap
     nmap <Leader>c <Plug>(caw:I:toggle)
     vmap <Leader>c <Plug>(caw:I:toggle)
@@ -416,7 +416,7 @@ if neobundle#tap('vim-asterisk')
     map z*  <Plug>(asterisk-z*)
     map gz* <Plug>(asterisk-gz*)
     map z#  <Plug>(asterisk-z#)
-    map gz# <Plug>(asterisk-gz#) 
+    map gz# <Plug>(asterisk-gz#)
 
     call neobundle#untap()
 endif "}}}
