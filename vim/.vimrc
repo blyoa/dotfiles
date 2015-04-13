@@ -218,7 +218,7 @@ set t_Co=256
 set display=lastline
 set showcmd
 set list
-set listchars=extends:>,precedes:<,trail:_
+set listchars=extends:>,precedes:<,tab:\|_,trail:_
 
 " statusline
 set laststatus=2
