@@ -10,7 +10,7 @@ let s:is_cygwin=has('win32unix')
 let s:share_dir='~/Dropbox/share_for_me'
 let s:vimfiles='~/.vim'
 " for portable use
-"let s:vimfiles=$VIM/.vim
+"let s:vimfiles=$VIM . '/.vim'
 "
 " }}}
 
