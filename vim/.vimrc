@@ -97,6 +97,9 @@ else
                 \ 'commands': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
                 \              'VimShellPop'],
                 \ }
+    NeoBundleLazy 'chrisbra/vim-diff-enhanced', {
+                \ 'commands': ['EnhancedDiff', 'PatienceDiff'],
+                \ }
     NeoBundle 'cohama/vim-hier'
     NeoBundle 'deris/vim-visualinc'
     NeoBundle 'flazz/vim-colorschemes'
