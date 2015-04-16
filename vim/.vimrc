@@ -122,6 +122,9 @@ else
                 \ 'filetypes': ['python', 'python3', 'djangohtml'],
                 \ 'insert': 1,
                 \ }
+    NeoBundleLazy 'itchyny/calendar.vim', {
+                \ 'commands': ['Calendar'],
+                \ }
     NeoBundle 'kana/vim-niceblock'
     NeoBundleLazy 'kana/vim-altr', {
                 \ 'mappings': '<Plug>',
@@ -288,6 +291,14 @@ endif
 
 
 " plugin settings {{{
+" calendar.vim {{{
+if neobundle#tap('calendar.vim')
+    let g:calendar_first_day = 'sunday' 
+    let g:calendar_google_calendar = 1
+    let g:calendar_google_task = 1
+    call neobundle#untap()
+endif "}}}
+
 " caw.vim {{{
 if neobundle#tap('caw.vim')
     " keymap
