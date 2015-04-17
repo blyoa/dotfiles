@@ -293,7 +293,8 @@ endif
 " plugin settings {{{
 " calendar.vim {{{
 if neobundle#tap('calendar.vim')
-    let g:calendar_first_day = 'sunday' 
+    let g:calendar_first_day = 'sunday'
+    let g:calendar_time_zone = 9
     let g:calendar_google_calendar = 1
     let g:calendar_google_task = 1
     call neobundle#untap()
