@@ -265,6 +265,9 @@ set modeline
 " increment/decrement
 set nrformats=hex,alpha
 
+" make
+let &makeprg=executable('mingw32-make') ? 'mingw32-make' : 'make'
+
 " misc
 set hidden
 set backspace=indent,eol,start
