@@ -189,6 +189,9 @@ else
                 \ 'depends': 'tyru/open-browser.vim',
                 \ 'filetypes': ['markdown', 'mkd', 'rst'],
                 \ }
+    NeoBundleLazy 'vim-jp/vim-go-extra', {
+                \ 'filetypes': ['go'],
+                \ }
     NeoBundleSaveCache
 endif
 
@@ -357,12 +360,31 @@ endif " }}}
 if neobundle#tap('neocomplcache.vim')
     let g:neocomplcache_enable_at_startup=1
 
+    " Enable heavy omni completion.
+    if !exists('g:neocomplcache_omni_patterns')
+        let g:neocomplcache_omni_patterns = {}
+    endif
+
+    " golang
+    let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
+
     call neobundle#untap()
 endif " }}}
 
 " neocomplete.vim {{{
 if neobundle#tap('neocomplete.vim')
     let g:neocomplete#enable_at_startup=1
+
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+
+    " golang
+    let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
 
     call neobundle#untap()
 endif " }}}
@@ -560,6 +582,9 @@ endfunction
 augroup vimrc_loading
     autocmd!
     autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+    " FileType
+    autocmd FileType go setlocal noexpandtab
 augroup END
 " }}}
 
