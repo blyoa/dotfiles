@@ -24,12 +24,10 @@ if has('vim_starting')
     let &runtimepath.=',' . s:vimfiles . '/bundle/neobundle.vim/'
 endif
 
-" load neobundle {{{
+" neobundle {{{
 call neobundle#begin(expand(s:vimfiles . '/bundle/'))
 
-if neobundle#has_fresh_cache()
-    NeoBundleLoadCache
-else
+if neobundle#load_cache()
     NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundleLazy 'Shougo/junkfile.vim', {
                 \ 'commands': ['JunkfileOpen'],
