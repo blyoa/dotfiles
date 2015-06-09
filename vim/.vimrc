@@ -99,6 +99,13 @@ if neobundle#load_cache()
                 \ 'commands': ['EnhancedDiff', 'PatienceDiff'],
                 \ }
     NeoBundle 'cohama/vim-hier'
+    NeoBundleLazy 'ctrlpvim/ctrlp.vim', {
+                \ 'commands': ['CtrlP', 'CtrlPMixed', 'CtrlPBuffer', 'CtrlPMRUFiles']
+                \ }
+    NeoBundleLazy 'mattn/ctrlp-register', {
+                \ 'depends': 'ctrlpvim/ctrlp.vim',
+                \ 'commands': ['CtrlPRegister'],
+                \ }
     NeoBundle 'deris/vim-visualinc'
     NeoBundle 'flazz/vim-colorschemes'
     NeoBundleLazy 'glidenote/memolist.vim', {
@@ -312,6 +319,24 @@ if neobundle#tap('caw.vim')
 
     call neobundle#untap()
 endif " }}}
+
+" ctrlp.vim {{{
+if neobundle#tap('ctrlp.vim')
+    " enable extensions
+    let g:ctrlp_extensions=['mixed']
+
+    " keymap
+    let g:ctrlp_map=''
+    nnoremap [ctrlp] <Nop>
+    nmap  <C-p> [ctrlp]
+
+    nnoremap <silent> [ctrlp]<C-p> :<C-u>CtrlP<CR>
+    nnoremap <silent> [ctrlp]m :<C-u>CtrlPMixed<CR>
+    nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
+    nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
+
+    call neobundle#untap()
+endif "}}}
 
 " emmet-vim {{{
 if neobundle#tap('emmet-vim')
