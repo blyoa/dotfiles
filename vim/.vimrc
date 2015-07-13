@@ -484,6 +484,15 @@ if neobundle#tap('vim-asterisk')
     call neobundle#untap()
 endif "}}}
 
+" vim-go-extra {{{
+if neobundle#tap('vim-go-extra')
+    if neobundle#is_installed('vimproc')
+        let g:gocomplete#system_function='vimproc#system2'
+    endif
+
+    call neobundle#untap()
+endif "}}}
+
 " vim-operator-replace {{{
 if neobundle#tap('vim-operator-replace')
     " keymap
