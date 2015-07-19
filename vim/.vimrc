@@ -401,10 +401,10 @@ if neobundle#tap('neocomplete.vim')
 
     " Enable heavy omni completion.
     if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
+        let g:neocomplete#sources#omni#input_patterns = {}
     endif
     if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
+        let g:neocomplete#force_omni_input_patterns = {}
     endif
 
     " golang
