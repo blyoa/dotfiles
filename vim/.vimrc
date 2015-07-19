@@ -64,10 +64,6 @@ if neobundle#load_cache()
                 \ 'depends': 'Shougo/unite.vim',
                 \ 'unite_sources': 'outline',
                 \ }
-    NeoBundleLazy 'Shougo/unite-session', {
-                \ 'commands': ['UniteSessionSave', 'UniteSessionLoad'],
-                \ 'unite_sources': 'settion',
-                \ }
     NeoBundleLazy 'osyo-manga/unite-quickfix', {
                 \ 'depends': 'Shougo/unite.vim',
                 \ 'unite_sources': 'quickfix',
@@ -163,6 +159,11 @@ if neobundle#load_cache()
     NeoBundleLazy 'mattn/emmet-vim', {
                 \ 'filetypes': ['html', 'djangohtml',
                 \               'css', 'sass', 'scss', 'less'],
+                \ }
+    NeoBundleLazy 'osyo-manga/vim-reanimate', {
+                \ 'commands': ['ReanimateLoad', 'ReanimateLoadLatest',
+                \              'ReanimateSave', 'ReanimateSwitch'],
+                \ 'unite_sources': 'reanimate',
                 \ }
     NeoBundleLazy 'othree/html5.vim', {
                 \ 'filetypes': ['html', 'djangohtml'],
@@ -525,6 +526,17 @@ if neobundle#tap('vim-quickrun')
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : '\<C-c>'
     call neobundle#untap()
 endif " }}}
+
+" vim-reanimate {{{
+if neobundle#tap('vim-reanimate')
+    if isdirectory(expand(s:share_dir))
+        let g:reanimate_save_dir=expand(s:share_dir . '/.vim/reanimate')
+    else
+        let g:reanimate_save_dir=expand(s:vimfiles . '/reanimate')
+    endif
+
+    call neobundle#untap()
+endif "}}}
 
 " vim-submode {{{
 if neobundle#tap('vim-submode')
