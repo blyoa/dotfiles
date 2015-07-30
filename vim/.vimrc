@@ -520,6 +520,12 @@ if neobundle#tap('vim-quickrun')
                 \       'runner': 'vimproc',
                 \       'runner/vimproc/updatetime': 500,
                 \       'hook/output_encode/encoding': '&termencoding',
+                \ },
+                \ 'go.test': {
+                \       'cmdopt': 'test -v',
+                \       'command': 'go',
+                \       'exec': '%c %o',
+                \       'hook/cd/directory': '%S:h',
                 \ }}
 
     " keymap
@@ -630,7 +636,9 @@ augroup vimrc_loading
     autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
     " FileType
+    " golang
     autocmd FileType go setlocal noexpandtab
+    autocmd BufWinEnter,BufNewFile *_test.go setlocal filetype=go.test
 augroup END
 " }}}
 
