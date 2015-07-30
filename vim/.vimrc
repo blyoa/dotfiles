@@ -535,6 +535,8 @@ if neobundle#tap('vim-reanimate')
         let g:reanimate_save_dir=expand(s:vimfiles . '/reanimate')
     endif
 
+    let g:reanimate_sessionoptions='blank,buffers,curdir,folds,help,tabpages,winsize'
+
     call neobundle#untap()
 endif "}}}
 
