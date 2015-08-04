@@ -464,6 +464,9 @@ if neobundle#tap('vim-altr')
     nmap <F2> <Plug>(altr-forward)
     nmap <S-F2> <Plug>(altr-back)
 
+    " define
+    call altr#define('%.go', '%_test.go')
+
     call neobundle#untap()
 endif " }}}
 
