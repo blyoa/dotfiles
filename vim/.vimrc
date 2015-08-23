@@ -127,9 +127,7 @@ if neobundle#load_cache()
                 \ 'commands': ['Calendar'],
                 \ }
     NeoBundle 'kana/vim-niceblock'
-    NeoBundleLazy 'kana/vim-altr', {
-                \ 'mappings': '<Plug>',
-                \ }
+    NeoBundle 'kana/vim-altr'
     NeoBundleLazy 'kana/vim-operator-user', {
                 \ 'functions': 'operator#user#define',
                 \ }
@@ -149,9 +147,7 @@ if neobundle#load_cache()
                 \ 'depends': 'kana/vim-textobj-user',
                 \ 'mappings': '<Plug>',
                 \ }
-    NeoBundleLazy 'kana/vim-submode', {
-                \ 'mappings': '<Plug>',
-                \ }
+    NeoBundle 'kana/vim-submode'
     NeoBundleLazy 'lilydjwg/colorizer', {
                 \ 'filetypes': ['html', 'djangohtml',
                 \               'css', 'sass', 'scss', 'less'],
