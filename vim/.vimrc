@@ -102,6 +102,9 @@ if neobundle#load_cache()
                 \ 'depends': 'ctrlpvim/ctrlp.vim',
                 \ 'commands': ['CtrlPRegister'],
                 \ }
+    NeoBundleLazy 'mattn/sonictemplate-vim', {
+                \ 'filetypes': 'all',
+                \ }
     NeoBundle 'deris/vim-visualinc'
     NeoBundle 'flazz/vim-colorschemes'
     NeoBundleLazy 'glidenote/memolist.vim', {
