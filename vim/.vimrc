@@ -486,6 +486,10 @@ endif "}}}
 
 " vim-go-extra {{{
 if neobundle#tap('vim-go-extra')
+    if executable('goimports')
+        let g:gofmt_command='goimports'
+    endif
+
     if neobundle#is_installed('vimproc')
         let g:gocomplete#system_function='vimproc#system2'
     endif
