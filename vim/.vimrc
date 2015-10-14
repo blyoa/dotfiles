@@ -129,6 +129,9 @@ if neobundle#load_cache()
     NeoBundleLazy 'itchyny/calendar.vim', {
                 \ 'commands': ['Calendar'],
                 \ }
+    NeoBundleLazy 'justmao945/vim-clang', {
+                \ 'filetypes': ['c', 'cpp']
+                \ }
     NeoBundle 'kana/vim-niceblock'
     NeoBundle 'kana/vim-altr'
     NeoBundleLazy 'kana/vim-operator-user', {
@@ -406,6 +409,10 @@ if neobundle#tap('neocomplete.vim')
         let g:neocomplete#force_omni_input_patterns = {}
     endif
 
+    " c
+    let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    " cpp
+    let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
     " golang
     let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
 
@@ -483,6 +490,15 @@ if neobundle#tap('vim-asterisk')
     map gz* <Plug>(asterisk-gz*)
     map z#  <Plug>(asterisk-z#)
     map gz# <Plug>(asterisk-gz#)
+
+    call neobundle#untap()
+endif "}}}
+
+" vim-clang {{{
+if neobundle#tap('vim-clang')
+    let g:clang_auto = 0
+    let g:clang_c_options = '-std=c11'
+    let g:clang_cpp_options = '-std=c++1y'
 
     call neobundle#untap()
 endif "}}}
