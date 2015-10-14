@@ -138,7 +138,7 @@ if neobundle#load_cache()
                 \ 'functions': 'operator#user#define',
                 \ }
     NeoBundleLazy 'kana/vim-operator-replace', {
-                \ 'dependes': 'kana/vim-operator-user',
+                \ 'depends': 'kana/vim-operator-user',
                 \ 'mappings': '<Plug>',
                 \ }
     NeoBundleLazy 'rhysd/vim-operator-surround', {
