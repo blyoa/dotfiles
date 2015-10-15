@@ -500,6 +500,12 @@ if neobundle#tap('vim-clang')
     let g:clang_c_options = '-std=c11'
     let g:clang_cpp_options = '-std=c++1y'
 
+    let g:clang_format_style = '"{'
+                \ .'AccessModifierOffset: -4,'
+                \ .'BasedOnStyle: Google,'
+                \ .'IndentWidth: 4,'
+                \ .'}"'
+
     call neobundle#untap()
 endif "}}}
 
