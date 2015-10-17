@@ -669,7 +669,14 @@ endfunction
 " autocmd {{{
 augroup vimrc_loading
     autocmd!
-    autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+    " do not move when copen
+    function! s:nomove_copen()
+        let curbuf = bufwinnr('%')
+        copen
+        execute curbuf . 'wincmd w'
+    endfunction
+    autocmd QuickfixCmdPost make,grep,grepadd,vimgrep call s:nomove_copen()
 
     " FileType
     " golang
