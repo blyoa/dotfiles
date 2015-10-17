@@ -551,6 +551,12 @@ if neobundle#tap('vim-quickrun')
                 \       'runner/vimproc/updatetime': 500,
                 \       'hook/output_encode/encoding': '&termencoding',
                 \ },
+                \ 'c': {
+                \       'cmdopt': '-std=c11',
+                \ },
+                \ 'cpp': {
+                \       'cmdopt': '-std=c++14',
+                \ },
                 \ 'go.test': {
                 \       'cmdopt': 'test -v',
                 \       'command': 'go',
