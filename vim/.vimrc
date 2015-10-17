@@ -498,10 +498,12 @@ endif "}}}
 if neobundle#tap('vim-clang')
     let g:clang_auto = 0
     let g:clang_c_options = '-std=c11'
-    let g:clang_cpp_options = '-std=c++1y'
+    let g:clang_cpp_options = '-std=c++14'
 
     let g:clang_format_style = '"{'
                 \ .'AccessModifierOffset: -4,'
+                \ .'AllowShortIfStatementsOnASingleLine: false,'
+                \ .'AllowShortLoopsOnASingleLine: false,'
                 \ .'BasedOnStyle: Google,'
                 \ .'IndentWidth: 4,'
                 \ .'}"'
