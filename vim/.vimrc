@@ -464,6 +464,11 @@ if neobundle#tap('vim-quickhl')
     call neobundle#untap()
 endif " }}}
 
+" 2html.vim {{{
+let g:html_font = 'Inconsolata'',''Migu 1M'
+
+" }}}
+
 " vim-altr {{{
 if neobundle#tap('vim-altr')
     " keymap
