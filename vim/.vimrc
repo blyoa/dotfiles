@@ -110,9 +110,6 @@ if neobundle#load_cache()
     NeoBundleLazy 'glidenote/memolist.vim', {
                 \ 'commands': ['MemoNew', 'MemoList', 'MemoGrep'],
                 \ }
-    NeoBundleLazy 'h1mesuke/vim-alignta', {
-                \ 'commands': ['Alignta'],
-                \ }
     NeoBundleLazy 'hail2u/vim-css3-syntax', {
                 \ 'filetypes': ['css', 'sass', 'scss', 'less'],
                 \ }
@@ -128,6 +125,10 @@ if neobundle#load_cache()
                 \ }
     NeoBundleLazy 'itchyny/calendar.vim', {
                 \ 'commands': ['Calendar'],
+                \ }
+    NeoBundleLazy 'junegunn/vim-easy-align', {
+                \ 'commands': ['EasyAlign', 'LiveEasyAlign'],
+                \ 'mappings': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'],
                 \ }
     NeoBundleLazy 'justmao945/vim-clang', {
                 \ 'filetypes': ['c', 'cpp']
