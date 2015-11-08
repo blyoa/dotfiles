@@ -136,6 +136,9 @@ if neobundle#load_cache()
     NeoBundleLazy 'justmao945/vim-clang', {
                 \ 'filetypes': ['c', 'cpp']
                 \ }
+    NeoBundleLazy 'KabbAmine/zeavim.vim', {
+                \ 'mappings': ['<Leader>z', '<Leader>Z'],
+                \ }
     NeoBundle 'kana/vim-niceblock'
     NeoBundle 'kana/vim-altr'
     NeoBundleLazy 'kana/vim-operator-user', {
