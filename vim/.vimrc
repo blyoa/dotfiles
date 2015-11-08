@@ -91,6 +91,9 @@ if neobundle#load_cache()
                 \ 'commands': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
                 \              'VimShellPop'],
                 \ }
+    NeoBundleLazy 'blyoa/vim-promela-syntax', {
+                \ 'filetypes': 'promela'
+                \ }
     NeoBundleLazy 'chrisbra/vim-diff-enhanced', {
                 \ 'commands': ['EnhancedDiff', 'PatienceDiff'],
                 \ }
