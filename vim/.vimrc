@@ -591,6 +591,22 @@ if neobundle#tap('vim-reanimate')
 
     let g:reanimate_sessionoptions='blank,buffers,curdir,folds,help,tabpages,winsize'
 
+    " complete func
+    function! s:save_point_completelist(arglead, ...)
+        return filter(reanimate#save_points(), "v:val =~? '".a:arglead."'")
+    endfunction
+
+    " define memo command
+    function! s:reanimate_edit_memo(...) abort
+        let point = a:0 ? a:1 : reanimate#last_point()
+        let target = reanimate#point_to_path(point)."/"."memo.md"
+        execute "split" target
+    endfunction
+
+    command! -nargs=? -complete=customlist,s:save_point_completelist
+                \ ReanimateEditMemo
+                \ call s:reanimate_edit_memo()
+
     call neobundle#untap()
 endif "}}}
 
