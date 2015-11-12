@@ -28,6 +28,7 @@ endif
 call neobundle#begin(expand(s:vimfiles . '/bundle/'))
 
 if neobundle#load_cache()
+    NeoBundle 'matchit.zip'
     NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundleLazy 'Shougo/junkfile.vim', {
                 \ 'commands': ['JunkfileOpen'],
