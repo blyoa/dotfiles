@@ -313,6 +313,10 @@ endif
 
 
 " plugin settings {{{
+" 2html.vim {{{
+let g:html_font = 'Inconsolata'',''Migu 1M'
+" }}}
+
 " calendar.vim {{{
 if neobundle#tap('calendar.vim')
     let g:calendar_first_day = 'sunday'
@@ -481,7 +485,6 @@ endif " }}}
 
 " 2html.vim {{{
 let g:html_font = 'Inconsolata'',''Migu 1M'
-
 " }}}
 
 " vim-altr {{{
