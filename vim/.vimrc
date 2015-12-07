@@ -362,6 +362,10 @@ if neobundle#tap('emmet-vim')
     call neobundle#untap()
 endif " }}}
 
+" ft-tex-plugin {{{
+let g:tex_flavor = 'latex'
+"}}}
+
 " incsearch.vim {{{
 if neobundle#tap('incsearch.vim')
     " keymap
