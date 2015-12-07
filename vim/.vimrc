@@ -336,6 +336,9 @@ if neobundle#tap('ctrlp.vim')
     " enable extensions
     let g:ctrlp_extensions=['mixed']
 
+    " disable switch buffer
+    let g:ctrlp_switch_buffer = ''
+
     " keymap
     let g:ctrlp_map=''
     nnoremap [ctrlp] <Nop>
