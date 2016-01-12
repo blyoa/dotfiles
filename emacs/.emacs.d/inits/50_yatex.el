@@ -50,5 +50,3 @@
    '(
 	   yatex-mode-hook  
     ))
-
-(provide 'init-yatex-mode)
