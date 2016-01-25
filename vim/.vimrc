@@ -73,15 +73,14 @@ if neobundle#load_cache()
                 \ 'depends': 'Shougo/unite.vim',
                 \ 'on_unite': 'colorscheme',
                 \ }
-    if has('lua')
-        NeoBundleLazy 'Shougo/neocomplete.vim', {
-                    \ 'on_i': 1,
-                    \ }
-    else
-        NeoBundleLazy 'Shougo/neocomplcache.vim', {
-                    \ 'on_i': 1,
-                    \ }
-    endif
+    NeoBundleLazy 'Shougo/neocomplete.vim', {
+                \ 'disabled': !has('lua'),
+                \ 'on_i': 1,
+                \ }
+    NeoBundleLazy 'Shougo/neocomplcache.vim', {
+                \ 'disabled': has('lua'),
+                \ 'on_i': 1,
+                \ }
     NeoBundleLazy 'Shougo/vimfiler', {
                 \ 'on_cmd': [
                 \     {'name': 'VimFiler',
