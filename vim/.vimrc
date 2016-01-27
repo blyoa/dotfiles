@@ -248,7 +248,7 @@ set listchars=extends:>,precedes:<,tab:\|_,trail:_
 set laststatus=2
 let &statusline="%{expand('%:p:.')}\ %w%r\%m"
       \ . "\ %=%y%{'['.(&fenc!=''?&fenc:&enc).(&bomb?'(BOM)':'').','.&ff.']'}"
-      \ . "%{printf(' %5d/%d', line('.'), line('$'))}"
+      \ . "%{printf('(%d)%5d/%d',winnr(), line('.'), line('$'))}"
 
 " completion
 set pumheight=20
