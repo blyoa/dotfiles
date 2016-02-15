@@ -30,14 +30,6 @@ call neobundle#begin(expand(s:vimfiles . '/bundle/'))
 if neobundle#load_cache()
   NeoBundle 'matchit.zip'
   NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundleLazy 'Shougo/junkfile.vim', {
-        \ 'on_cmd': ['JunkfileOpen'],
-        \ 'on_unite': 'junkfile',
-        \ }
-  NeoBundleLazy 'Shougo/neomru.vim', {
-        \ 'on_ft': 'all',
-        \ 'on_unite': ['neomru/file', 'neomru/directory'],
-        \ }
   NeoBundleLazy 'Shougo/neosnippet.vim', {
         \ 'on_ft': 'snippet',
         \ 'on_i': 1,
@@ -57,21 +49,23 @@ if neobundle#load_cache()
         \      'complete': 'customlist,unite#complete_source'},
         \     'UniteWithCursorWord', 'UniteWithInput'],
         \ }
-  NeoBundleLazy 'Shougo/unite-help', {
+  NeoBundle 'Shougo/junkfile.vim', {
         \ 'depends': 'Shougo/unite.vim',
-        \ 'on_unite': 'help',
         \ }
-  NeoBundleLazy 'Shougo/unite-outline', {
+  NeoBundle 'Shougo/neomru.vim', {
         \ 'depends': 'Shougo/unite.vim',
-        \ 'on_unite': 'outline',
         \ }
-  NeoBundleLazy 'osyo-manga/unite-quickfix', {
+  NeoBundle 'Shougo/unite-help', {
         \ 'depends': 'Shougo/unite.vim',
-        \ 'on_unite': 'quickfix',
         \ }
-  NeoBundleLazy 'ujihisa/unite-colorscheme', {
+  NeoBundle 'Shougo/unite-outline', {
         \ 'depends': 'Shougo/unite.vim',
-        \ 'on_unite': 'colorscheme',
+        \ }
+  NeoBundle 'osyo-manga/unite-quickfix', {
+        \ 'depends': 'Shougo/unite.vim',
+        \ }
+  NeoBundle 'ujihisa/unite-colorscheme', {
+        \ 'depends': 'Shougo/unite.vim',
         \ }
   NeoBundleLazy 'Shougo/neocomplete.vim', {
         \ 'disabled': !has('lua'),
@@ -172,7 +166,6 @@ if neobundle#load_cache()
   NeoBundleLazy 'osyo-manga/vim-reanimate', {
         \ 'on_cmd': ['ReanimateLoad', 'ReanimateLoadLatest',
         \              'ReanimateSave', 'ReanimateSwitch'],
-        \ 'on_unite': 'reanimate',
         \ }
   NeoBundleLazy 'othree/html5.vim', {
         \ 'on_ft': ['html', 'djangohtml'],
