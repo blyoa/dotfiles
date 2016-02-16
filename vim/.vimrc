@@ -342,9 +342,13 @@ if neobundle#tap('ctrlp.vim')
   nmap  <C-p> [ctrlp]
 
   nnoremap <silent> [ctrlp]<C-p> :<C-u>CtrlP<CR>
-  nnoremap <silent> [ctrlp]m :<C-u>CtrlPMixed<CR>
+  nnoremap <silent> [ctrlp]m :<C-u>CtrlPBookmarkDir<CR>
+  nnoremap <silent> [ctrlp]M :<C-u>CtrlPBookmarkDirAdd!<CR>
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
-  nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
+  " ctrlp-register
+  if neobundle#is_installed('ctrlp-register')
+    nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
+  endif
 
   call neobundle#untap()
 endif "}}}
