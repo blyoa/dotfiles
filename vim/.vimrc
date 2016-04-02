@@ -383,7 +383,7 @@ endif "}}}
 if neobundle#tap('memolist.vim')
   " memodir
   if isdirectory(expand(s:share_dir))
-    let g:memolist_path=expand(s:share_dir . '/memolist')
+    let g:memolist_path=expand(s:share_dir . '/.vim/memolist')
   else
     let g:memolist_path=expand(s:vimfiles . '/memolist')
   endif
