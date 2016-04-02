@@ -160,6 +160,9 @@ if neobundle#load_cache()
         \ 'on_map': '<Plug>',
         \ }
   NeoBundle 'kana/vim-submode'
+  NeoBundleLazy 'lervag/vimtex', {
+        \ 'on_ft': ['tex'],
+        \ }
   NeoBundleLazy 'lilydjwg/colorizer', {
         \ 'on_ft': ['html', 'djangohtml',
         \               'css', 'sass', 'scss', 'less'],
@@ -480,6 +483,13 @@ endif "}}}
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
   " golang
   let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  " tex
+  let g:neocomplete#sources#omni#input_patterns.tex =
+        \ '\v\\%('
+        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|%(include|input)\s*\{[^{}]*'
+        \ . ')'
 
   call neobundle#untap()
 endif " }}}
@@ -695,6 +705,22 @@ if neobundle#tap('vim-textobj-between')
 
   call neobundle#untap()
 endif " }}}
+
+" vimtex {{{
+if neobundle#tap('vimtex')
+  let g:vimtex_motion_matchparen = 0
+  let g:vimtex_latexmk_options='-pdfdvi'
+
+  if executable('SumatraPDF')
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options = '-reuse-instance -inverse-search "\"' . $VIM . '\gvim.exe\" -n --remote-silent +\%l \"\%f\"" -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+  else
+    let g:vimtex_view_enabled = 0
+  endif
+
+  call neobundle#untap()
+endif "}}}
 
 " unite.vim {{{
 if neobundle#tap('unite.vim')
