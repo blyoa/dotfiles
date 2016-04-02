@@ -289,6 +289,36 @@ let &makeprg=executable('mingw32-make') ? 'mingw32-make' : 'make'
 
 " tags
 set tags=./.tags;,./tags;
+
+" markdown
+let g:markdown_fenced_languages = [
+      \ 'bash=sh',
+      \ 'c',
+      \ 'cpp',
+      \ 'cs',
+      \ 'csharp=cs',
+      \ 'css',
+      \ 'diff',
+      \ 'go',
+      \ 'golang=go',
+      \ 'html',
+      \ 'java',
+      \ 'javascript',
+      \ 'js=javascript',
+      \ 'json',
+      \ 'latex=tex',
+      \ 'perl',
+      \ 'promela',
+      \ 'python',
+      \ 'ruby',
+      \ 'sh',
+      \ 'tex',
+      \ 'vim',
+      \ 'xml',
+      \ 'yaml',
+      \ 'zsh',
+      \ ]
+
 " misc
 set hidden
 set backspace=indent,eol,start
