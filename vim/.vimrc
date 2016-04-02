@@ -95,6 +95,10 @@ if neobundle#load_cache()
   NeoBundleLazy 'ctrlpvim/ctrlp.vim', {
         \ 'on_cmd': ['CtrlP', 'CtrlPMixed', 'CtrlPBuffer', 'CtrlPMRUFiles']
         \ }
+  NeoBundleLazy 'blyoa/ctrlp-history', {
+        \ 'depends': 'ctrlpvim/ctrlp.vim',
+        \ 'on_cmd': ['CtrlPCmdHistory', 'CtrlPSearchHistory',],
+        \ }
   NeoBundleLazy 'mattn/ctrlp-register', {
         \ 'depends': 'ctrlpvim/ctrlp.vim',
         \ 'on_cmd': ['CtrlPRegister'],
@@ -347,6 +351,11 @@ if neobundle#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]m :<C-u>CtrlPBookmarkDir<CR>
   nnoremap <silent> [ctrlp]M :<C-u>CtrlPBookmarkDirAdd!<CR>
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
+  " ctrlp-history
+  if neobundle#is_installed('ctrlp-history')
+    nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdHistory<CR>
+    nnoremap <silent> [ctrlp]/ :<C-u>CtrlPSearchHistory<CR>
+  endif
   " ctrlp-register
   if neobundle#is_installed('ctrlp-register')
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
