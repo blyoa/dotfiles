@@ -127,6 +127,7 @@ if neobundle#load_cache()
   NeoBundleLazy 'itchyny/calendar.vim', {
         \ 'on_cmd': ['Calendar'],
         \ }
+  NeoBundle 'itchyny/lightline.vim'
   NeoBundleLazy 'junegunn/vim-easy-align', {
         \ 'on_cmd': ['EasyAlign', 'LiveEasyAlign'],
         \ 'on_map': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'],
@@ -435,6 +436,43 @@ if neobundle#tap('neocomplete.vim')
   if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
   endif
+
+" lightline.vim {{{
+if neobundle#tap('lightline.vim')
+  let g:lightline={
+        \ 'colorscheme': 'Tomorrow_Night',
+        \ 'active': {
+        \   'left': [[], ['preview', 'filename', 'modified', 'readonly',]],
+        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
+        \ },
+        \ 'inactive': {
+        \   'left': [['filename', 'modified', 'readonly',]],
+        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
+        \ },
+        \ 'component': {
+        \  'filetype': '%{&ft}',
+        \  'fenc_ff': '%{(&fenc!=""?&fenc:&enc).(&bomb?"(BOM)":"").",".&ff}',
+        \  'filename': '%{expand("%:p:.")}',
+        \  'linenr': '%{printf("%3d/%d", line("."), line("$"))}',
+        \  'preview': '%w',
+        \  'readonly': '%r',
+        \  'winnr': '%{winnr()}',
+        \ },
+        \ 'component_visible_condition': {
+        \   'preview': '&previewwindow',
+        \ },
+        \ }
+
+  " avoid overwriting statusline ctrlp.vim
+  if neobundle#is_installed('ctrlp.vim')
+    let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
+    function! CtrlPEnter() abort
+      let w:lightline = 0
+    endfunction
+  endif
+
+  call neobundle#untap()
+endif "}}}
 
   " c
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
