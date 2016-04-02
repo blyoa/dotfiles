@@ -5,7 +5,6 @@ let s:is_windows=has('win16') || has('win32') || has('win64')
 let s:is_cygwin=has('win32unix')
 " }}}
 
-
 " variables {{{
 let s:share_dir='~/Dropbox/sync'
 let s:vimfiles='~/.vim'
@@ -13,7 +12,6 @@ let s:vimfiles='~/.vim'
 "let s:vimfiles=$VIM . '/.vim'
 "
 " }}}
-
 
 " initialization {{{
 " language
@@ -219,7 +217,6 @@ filetype plugin indent on
 NeoBundleCheck
 " }}}
 
-
 " basic settings {{{
 " encoding
 let &termencoding=&encoding
@@ -332,7 +329,6 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 " }}}
 
-
 " platform settings {{{
 " Cygwin
 if s:is_cygwin
@@ -343,7 +339,6 @@ if s:is_cygwin
   set backspace=indent,eol,start
 endif
 " }}}
-
 
 " plugin settings {{{
 " 2html.vim {{{
@@ -784,7 +779,6 @@ if neobundle#tap('unite-outline')
 endif "}}}
 " }}}
 
-
 " local settings {{{
 " secret
 if filereadable(expand('~/.vimrc_secret'))
@@ -805,7 +799,6 @@ function! s:vimrc_local(loc)
   endfor
 endfunction
 " }}}
-
 
 " autocmd {{{
 augroup vimrc_loading
