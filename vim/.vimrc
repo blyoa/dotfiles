@@ -205,8 +205,21 @@ if dein#load_state(expand(s:dein_base_path))
   call dein#save_state()
 endif
 
+function! s:dein_check_install() abort
+  if !dein#check_install()
+    return
+  endif
+
+  if input("Do you want to install new plugins? [y/n]") ==# 'y'
+    call dein#install()
+  endif
+endfunction
+
 if dein#check_install()
-  call dein#install()
+  augroup dein_check_install
+    autocmd!
+    autocmd VimEnter * call s:dein_check_install()
+  augroup END
 endif
 
 " }}}
