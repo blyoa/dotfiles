@@ -34,13 +34,8 @@ if dein#load_state(expand(s:dein_base_path))
         \ })
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/vimproc.vim', {
-        \ 'build': {
-        \     'windows': 'tools\\update-dll-mingw',
-        \     'cygwin': 'make -f make_cygwin.mak',
-        \     'mac': 'make -f make_mac.mak',
-        \     'linux': 'make',
-        \     'unix': 'gmake',
-        \ }})
+        \ 'build': 'make',
+        \ })
   call dein#add('Shougo/unite.vim', {
         \ 'on_cmd': ['Unite', 'UniteWithCursorWord', 'UniteWithInput'],
         \ })
