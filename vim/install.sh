@@ -8,8 +8,8 @@ source ../script/functions/*.sh
 symlink $(pwd)"/.vimrc" ~/.vimrc
 
 # install NeoBundle 
-if [ ! -e ~/.vim/bundle/neobundle.vim ]; then
-    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+if [ ! -e ~/.vim/bundle/repos/github.com/Shougo/dein.vim ]; then
+    git clone https://github.com/Shougo/dein.vim ~/.vim/bundle/repos/github.com/Shougo/dein.vim
 fi
 
 # add snippets
