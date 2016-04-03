@@ -83,6 +83,9 @@ if neobundle#load_cache()
         \ 'on_cmd': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
         \              'VimShellPop'],
         \ }
+  NeoBundleLazy 'blyoa/pas.vim', {
+        \ 'on_map': '<Plug>(pas-',
+        \ }
   NeoBundleLazy 'blyoa/vim-promela-syntax', {
         \ 'on_ft': 'promela'
         \ }
@@ -550,6 +553,17 @@ if neobundle#tap('open-browser.vim')
 
   call neobundle#untap()
 endif " }}}
+
+" pas.vim {{{
+if neobundle#tap('pas.vim')
+  nmap vp <Plug>(pas-p-as-v)
+  nmap vP <Plug>(pas-P-as-v)
+  nmap Vp <Plug>(pas-p-as-V)
+  nmap VP <Plug>(pas-P-as-V)
+  nmap <C-v>p <Plug>(pas-p-as-ctrlv)
+  nmap <C-v>P <Plug>(pas-P-as-ctrlv)
+  call neobundle#untap()
+endif "}}}
 
 " quickhl {{{
 if neobundle#tap('vim-quickhl')
