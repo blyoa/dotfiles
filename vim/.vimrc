@@ -468,6 +468,22 @@ if neobundle#tap('neocomplete.vim')
     let g:neocomplete#force_omni_input_patterns = {}
   endif
 
+  " c
+  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+  " cpp
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+  " golang
+  let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  " tex
+  let g:neocomplete#sources#omni#input_patterns.tex =
+        \ '\v\\%('
+        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|%(include|input)\s*\{[^{}]*'
+        \ . ')'
+
+endif " }}}
+
 " lightline.vim {{{
 if neobundle#tap('lightline.vim')
   let g:lightline={
@@ -504,23 +520,6 @@ if neobundle#tap('lightline.vim')
 
   call neobundle#untap()
 endif "}}}
-
-  " c
-  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-  " cpp
-  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-  " golang
-  let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
-  " tex
-  let g:neocomplete#sources#omni#input_patterns.tex =
-        \ '\v\\%('
-        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
-        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
-        \ . '|%(include|input)\s*\{[^{}]*'
-        \ . ')'
-
-  call neobundle#untap()
-endif " }}}
 
 " neosnippet.vim {{{
 if neobundle#tap('neosnippet.vim')
