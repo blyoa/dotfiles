@@ -40,22 +40,22 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_cmd': ['Unite', 'UniteWithCursorWord', 'UniteWithInput'],
         \ })
   call dein#add('Shougo/junkfile.vim', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('Shougo/neomru.vim', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('Shougo/unite-help', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('Shougo/unite-outline', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('osyo-manga/unite-quickfix', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('ujihisa/unite-colorscheme', {
-        \ 'depends': 'Shougo/unite.vim',
+        \ 'depends': 'unite.vim',
         \ })
   call dein#add('Shougo/neocomplete.vim', {
         \ 'if': has('lua'),
@@ -86,11 +86,11 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_cmd': ['CtrlP', 'CtrlPMixed', 'CtrlPBuffer', 'CtrlPMRUFiles'],
         \ })
   call dein#add('blyoa/ctrlp-history', {
-        \ 'depends': 'ctrlpvim/ctrlp.vim',
+        \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPCmdHistory', 'CtrlPSearchHistory',],
         \ })
   call dein#add('mattn/ctrlp-register', {
-        \ 'depends': 'ctrlpvim/ctrlp.vim',
+        \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPRegister'],
         \ })
   call dein#add('mattn/sonictemplate-vim', {
@@ -134,19 +134,19 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_func': 'operator#user#define',
         \ })
   call dein#add('kana/vim-operator-replace', {
-        \ 'depends': 'kana/vim-operator-user',
+        \ 'depends': 'vim-operator-user',
         \ 'on_map': '<Plug>',
         \ })
   call dein#add('rhysd/vim-operator-surround', {
-        \ 'depends': 'kana/vim-operator-user',
+        \ 'depends': 'vim-operator-user',
         \ 'on_map': '<Plug>',
         \ })
   call dein#add('kana/vim-textobj-user')
   call dein#add('kana/vim-textobj-indent', {
-        \ 'depends': 'kana/vim-textobj-user',
+        \ 'depends': 'vim-textobj-user',
         \ })
   call dein#add('thinca/vim-textobj-between', {
-        \ 'depends': 'kana/vim-textobj-user',
+        \ 'depends': 'vim-textobj-user',
         \ 'on_map': '<Plug>',
         \ })
   call dein#add('kana/vim-submode')
@@ -190,7 +190,7 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_map': '<Plug>(openbrowser-',
         \ })
   call dein#add('kannokanno/previm', {
-        \ 'depends': 'tyru/open-browser.vim',
+        \ 'depends': 'open-browser.vim',
         \ 'on_ft': ['markdown', 'mkd', 'rst'],
         \ })
   call dein#add('vim-jp/vim-go-extra', {
