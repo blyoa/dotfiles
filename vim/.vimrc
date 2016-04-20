@@ -362,8 +362,8 @@ endif "}}}
 " caw.vim {{{
 if dein#tap('caw.vim')
   " keymap
-  nmap <Leader>c <Plug>(caw:I:toggle)
-  vmap <Leader>c <Plug>(caw:I:toggle)
+  nmap <Leader>c <Plug>(caw:zeropos:toggle)
+  vmap <Leader>c <Plug>(caw:zeropos:toggle)
 
 endif " }}}
 
