@@ -354,7 +354,7 @@ let g:html_font = 'Inconsolata'',''Migu 1M'
 " calendar.vim {{{
 if dein#tap('calendar.vim')
   let g:calendar_first_day = 'sunday'
-  let g:calendar_time_zone = 9
+  let g:calendar_time_zone = "+0900"
   let g:calendar_google_calendar = 1
   let g:calendar_google_task = 1
 endif "}}}
