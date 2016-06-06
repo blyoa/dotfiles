@@ -89,6 +89,7 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPCmdHistory', 'CtrlPSearchHistory',],
         \ })
+  call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('mattn/ctrlp-register', {
         \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPRegister'],
