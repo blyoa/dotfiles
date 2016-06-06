@@ -612,13 +612,13 @@ if dein#tap('vim-clang')
   let g:clang_c_options = '-std=c11'
   let g:clang_cpp_options = '-std=c++14'
 
-  let g:clang_format_style = '"{'
+  let g:clang_format_style = '{'
         \ .'AccessModifierOffset: -4,'
         \ .'AllowShortIfStatementsOnASingleLine: false,'
         \ .'AllowShortLoopsOnASingleLine: false,'
         \ .'BasedOnStyle: Google,'
         \ .'IndentWidth: 4,'
-        \ .'}"'
+        \ .'}'
 
 endif "}}}
 
