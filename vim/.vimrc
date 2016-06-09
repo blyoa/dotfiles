@@ -575,10 +575,6 @@ if dein#tap('vim-quickhl')
 
 endif " }}}
 
-" 2html.vim {{{
-let g:html_font = 'Inconsolata'',''Migu 1M'
-" }}}
-
 " vim-altr {{{
 if dein#tap('vim-altr')
   " keymap
