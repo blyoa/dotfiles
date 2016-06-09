@@ -771,6 +771,18 @@ if dein#tap('vimtex')
   endif
 
 endif "}}}
+
+
+" zeavim.vim {{{
+if dein#tap('zeavim.vim')
+  if executable('zeal')
+    let g:zv_zeal_executable = exepath('zeal')
+  elseif has('win64')
+    let g:zv_zeal_executable = 'C:\Program Files (x86)\Zeal\zeal.exe'
+  elseif has('win32')
+    let g:zv_zeal_executable = 'C:\Program Files\Zeal\zeal.exe'
+  endif
+endif "}}}
 " }}}
 
 " local settings {{{
