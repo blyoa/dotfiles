@@ -575,6 +575,35 @@ if dein#tap('vim-quickhl')
 
 endif " }}}
 
+" unite.vim {{{
+if dein#tap('unite.vim')
+  let g:unite_source_line_enable_highlight=1
+
+  " keymap
+  nnoremap [unite] <Nop>
+  nmap  <Space>u [unite]
+
+  " resume
+  nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
+  " buffer
+  nnoremap <silent> [unite]b :<C-u>Unite buffer file_mru -start-insert<CR>
+  " change
+  nnoremap <silent> [unite]g; :<C-u>Unite -buffer-name=change change<CR>
+  " jump
+  nnoremap <silent> [unite]g<C-o> :<C-u>Unite -buffer-name=jump jump<CR>
+  " line
+  nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=line line -start-insert -no-quit<CR>
+  " grep
+  nnoremap <silent> [unite]gr :<C-u>Unite -buffer-name=grep grep -start-insert -no-quit<CR>
+
+endif " }}}
+
+" unite-outline {{{
+if dein#tap('unite-outline')
+  nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
+
+endif "}}}
+
 " vim-altr {{{
 if dein#tap('vim-altr')
   " keymap
@@ -740,35 +769,6 @@ if dein#tap('vimtex')
   else
     let g:vimtex_view_enabled = 0
   endif
-
-endif "}}}
-
-" unite.vim {{{
-if dein#tap('unite.vim')
-  let g:unite_source_line_enable_highlight=1
-
-  " keymap
-  nnoremap [unite] <Nop>
-  nmap  <Space>u [unite]
-
-  " resume
-  nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
-  " buffer
-  nnoremap <silent> [unite]b :<C-u>Unite buffer file_mru -start-insert<CR>
-  " change
-  nnoremap <silent> [unite]g; :<C-u>Unite -buffer-name=change change<CR>
-  " jump
-  nnoremap <silent> [unite]g<C-o> :<C-u>Unite -buffer-name=jump jump<CR>
-  " line
-  nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=line line -start-insert -no-quit<CR>
-  " grep
-  nnoremap <silent> [unite]gr :<C-u>Unite -buffer-name=grep grep -start-insert -no-quit<CR>
-
-endif " }}}
-
-" unite-outline {{{
-if dein#tap('unite-outline')
-  nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
 
 endif "}}}
 " }}}
