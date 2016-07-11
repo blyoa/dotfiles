@@ -89,16 +89,22 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPCmdHistory', 'CtrlPSearchHistory',],
         \ })
+  call dein#add('davidhalter/jedi-vim', {
+        \ 'merged': 0,
+        \ 'on_ft': ['python', 'python3'],
+        \ })
   call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('mattn/ctrlp-register', {
         \ 'depends': 'ctrlp.vim',
         \ 'on_cmd': ['CtrlPRegister'],
         \ })
-  call dein#add('mattn/sonictemplate-vim', {
-        \ 'on_ft': 'all',
-        \ })
+  call dein#add('mattn/sonictemplate-vim')
   call dein#add('deris/vim-visualinc')
   call dein#add('flazz/vim-colorschemes')
+  call dein#add('gko/vim-coloresque', {
+        \ 'on_ft': ['html', 'djangohtml',
+        \           'css', 'sass', 'scss', 'less'],
+        \ })
   call dein#add('glidenote/memolist.vim', {
         \ 'on_cmd': ['MemoNew', 'MemoList', 'MemoGrep'],
         \ })
@@ -153,10 +159,6 @@ if dein#load_state(expand(s:dein_base_path))
   call dein#add('kana/vim-submode')
   call dein#add('lervag/vimtex', {
         \ 'on_ft': ['tex'],
-        \ })
-  call dein#add('lilydjwg/colorizer', {
-        \ 'on_ft': ['html', 'djangohtml',
-        \           'css', 'sass', 'scss', 'less'],
         \ })
   call dein#add('mattn/emmet-vim', {
         \ 'on_ft': ['html', 'djangohtml',
@@ -436,11 +438,7 @@ if dein#tap('memolist.vim')
     let g:memolist_unite=1
     let g:memolist_unite_option='-auto-preview'
 
-    augroup dein_memolist_on_source
-      autocmd!
-      execute 'autocmd User dein#source#' . dein#name
-            \ 'call dein#source("unite.vim")' 
-    augroup END
+    call dein#set_hook(g:dein#name, 'hook_source', function('dein#source',['unite.vim']))
   endif
 
 endif " }}}
@@ -485,6 +483,19 @@ if dein#tap('neocomplete.vim')
         \ . '|%(include|input)\s*\{[^{}]*'
         \ . ')'
 
+  " python
+  if !dein#check_install(['jedi'])
+    autocmd FileType python setlocal omnifunc=jedi#completions
+    let g:jedi#completions_enabled = 0
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#smart_auto_mappings = 0
+    let g:jedi#auto_initialization = 1
+    let g:jedi#rename_command = "<leader>R"
+    let g:jedi#popup_on_dot = 1
+    let g:jedi#force_py_version=3
+    let g:neocomplete#force_omni_input_patterns.python =
+          \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  endif
 endif " }}}
 
 " lightline.vim {{{
@@ -655,7 +666,7 @@ if dein#tap('vim-go-extra')
   endif
 
   if !dein#check_install(['vimproc'])
-    let g:gocomplete#system_function='vimproc#system2'
+"     let g:gocomplete#system_function='vimproc#system2'
   endif
 
 endif "}}}
