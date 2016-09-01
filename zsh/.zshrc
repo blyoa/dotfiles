@@ -66,4 +66,23 @@ alias du='du -h'
 alias df='df -h'
 # }}}
 
+# zplug {{{
+source ~/.zplug/init.zsh
+zplug "rupa/z", use:z.sh, nice:10
+#zplug "peco/peco", as:command, from:gh-r
+zplug "zsh-users/zsh-completions", as:command
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load --verbose
+# }}}
+
 # vim: foldmethod=marker
+
+# added by travis gem
+[ -f /home/vagrant/.travis/travis.sh ] && source /home/vagrant/.travis/travis.sh
