@@ -72,9 +72,6 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_cmd': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
         \            'VimShellPop'],
         \ })
-  call dein#add('blyoa/pas.vim', {
-        \ 'on_map': '<Plug>(pas-',
-        \ })
   call dein#add('blyoa/vim-promela-syntax', {
         \ 'on_ft': 'promela'
         \ })
@@ -563,16 +560,6 @@ if dein#tap('open-browser.vim')
   vmap gx <Plug>(openbrowser-smart-search)
 
 endif " }}}
-
-" pas.vim {{{
-if dein#tap('pas.vim')
-  nmap vp <Plug>(pas-p-as-v)
-  nmap vP <Plug>(pas-P-as-v)
-  nmap Vp <Plug>(pas-p-as-V)
-  nmap VP <Plug>(pas-P-as-V)
-  nmap <C-v>p <Plug>(pas-p-as-ctrlv)
-  nmap <C-v>P <Plug>(pas-P-as-ctrlv)
-endif "}}}
 
 " quickhl {{{
 if dein#tap('vim-quickhl')
