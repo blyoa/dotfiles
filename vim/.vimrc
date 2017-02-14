@@ -11,7 +11,17 @@ let s:vimfiles='~/.vim'
 " for portable use
 "let s:vimfiles=$VIM . '/.vim'
 
-let s:dein_base_path = s:vimfiles . '/bundle'
+let s:plugin_root_dir = s:vimfiles . '/bundle'
+" }}}
+
+" functions {{{
+function! s:is_installed(plugname) abort
+  return !len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+endfunction
+
+function! s:is_loaded(plugname) abort
+  return stridx(&rtp, g:plugsg:plugs[a:plugname].dir) >= 0
+endfunction
 " }}}
 
 " initialization {{{
@@ -20,204 +30,147 @@ language C
 set langmenu=none
 
 if has('vim_starting')
-  let &runtimepath.=',' . s:dein_base_path . '/repos/github.com/Shougo/dein.vim'
+  let &runtimepath.=',' . s:plugin_root_dir . '/junegunn/vim-plug'
 endif
 
-" dein {{{
-if dein#load_state(expand(s:dein_base_path))
-  call dein#begin(expand(s:dein_base_path))
-  call dein#add('matchit.zip')
-  call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/neosnippet.vim', {
-        \ 'on_ft': 'snippet',
-        \ 'on_i': 1,
-        \ })
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/vimproc.vim', {
-        \ 'build': 'make',
-        \ })
-  call dein#add('Shougo/unite.vim', {
-        \ 'on_cmd': ['Unite', 'UniteWithCursorWord', 'UniteWithInput'],
-        \ })
-  call dein#add('Shougo/junkfile.vim', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('Shougo/neomru.vim', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('Shougo/unite-help', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('Shougo/unite-outline', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('osyo-manga/unite-quickfix', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('ujihisa/unite-colorscheme', {
-        \ 'depends': 'unite.vim',
-        \ })
-  call dein#add('Shougo/neocomplete.vim', {
-        \ 'if': has('lua'),
-        \ 'on_i': 1,
-        \ })
-  call dein#add('Shougo/neocomplcache.vim', {
-        \ 'if': !has('lua'),
-        \ 'on_i': 1,
-        \ })
-  call dein#add('Shougo/vimfiler', {
-        \ 'on_cmd': ['VimFiler', 'VimFilerExplorer', 'VimFilerTab'],
-        \ })
-  call dein#add('Shougo/vimshell.vim', {
-        \ 'on_cmd': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
-        \            'VimShellPop'],
-        \ })
-  call dein#add('aklt/plantuml-syntax')
-  call dein#add('blyoa/vim-nearest-g', {
-        \ 'on_map': '<Plug>(nearest-g:neighbor)',
-        \ })
-  call dein#add('blyoa/vim-promela-syntax', {
-        \ 'on_ft': 'promela'
-        \ })
-  call dein#add('chrisbra/vim-diff-enhanced', {
-        \ 'on_cmd': ['EnhancedDiff', 'PatienceDiff'],
-        \ })
-  call dein#add('cohama/vim-hier')
-  call dein#add('ctrlpvim/ctrlp.vim', {
-        \ 'on_cmd': ['CtrlP', 'CtrlPMixed', 'CtrlPBuffer', 'CtrlPMRUFiles'],
-        \ })
-  call dein#add('blyoa/ctrlp-history', {
-        \ 'depends': 'ctrlp.vim',
-        \ 'on_cmd': ['CtrlPCmdHistory', 'CtrlPSearchHistory',],
-        \ })
-  call dein#add('davidhalter/jedi-vim', {
-        \ 'merged': 0,
-        \ 'on_ft': ['python', 'python3'],
-        \ })
-  call dein#add('dhruvasagar/vim-table-mode')
-  call dein#add('mattn/ctrlp-register', {
-        \ 'depends': 'ctrlp.vim',
-        \ 'on_cmd': ['CtrlPRegister'],
-        \ })
-  call dein#add('mattn/sonictemplate-vim')
-  call dein#add('deris/vim-visualinc')
-  call dein#add('flazz/vim-colorschemes')
-  call dein#add('gko/vim-coloresque', {
-        \ 'on_ft': ['html', 'djangohtml',
-        \           'css', 'sass', 'scss', 'less'],
-        \ })
-  call dein#add('glidenote/memolist.vim', {
-        \ 'on_cmd': ['MemoNew', 'MemoList', 'MemoGrep'],
-        \ })
-  call dein#add('hail2u/vim-css3-syntax', {
-        \ 'on_ft': ['css', 'sass', 'scss', 'less'],
-        \ })
-  call dein#add('haya14busa/incsearch.vim', {
-        \ 'on_map': '<Plug>',
-        \ })
-  call dein#add('haya14busa/vim-asterisk', {
-        \ 'on_map': '<Plug>(asterisk-',
-        \ })
-  call dein#add('hynek/vim-python-pep8-indent', {
-        \ 'on_ft': ['python', 'python3', 'djangohtml'],
-        \ 'on_i': 1,
-        \ })
-  call dein#add('itchyny/calendar.vim', {
-        \ 'on_cmd': ['Calendar'],
-        \ })
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('junegunn/vim-easy-align', {
-        \ 'on_cmd': ['EasyAlign', 'LiveEasyAlign'],
-        \ 'on_map': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'],
-        \ })
-  call dein#add('justmao945/vim-clang', {
-        \ 'on_ft': ['c', 'cpp']
-        \ })
-  call dein#add('KabbAmine/zeavim.vim', {
-        \ 'on_map': ['<Leader>z', '<Leader>Z'],
-        \ })
-  call dein#add('kana/vim-niceblock')
-  call dein#add('kana/vim-altr')
-  call dein#add('kana/vim-operator-user', {
-        \ 'on_func': 'operator#user#define',
-        \ })
-  call dein#add('kana/vim-operator-replace', {
-        \ 'depends': 'vim-operator-user',
-        \ 'on_map': '<Plug>',
-        \ })
-  call dein#add('rhysd/vim-operator-surround', {
-        \ 'depends': 'vim-operator-user',
-        \ 'on_map': '<Plug>',
-        \ })
-  call dein#add('kana/vim-textobj-user')
-  call dein#add('kana/vim-textobj-indent', {
-        \ 'depends': 'vim-textobj-user',
-        \ })
-  call dein#add('thinca/vim-textobj-between', {
-        \ 'depends': 'vim-textobj-user',
-        \ 'on_map': '<Plug>',
-        \ })
-  call dein#add('kana/vim-submode')
-  call dein#add('lervag/vimtex', {
-        \ 'on_ft': ['tex'],
-        \ })
-  call dein#add('mattn/emmet-vim', {
-        \ 'on_ft': ['html', 'djangohtml',
-        \           'css', 'sass', 'scss', 'less'],
-        \ })
-  call dein#add('osyo-manga/vim-reanimate', {
-        \ 'on_cmd': ['ReanimateLoad', 'ReanimateLoadLatest',
-        \            'ReanimateSave', 'ReanimateSwitch'],
-        \ })
-  call dein#add('othree/html5.vim', {
-        \ 'on_ft': ['html', 'djangohtml'],
-        \ })
-  call dein#add('pangloss/vim-javascript', {
-        \ 'on_ft': ['html', 'djangohtml', 'javascript'],
-        \ })
-  call dein#add('t9md/vim-quickhl', {
-        \ 'on_map': '<Plug>',
-        \ })
-  call dein#add('thinca/vim-qfreplace', {
-        \ 'on_ft': ['unite', 'quickfix'],
-        \ })
-  call dein#add('thinca/vim-quickrun')
-  call dein#add('thinca/vim-ref')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('tyru/capture.vim', {
-        \ 'on_cmd': ['Capture',],
-        \ })
-  call dein#add('tyru/caw.vim')
-  call dein#add('tyru/open-browser.vim', {
-        \ 'on_map': '<Plug>(openbrowser-',
-        \ })
-  call dein#add('kannokanno/previm', {
-        \ 'depends': 'open-browser.vim',
-        \ 'on_ft': ['markdown', 'mkd', 'rst'],
-        \ })
-  call dein#add('vim-jp/vim-go-extra', {
-        \ 'on_ft': ['go'],
-        \ })
-  call dein#end()
-  call dein#save_state()
+" vim-plug {{{
+call plug#begin(s:plugin_root_dir)
+Plug 'Shougo/neosnippet.vim'
+      \ |
+      \ Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/vimproc.vim', {
+      \ 'do': 'make',
+      \ }
+Plug 'Shougo/unite.vim'
+      \ |
+      \ Plug 'Shougo/junkfile.vim'
+      \ |
+      \ Plug 'Shougo/neomru.vim'
+      \ |
+      \ Plug 'Shougo/unite-help'
+      \ |
+      \ Plug 'Shougo/unite-outline'
+      \ |
+      \ Plug 'Shougo/vimfiler', {
+      \ 'on': ['VimFiler', 'VimFilerExplorer', 'VimFilerTab'],
+      \ }
+      \ |
+      \ Plug 'osyo-manga/unite-quickfix'
+      \ |
+      \ Plug 'ujihisa/unite-colorscheme'
+if has('lua')
+  Plug 'Shougo/neocomplete.vim'
+else
+  Plug 'Shougo/neocomplcache.vim'
 endif
-
-function! s:dein_check_install() abort
-  if !dein#check_install()
-    return
-  endif
-
-  if input("Do you want to install new plugins? [y/n]") ==# 'y'
-    call dein#install()
-  endif
-endfunction
-
-if dein#check_install()
-  augroup dein_check_install
-    autocmd!
-    autocmd VimEnter * call s:dein_check_install()
-  augroup END
-endif
+Plug 'Shougo/vimshell.vim', {
+      \ 'on': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
+      \        'VimShellPop'],
+      \ }
+Plug 'aklt/plantuml-syntax'
+Plug 'blyoa/vim-nearest-g', {
+      \ 'on': '<Plug>nearest-g:neighbor',
+      \ }
+Plug 'blyoa/vim-promela-syntax', {
+      \ 'for': 'promela'
+      \ }
+Plug 'chrisbra/vim-diff-enhanced', {
+      \ 'on': ['EnhancedDiff', 'PatienceDiff'],
+      \ }
+Plug 'cohama/vim-hier'
+Plug 'ctrlpvim/ctrlp.vim'
+      \ |
+      \ Plug 'blyoa/ctrlp-history'
+      \ |
+      \ Plug 'mattn/ctrlp-register'
+Plug 'davidhalter/jedi-vim', {
+      \ 'for': ['python', 'python3'],
+      \ }
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'mattn/sonictemplate-vim'
+Plug 'deris/vim-visualinc'
+Plug 'flazz/vim-colorschemes'
+Plug 'gko/vim-coloresque', {
+      \ 'for': ['html', 'djangohtml',
+      \         'css', 'sass', 'scss', 'less'],
+      \ }
+Plug 'glidenote/memolist.vim', {
+      \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
+      \ }
+Plug 'hail2u/vim-css3-syntax', {
+      \ 'for': ['css', 'sass', 'scss', 'less'],
+      \ }
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/vim-asterisk', {
+      \ 'on': '<Plug>(asterisk-',
+      \ }
+Plug 'hynek/vim-python-pep8-indent', {
+      \ 'for': ['python', 'python3', 'djangohtml'],
+      \ }
+Plug 'itchyny/calendar.vim', {
+      \ 'on': ['Calendar'],
+      \ }
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align', {
+      \ 'on': ['EasyAlign', 'LiveEasyAlign',
+      \        '<Plug>EasyAlign', '<Plug>LiveEasyAlign'],
+      \ }
+Plug 'justmao945/vim-clang', {
+      \ 'for': ['c', 'cpp']
+      \ }
+Plug 'KabbAmine/zeavim.vim'
+Plug 'kana/vim-niceblock'
+Plug 'kana/vim-altr'
+Plug 'kana/vim-operator-user'
+      \ |
+      \ Plug 'kana/vim-operator-replace'
+      \ |
+      \ Plug 'rhysd/vim-operator-surround'
+Plug 'kana/vim-textobj-user'
+      \ |
+      \ Plug 'kana/vim-textobj-indent'
+      \ |
+      \ Plug 'thinca/vim-textobj-between'
+Plug 'kana/vim-submode'
+Plug 'lervag/vimtex', {
+      \ 'for': ['tex'],
+      \ }
+Plug 'mattn/emmet-vim', {
+      \ 'for': ['html', 'djangohtml',
+      \         'css', 'sass', 'scss', 'less'],
+      \ }
+Plug 'osyo-manga/vim-reanimate', {
+      \ 'on': ['ReanimateLoad', 'ReanimateLoadLatest',
+      \        'ReanimateSave', 'ReanimateSwitch'],
+      \ }
+Plug 'othree/html5.vim', {
+      \ 'for': ['html', 'djangohtml'],
+      \ }
+Plug 'pangloss/vim-javascript', {
+      \ 'for': ['html', 'djangohtml', 'javascript'],
+      \ }
+Plug 't9md/vim-quickhl'
+Plug 'thinca/vim-qfreplace', {
+      \ 'for': ['unite', 'quickfix'],
+      \ }
+Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-ref'
+Plug 'tpope/vim-fugitive'
+Plug 'tyru/capture.vim', {
+      \ 'on': ['Capture',],
+      \ }
+Plug 'tyru/caw.vim'
+Plug 'tyru/open-browser.vim', {
+      \ 'on': '<Plug>(openbrowser-',
+      \ }
+Plug 'kannokanno/previm', {
+      \ 'for': ['markdown', 'mkd', 'rst'],
+      \ }
+Plug 'vim-jp/vim-go-extra', {
+      \ 'for': ['go'],
+      \ }
+Plug 'vim-scripts/matchit.zip'
+call plug#end()
 
 " }}}
 
@@ -354,7 +307,7 @@ let g:html_font = 'Inconsolata'',''Migu 1M'
 " }}}
 
 " calendar.vim {{{
-if dein#tap('calendar.vim')
+if s:is_installed('calendar.vim')
   let g:calendar_first_day = 'sunday'
   let g:calendar_time_zone = "+0900"
   let g:calendar_google_calendar = 1
@@ -362,7 +315,7 @@ if dein#tap('calendar.vim')
 endif "}}}
 
 " caw.vim {{{
-if dein#tap('caw.vim')
+if s:is_installed('caw.vim')
   " keymap
   nmap <Leader>c <Plug>(caw:zeropos:toggle)
   vmap <Leader>c <Plug>(caw:zeropos:toggle)
@@ -370,7 +323,7 @@ if dein#tap('caw.vim')
 endif " }}}
 
 " ctrlp.vim {{{
-if dein#tap('ctrlp.vim')
+if s:is_installed('ctrlp.vim')
   " enable extensions
   let g:ctrlp_extensions=['mixed']
 
@@ -387,19 +340,19 @@ if dein#tap('ctrlp.vim')
   nnoremap <silent> [ctrlp]M :<C-u>CtrlPBookmarkDirAdd!<CR>
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
   " ctrlp-history
-  if !dein#check_install(['ctrlp-history'])
+  if s:is_installed(['ctrlp-history'])
     nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdHistory<CR>
     nnoremap <silent> [ctrlp]/ :<C-u>CtrlPSearchHistory<CR>
   endif
   " ctrlp-register
-  if !dein#check_install(['ctrlp-register'])
+  if s:is_installed(['ctrlp-register'])
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
   endif
 
 endif "}}}
 
 " emmet-vim {{{
-if dein#tap('emmet-vim')
+if s:is_installed('emmet-vim')
   let g:user_emmet_settings={
         \ 'variables': {
         \     'lang': 'ja',
@@ -412,7 +365,7 @@ let g:tex_flavor = 'latex'
 "}}}
 
 " incsearch.vim {{{
-if dein#tap('incsearch.vim')
+if s:is_installed('incsearch.vim')
   " keymap
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
@@ -421,7 +374,7 @@ if dein#tap('incsearch.vim')
 endif "}}}
 
 " memolist.vim {{{
-if dein#tap('memolist.vim')
+if s:is_installed('memolist.vim')
   " memodir
   if isdirectory(expand(s:share_dir))
     let g:memolist_path=expand(s:share_dir . '/.vim/memolist')
@@ -433,17 +386,15 @@ if dein#tap('memolist.vim')
   let g:memolist_memo_suffix='mkd'
 
   " settings to use unite
-  if !dein#check_install(['unite.vim'])
+  if !s:is_installed(['unite.vim'])
     let g:memolist_unite=1
     let g:memolist_unite_option='-auto-preview'
-
-    call dein#set_hook(g:dein#name, 'hook_source', function('dein#source',['unite.vim']))
   endif
 
 endif " }}}
 
 " neocomplcache.vim {{{
-if dein#tap('neocomplcache.vim')
+if s:is_installed('neocomplcache.vim')
   let g:neocomplcache_enable_at_startup=1
 
   " Enable heavy omni completion.
@@ -457,7 +408,7 @@ if dein#tap('neocomplcache.vim')
 endif " }}}
 
 " neocomplete.vim {{{
-if dein#tap('neocomplete.vim')
+if s:is_installed('neocomplete.vim')
   let g:neocomplete#enable_at_startup=1
 
   " Enable heavy omni completion.
@@ -483,7 +434,7 @@ if dein#tap('neocomplete.vim')
         \ . ')'
 
   " python
-  if !dein#check_install(['jedi'])
+  if s:is_installed('jedi')
     autocmd FileType python setlocal omnifunc=jedi#completions
     let g:jedi#completions_enabled = 0
     let g:jedi#auto_vim_configuration = 0
@@ -498,7 +449,7 @@ if dein#tap('neocomplete.vim')
 endif " }}}
 
 " lightline.vim {{{
-if dein#tap('lightline.vim')
+if s:is_installed('lightline.vim')
   let g:lightline={
         \ 'colorscheme': 'Tomorrow_Night',
         \ 'active': {
@@ -524,7 +475,7 @@ if dein#tap('lightline.vim')
         \ }
 
   " avoid overwriting statusline ctrlp.vim
-  if !dein#check_install(['ctrlp.vim'])
+  if s:is_installed(['ctrlp.vim'])
     let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
     function! CtrlPEnter() abort
       let w:lightline = 0
@@ -534,7 +485,7 @@ if dein#tap('lightline.vim')
 endif "}}}
 
 " neosnippet.vim {{{
-if dein#tap('neosnippet.vim')
+if s:is_installed('neosnippet.vim')
   " addtional snippet directory
   let g:neosnippet#snippets_directory=s:vimfiles . '/snippets'
 
@@ -553,7 +504,7 @@ if dein#tap('neosnippet.vim')
 endif " }}}
 
 " openbrowser.vim {{{
-if dein#tap('open-browser.vim')
+if s:is_installed('open-browser.vim')
   " disable netrw's gx mapping
   let g:netw_nogx=1
   let g:openbrowser_search_engines = {
@@ -565,7 +516,7 @@ if dein#tap('open-browser.vim')
   vmap gx <Plug>(openbrowser-smart-search)
 
   function! s:weblio_search() abort
-    call dein#source('open-browser.vim')
+    call plug#load('open-browser.vim')
     let save_engine = g:openbrowser_default_search
     let g:openbrowser_default_search = 'weblio'
     execute "normal \<Plug>(openbrowser-smart-search)"
@@ -578,11 +529,12 @@ if dein#tap('open-browser.vim')
 endif " }}}
 
 " plantuml-syntax {{{
-if dein#tap('plantuml-syntax')
+if s:is_installed('plantuml-syntax')
   let g:plantuml_executable_script = 'java -jar ' . expand('$HOME') . '/utils/bin/plantuml.jar -Tsvg'
 endif "}}}
+
 " quickhl {{{
-if dein#tap('vim-quickhl')
+if s:is_installed('vim-quickhl')
   " keymap
   nmap <Space>m <Plug>(quickhl-manual-this)
   xmap <Space>m <Plug>(quickhl-manual-this)
@@ -594,7 +546,7 @@ if dein#tap('vim-quickhl')
 endif " }}}
 
 " unite.vim {{{
-if dein#tap('unite.vim')
+if s:is_installed('unite.vim')
   let g:unite_source_line_enable_highlight=1
 
   " keymap
@@ -617,13 +569,13 @@ if dein#tap('unite.vim')
 endif " }}}
 
 " unite-outline {{{
-if dein#tap('unite-outline')
+if s:is_installed('unite-outline')
   nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
 
 endif "}}}
 
 " vim-altr {{{
-if dein#tap('vim-altr')
+if s:is_installed('vim-altr')
   " keymap
   nmap <F2> <Plug>(altr-forward)
   nmap <S-F2> <Plug>(altr-back)
@@ -634,7 +586,7 @@ if dein#tap('vim-altr')
 endif " }}}
 
 " vim-asterisk {{{
-if dein#tap('vim-asterisk')
+if s:is_installed('vim-asterisk')
   " enable keepCursor feature
   let g:asterisk#keeppos = 1
 
@@ -651,7 +603,7 @@ if dein#tap('vim-asterisk')
 endif "}}}
 
 " vim-clang {{{
-if dein#tap('vim-clang')
+if s:is_installed('vim-clang')
   let g:clang_auto = 0
   let g:clang_c_options = '-std=c11'
   let g:clang_cpp_options = '-std=c++14'
@@ -667,31 +619,31 @@ if dein#tap('vim-clang')
 endif "}}}
 
 " vim-go-extra {{{
-if dein#tap('vim-go-extra')
+if s:is_installed('vim-go-extra')
   if executable('goimports')
     let g:gofmt_command='goimports'
   endif
 
-  if !dein#check_install(['vimproc'])
+  if s:is_installed(['vimproc'])
 "     let g:gocomplete#system_function='vimproc#system2'
   endif
 
 endif "}}}
 
 " vim-nearest-g {{{
-if dein#tap('vim-nearest-g')
+if s:is_installed('vim-nearest-g')
   nmap gl <Plug>(nearest-g:neighbor)
 endif "}}}
 
 " vim-operator-replace {{{
-if dein#tap('vim-operator-replace')
+if s:is_installed('vim-operator-replace')
   " keymap
   map _ <Plug>(operator-replace)
 
 endif " }}}
 
 " vim-operator-surround {{{
-if dein#tap('vim-operator-surround')
+if s:is_installed('vim-operator-surround')
   " keymap
   map <silent>sa <Plug>(operator-surround-append)
   map <silent>sd <Plug>(operator-surround-delete)
@@ -700,7 +652,7 @@ if dein#tap('vim-operator-surround')
 endif " }}}
 
 " vim-quickrun {{{
-if dein#tap('vim-quickrun')
+if s:is_installed('vim-quickrun')
   " async run
   let g:quickrun_config={
         \ '_': {
@@ -726,7 +678,7 @@ if dein#tap('vim-quickrun')
 endif " }}}
 
 " vim-reanimate {{{
-if dein#tap('vim-reanimate')
+if s:is_installed('vim-reanimate')
   if isdirectory(expand(s:share_dir))
     let g:reanimate_save_dir=expand(s:share_dir . '/.vim/reanimate')
   else
@@ -754,7 +706,7 @@ if dein#tap('vim-reanimate')
 endif "}}}
 
 " vim-submode {{{
-if dein#tap('vim-submode')
+if s:is_installed('vim-submode')
   " window size
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
   call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -768,7 +720,7 @@ if dein#tap('vim-submode')
 endif " }}}
 
 " vim-textobj-between {{{
-if dein#tap('vim-textobj-between')
+if s:is_installed('vim-textobj-between')
   " disable default keymap
   let g:textobj_between_no_default_key_mappings=1
 
@@ -781,7 +733,7 @@ if dein#tap('vim-textobj-between')
 endif " }}}
 
 " vimtex {{{
-if dein#tap('vimtex')
+if s:is_installed('vimtex')
   let g:vimtex_imaps_enabled=0
   let g:vimtex_motion_matchparen = 0
   let g:vimtex_latexmk_options='-pdfdvi'
@@ -798,7 +750,7 @@ endif "}}}
 
 
 " zeavim.vim {{{
-if dein#tap('zeavim.vim')
+if s:is_installed('zeavim.vim')
   if executable('zeal')
     let g:zv_zeal_executable = exepath('zeal')
   elseif has('win64')
