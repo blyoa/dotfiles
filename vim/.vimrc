@@ -184,9 +184,7 @@ if dein#load_state(expand(s:dein_base_path))
   call dein#add('tyru/capture.vim', {
         \ 'on_cmd': ['Capture',],
         \ })
-  call dein#add('tyru/caw.vim', {
-        \ 'on_map': '<Plug>',
-        \ })
+  call dein#add('tyru/caw.vim')
   call dein#add('tyru/open-browser.vim', {
         \ 'on_map': '<Plug>(openbrowser-',
         \ })
