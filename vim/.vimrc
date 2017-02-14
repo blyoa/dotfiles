@@ -774,6 +774,7 @@ endif " }}}
 
 " vimtex {{{
 if dein#tap('vimtex')
+  let g:vimtex_imaps_enabled=0
   let g:vimtex_motion_matchparen = 0
   let g:vimtex_latexmk_options='-pdfdvi'
 
