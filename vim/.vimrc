@@ -73,6 +73,9 @@ if dein#load_state(expand(s:dein_base_path))
         \            'VimShellPop'],
         \ })
   call dein#add('aklt/plantuml-syntax')
+  call dein#add('blyoa/vim-nearest-g', {
+        \ 'on_map': '<Plug>(nearest-g:neighbor)',
+        \ })
   call dein#add('blyoa/vim-promela-syntax', {
         \ 'on_ft': 'promela'
         \ })
@@ -673,6 +676,11 @@ if dein#tap('vim-go-extra')
 "     let g:gocomplete#system_function='vimproc#system2'
   endif
 
+endif "}}}
+
+" vim-nearest-g {{{
+if dein#tap('vim-nearest-g')
+  nmap gl <Plug>(nearest-g:neighbor)
 endif "}}}
 
 " vim-operator-replace {{{
