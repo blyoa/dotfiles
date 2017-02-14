@@ -553,10 +553,24 @@ endif " }}}
 if dein#tap('open-browser.vim')
   " disable netrw's gx mapping
   let g:netw_nogx=1
+  let g:openbrowser_search_engines = {
+              \ 'weblio': 'http://ejje.weblio.jp/content/{query}',
+              \ }
 
   " keymap
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
+
+  function! s:weblio_search() abort
+    call dein#source('open-browser.vim')
+    let save_engine = g:openbrowser_default_search
+    let g:openbrowser_default_search = 'weblio'
+    execute "normal \<Plug>(openbrowser-smart-search)"
+    let g:openbrowser_default_search = save_engine
+  endfunction
+
+  nmap gs :<C-u>call <SID>weblio_search()<CR>
+  vmap gs :<C-u>'<,'>call <SID>weblio_search()<CR>
 
 endif " }}}
 
