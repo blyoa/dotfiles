@@ -72,6 +72,7 @@ if dein#load_state(expand(s:dein_base_path))
         \ 'on_cmd': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
         \            'VimShellPop'],
         \ })
+  call dein#add('aklt/plantuml-syntax')
   call dein#add('blyoa/vim-promela-syntax', {
         \ 'on_ft': 'promela'
         \ })
@@ -561,6 +562,10 @@ if dein#tap('open-browser.vim')
 
 endif " }}}
 
+" plantuml-syntax {{{
+if dein#tap('plantuml-syntax')
+  let g:plantuml_executable_script = 'java -jar ' . expand('$HOME') . '/utils/bin/plantuml.jar -Tsvg'
+endif "}}}
 " quickhl {{{
 if dein#tap('vim-quickhl')
   " keymap
