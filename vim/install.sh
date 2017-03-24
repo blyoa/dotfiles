@@ -7,9 +7,9 @@ source ../script/functions/*.sh
 # install script below 
 symlink $(pwd)"/.vimrc" ~/.vimrc
 
-# install NeoBundle 
-if [ ! -e ~/.vim/bundle/repos/github.com/Shougo/dein.vim ]; then
-    git clone https://github.com/Shougo/dein.vim ~/.vim/bundle/repos/github.com/Shougo/dein.vim
+# install vim-plug 
+if [ ! -e ~/.vim/bundle/github.com/junegunn/vim-plug ]; then
+    git clone https://github.com/junegunn/vim-plug ~/.vim/bundle/junegunn/vim-plug/autoload/
 fi
 
 # add snippets
