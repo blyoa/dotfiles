@@ -139,6 +139,11 @@ Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
       \         'css', 'sass', 'scss', 'less'],
       \ }
+if executable('ag') || executable('ack')
+  Plug 'mileszs/ack.vim', {
+        \ 'on' : ['Ack', 'AckAdd', 'LAck', 'LAckAdd']
+        \ }
+endif
 Plug 'osyo-manga/vim-reanimate', {
       \ 'on': ['ReanimateLoad', 'ReanimateLoadLatest',
       \        'ReanimateSave', 'ReanimateSwitch'],
@@ -309,6 +314,14 @@ endif
 " 2html.vim {{{
 let g:html_font = 'Inconsolata'',''Migu 1M'
 " }}}
+
+" ack.vim {{{
+if s:is_installed('ack.vim')
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+  let g:ackhighlight = 1
+endif "}}}
 
 " calendar.vim {{{
 if s:is_installed('calendar.vim')
