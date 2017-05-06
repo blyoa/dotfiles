@@ -660,8 +660,7 @@ if s:is_installed('vim-quickrun')
   " async run
   let g:quickrun_config={
         \ '_': {
-        \       'runner': 'vimproc',
-        \       'runner/vimproc/updatetime': 500,
+        \       'runner': 'job',
         \       'hook/output_encode/encoding': '&termencoding',
         \ },
         \ 'c': {
