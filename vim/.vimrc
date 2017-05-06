@@ -825,6 +825,16 @@ augroup vimrc_loading
   autocmd BufWinEnter,BufNewFile *_test.go setlocal filetype=go.test
   " vim
   autocmd FileType vim setlocal shiftwidth=2 softtabstop=2
+  " html
+  autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+  " css
+  autocmd FileType css setlocal shiftwidth=2 softtabstop=2
+  " markdown
+  autocmd FileType markdown setlocal shiftwidth=2 softtabstop=2
+  " yaml
+  autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+  " tex
+  autocmd FileType tex setlocal shiftwidth=2 softtabstop=2
 augroup END
 " }}}
 
