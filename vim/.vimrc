@@ -283,11 +283,15 @@ set backspace=indent,eol,start
 set nowildmenu
 set wildmode=list:longest,full
 set history=10000
+" }}}
 
-" keymap
+" keymap {{{
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
+
+nnoremap <C-j> :<C-u>cnext<CR>
+nnoremap <C-k> :<C-u>cprevious<CR>
 " }}}
 
 " platform settings {{{
