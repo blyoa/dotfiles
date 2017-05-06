@@ -1,3 +1,4 @@
+
 # environment variables {{{
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -71,6 +72,7 @@ source ~/.zplug/init.zsh
 zplug "rupa/z", use:z.sh, nice:10
 #zplug "peco/peco", as:command, from:gh-r
 zplug "zsh-users/zsh-completions", as:command
+#"zplug "riywo/anyenv", as:command, dir:"~/.anyenv", use:bin, if:"[[ $OSTYPE == *linux* ]]"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -80,6 +82,12 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
+# }}}
+
+# plugin settings {{{
+if type anyenv 2>/dev/null 2>&1; then
+    eval "$(anyenv init - zsh)"
+fi
 # }}}
 
 # vim: foldmethod=marker
