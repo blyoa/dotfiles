@@ -740,7 +740,16 @@ endif " }}}
 if s:is_installed('vimtex')
   let g:vimtex_imaps_enabled=0
   let g:vimtex_motion_matchparen = 0
-  let g:vimtex_latexmk_options='-pdfdvi'
+  let g:vimtex_compiler_latexmk = {
+        \ 'backends': 'job',
+        \ 'options' : [
+        \   '-pdfdvi',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
   if executable('SumatraPDF')
     let g:vimtex_view_general_viewer = 'SumatraPDF'
