@@ -35,12 +35,15 @@ endif
 
 " vim-plug {{{
 call plug#begin(s:plugin_root_dir)
+Plug 'KabbAmine/zeavim.vim'
+if has('lua')
+  Plug 'Shougo/neocomplete.vim'
+else
+  Plug 'Shougo/neocomplcache.vim'
+endif
 Plug 'Shougo/neosnippet.vim'
       \ |
       \ Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimproc.vim', {
-      \ 'do': 'make',
-      \ }
 Plug 'Shougo/unite.vim'
       \ |
       \ Plug 'Shougo/junkfile.vim'
@@ -58,11 +61,9 @@ Plug 'Shougo/unite.vim'
       \ Plug 'osyo-manga/unite-quickfix'
       \ |
       \ Plug 'ujihisa/unite-colorscheme'
-if has('lua')
-  Plug 'Shougo/neocomplete.vim'
-else
-  Plug 'Shougo/neocomplcache.vim'
-endif
+Plug 'Shougo/vimproc.vim', {
+      \ 'do': 'make',
+      \ }
 Plug 'Shougo/vimshell.vim', {
       \ 'on': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
       \        'VimShellPop'],
@@ -86,9 +87,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim', {
       \ 'for': ['python', 'python3'],
       \ }
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'mattn/sonictemplate-vim'
 Plug 'deris/vim-visualinc'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'gko/vim-coloresque', {
       \ 'for': ['html', 'djangohtml',
@@ -118,9 +118,8 @@ Plug 'junegunn/vim-easy-align', {
 Plug 'justmao945/vim-clang', {
       \ 'for': ['c', 'cpp']
       \ }
-Plug 'KabbAmine/zeavim.vim'
-Plug 'kana/vim-niceblock'
 Plug 'kana/vim-altr'
+Plug 'kana/vim-niceblock'
 Plug 'kana/vim-operator-user'
       \ |
       \ Plug 'kana/vim-operator-replace'
@@ -139,6 +138,7 @@ Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
       \         'css', 'sass', 'scss', 'less'],
       \ }
+Plug 'mattn/sonictemplate-vim'
 if executable('ag') || executable('ack')
   Plug 'mileszs/ack.vim', {
         \ 'on' : ['Ack', 'AckAdd', 'LAck', 'LAckAdd']
@@ -168,9 +168,9 @@ Plug 'tyru/caw.vim'
 Plug 'tyru/open-browser.vim', {
       \ 'on': '<Plug>(openbrowser-',
       \ }
-Plug 'kannokanno/previm', {
-      \ 'for': ['markdown', 'mkd', 'rst'],
-      \ }
+      \ | Plug 'kannokanno/previm', {
+      \     'for': ['markdown', 'mkd', 'rst'],
+      \   }
 Plug 'vim-jp/vim-go-extra', {
       \ 'for': ['go'],
       \ }
