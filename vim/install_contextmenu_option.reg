@@ -11,5 +11,5 @@ Windows Registry Editor Version 5.00
 @="Open Vim here"
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\gvim.exe\command]
-@="\"C:\\Program Files\\Vim\\gvim.exe\" \"+cd %V\\\""
+@="\"C:\\Program Files\\Vim\\gvim.exe\""
 
