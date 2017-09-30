@@ -87,6 +87,10 @@ Plug 'deris/vim-visualinc'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'ap/vim-css-color'
+Plug 'gko/vim-coloresque', {
+      \ 'for': ['html', 'djangohtml',
+      \         'css', 'sass', 'scss', 'less'],
+      \ }
 Plug 'glidenote/memolist.vim', {
       \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
       \ }
@@ -284,6 +288,9 @@ set history=10000
 " }}}
 
 " keymap {{{
+" see dos-standard-mappings
+silent! vunmap <C-x>
+
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
