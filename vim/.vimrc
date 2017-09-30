@@ -83,7 +83,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim', {
       \ 'for': ['python', 'python3'],
       \ }
-Plug 'deris/vim-visualinc'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'ap/vim-css-color'
