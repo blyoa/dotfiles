@@ -829,6 +829,8 @@ augroup vimrc_loading
   autocmd FileType html setlocal shiftwidth=2 softtabstop=2
   " css
   autocmd FileType css setlocal shiftwidth=2 softtabstop=2
+  " javascript
+  autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
   " markdown
   autocmd FileType markdown setlocal shiftwidth=2 softtabstop=2
   " yaml
