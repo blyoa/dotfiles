@@ -64,10 +64,6 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
-Plug 'Shougo/vimshell.vim', {
-      \ 'on': ['VimShell', 'VimShellExecute', 'VimShellInteractive',
-      \        'VimShellPop'],
-      \ }
 Plug 'aklt/plantuml-syntax'
 Plug 'blyoa/vim-nearest-g', {
       \ 'on': '<Plug>nearest-g:neighbor',
