@@ -30,7 +30,7 @@ language C
 set langmenu=none
 
 if has('vim_starting')
-  let &runtimepath.=',' . s:plugin_root_dir . '/junegunn/vim-plug'
+  let &runtimepath.=',' . s:plugin_root_dir . '/vim-plug'
 endif
 
 " vim-plug {{{
