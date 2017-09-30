@@ -20,7 +20,7 @@ function! s:is_installed(plugname) abort
 endfunction
 
 function! s:is_loaded(plugname) abort
-  return stridx(&rtp, g:plugsg:plugs[a:plugname].dir) >= 0
+  return stridx(&rtp, g:plugs, g:plugs[a:plugname].dir) >= 0
 endfunction
 " }}}
 
