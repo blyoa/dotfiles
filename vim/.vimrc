@@ -315,7 +315,6 @@ if s:is_installed('ack.vim')
   if executable('ag')
     let g:ackprg = 'ag --vimgrep'
   endif
-  let g:ackhighlight = 1
 endif "}}}
 
 " calendar.vim {{{
