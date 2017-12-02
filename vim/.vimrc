@@ -86,10 +86,6 @@ Plug 'davidhalter/jedi-vim', {
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'ap/vim-css-color'
-Plug 'gko/vim-coloresque', {
-      \ 'for': ['html', 'djangohtml',
-      \         'css', 'sass', 'scss', 'less'],
-      \ }
 Plug 'glidenote/memolist.vim', {
       \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
       \ }
