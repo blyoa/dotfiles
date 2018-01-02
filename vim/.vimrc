@@ -401,11 +401,16 @@ endif " }}}
 
 " ctrlp.vim {{{
 if s:is_installed('ctrlp.vim')
+  let g:ctrlp_show_hidden = 0
   " enable extensions
   let g:ctrlp_extensions=['mixed']
 
   " disable switch buffer
   let g:ctrlp_switch_buffer = ''
+
+  if executable('files')
+    let g:ctrlp_user_command = 'files -a -i="(\.git|\.hg|\.svn|_darcs|\.bzr|node_modules)$" %s'
+  endif
 
   " keymap
   let g:ctrlp_map=''
