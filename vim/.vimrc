@@ -284,6 +284,7 @@ set backspace=indent,eol,start
 set nowildmenu
 set wildmode=list:longest,full
 set history=10000
+set cryptmethod=blowfish2
 " }}}
 
 " keymap {{{
