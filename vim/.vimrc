@@ -147,6 +147,10 @@ Plug 'pangloss/vim-javascript', {
       \ 'for': ['html', 'djangohtml', 'javascript'],
       \ }
 Plug 't9md/vim-quickhl'
+Plug 'ternjs/tern_for_vim', {
+      \ 'for': ['javascript'],
+      \ 'do': 'npm install',
+      \ }
 Plug 'thinca/vim-qfreplace', {
       \ 'for': ['unite', 'quickfix'],
       \ }
@@ -518,6 +522,10 @@ if s:is_installed('neocomplete.vim')
       autocmd!
       autocmd FileType vimwiki setlocal omnifunc=Complete_wikifiles
     augroup END
+  endif
+
+  if s:is_installed('tern_for_vim')
+    let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
   endif
 endif " }}}
 
