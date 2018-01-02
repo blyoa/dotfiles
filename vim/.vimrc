@@ -85,6 +85,7 @@ Plug 'davidhalter/jedi-vim', {
       \ 'for': ['python', 'python3'],
       \ }
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'ap/vim-css-color'
 Plug 'glidenote/memolist.vim', {
@@ -174,9 +175,6 @@ Plug 'tyru/open-browser.vim', {
       \ | Plug 'kannokanno/previm', {
       \     'for': ['markdown', 'mkd', 'rst'],
       \   }
-Plug 'vim-jp/vim-go-extra', {
-      \ 'for': ['go'],
-      \ }
 Plug 'vim-scripts/matchit.zip'
 Plug 'vimwiki/vimwiki', {
       \ 'branch': 'dev',
@@ -714,16 +712,26 @@ if s:is_installed('vim-clang')
   let g:clang_diagsopt = ''
 endif "}}}
 
-" vim-go-extra {{{
-if s:is_installed('vim-go-extra')
+" vim-go {{{
+if s:is_installed('vim-go')
+  let g:go_fmt_autosave = 0
   if executable('goimports')
-    let g:gofmt_command='goimports'
+    let g:go_fmt_command='goimports'
   endif
 
-  if s:is_installed(['vimproc'])
-"     let g:gocomplete#system_function='vimproc#system2'
-  endif
+  let g:go_gocode_socket_type = 'tcp'
+  let g:go_highlight_functions = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_build_constraints = 1
 
+  augroup vim_go_rc
+    autocmd!
+    autocmd FileType go nmap <buffer> gd <Plug>(go-def)
+    autocmd FileType go nmap <buffer> K <Plug>(go-doc)
+    autocmd FileType go nmap <buffer> <Leader>gi <Plug>(go-implements)
+    autocmd FileType go nmap <buffer> <Leader>gr <Plug>(go-rename)
+  augroup END
 endif "}}}
 
 " vim-nearest-g {{{
@@ -927,6 +935,7 @@ augroup vimrc_loading
   " FileType
   " golang
   autocmd FileType go setlocal noexpandtab
+  autocmd Filetype go if exists(':GoPlay') | delcommand GoPlay | endif
   autocmd BufWinEnter,BufNewFile *_test.go setlocal filetype=go.test
   " vim
   autocmd FileType vim setlocal shiftwidth=2 softtabstop=2
