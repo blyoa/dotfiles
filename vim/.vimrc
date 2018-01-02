@@ -635,7 +635,6 @@ if s:is_installed('vim-quickhl')
   xmap <Space>m <Plug>(quickhl-manual-this)
   nmap <Space>M <Plug>(quickhl-manual-reset)
   xmap <Space>M <Plug>(quickhl-manual-reset)
-  nmap <Space>j <Plug>(quickhl-cword-toggle)
   nmap <Space>] <Plug>(quickhl-tag-toggle)
 
 endif " }}}
