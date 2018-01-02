@@ -146,6 +146,12 @@ Plug 'othree/html5.vim', {
 Plug 'pangloss/vim-javascript', {
       \ 'for': ['html', 'djangohtml', 'javascript'],
       \ }
+Plug 'racer-rust/vim-racer', {
+      \ 'for': ['rust'],
+      \ }
+Plug 'rust-lang/rust.vim', {
+      \ 'for': ['rust'],
+      \ }
 Plug 't9md/vim-quickhl'
 Plug 'ternjs/tern_for_vim', {
       \ 'for': ['javascript'],
@@ -495,6 +501,8 @@ if s:is_installed('neocomplete.vim')
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
   " golang
   let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  " rust
+  let g:neocomplete#sources#omni#input_patterns.rust = '[^.[:digit:] *\t]\%(\.\|\::\)\%(\h\w*\)\?'
   " tex
   let g:neocomplete#sources#omni#input_patterns.tex =
         \ '\v\\%('
@@ -626,6 +634,16 @@ if s:is_installed('vim-quickhl')
 
 endif " }}}
 
+" rust.vim {{{
+if s:is_installed('rust.vim')
+  let g:rust_playpen_url = ''
+  augroup rust_vim_rc
+    autocmd!
+    autocmd Filetype rust command! RustPlay echoe 'diabled'
+  augroup END
+
+endif " }}}
+
 " unite.vim {{{
 if s:is_installed('unite.vim')
   let g:unite_source_line_enable_highlight=1
@@ -748,6 +766,15 @@ if s:is_installed('vim-quickrun')
   " keymap
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : '\<C-c>'
 endif " }}}
+
+" vim-racer {{{
+if s:is_installed('vim-racer')
+  augroup vim_racer_rc
+    autocmd!
+    autocmd FileType rust nmap gd <Plug>(rust-def)
+    autocmd FileType rust nmap K <Plug>(rust-doc)
+  augroup END
+endif "}}}
 
 " vim-reanimate {{{
 if s:is_installed('vim-reanimate')
