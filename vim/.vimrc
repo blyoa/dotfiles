@@ -74,6 +74,7 @@ Plug 'blyoa/vim-promela-syntax', {
 Plug 'chrisbra/vim-diff-enhanced', {
       \ 'on': ['EnhancedDiff', 'PatienceDiff'],
       \ }
+Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
       \ |
