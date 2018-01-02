@@ -728,7 +728,7 @@ if s:is_installed('vim-quickrun')
         \       'cmdopt': '-std=c11',
         \ },
         \ 'cpp': {
-        \       'cmdopt': '-std=c++14',
+        \       'cmdopt': '-std=c++17',
         \ },
         \ 'go.test': {
         \       'cmdopt': 'test -v',
