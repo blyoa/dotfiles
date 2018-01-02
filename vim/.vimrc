@@ -167,6 +167,9 @@ Plug 'vim-jp/vim-go-extra', {
       \ 'for': ['go'],
       \ }
 Plug 'vim-scripts/matchit.zip'
+Plug 'vimwiki/vimwiki', {
+      \ 'branch': 'dev',
+      \ }
 call plug#end()
 
 " }}}
@@ -456,6 +459,13 @@ if s:is_installed('neocomplete.vim')
     let g:jedi#force_py_version=3
     let g:neocomplete#force_omni_input_patterns.python =
           \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  endif
+
+  if s:is_installed('vimwiki')
+    augroup neocomlete_vim_vimwiki_rc
+      autocmd!
+      autocmd FileType vimwiki setlocal omnifunc=Complete_wikifiles
+    augroup END
   endif
 endif " }}}
 
@@ -767,6 +777,23 @@ if s:is_installed('vimtex')
 
 endif "}}}
 
+" vimwiki {{{
+if s:is_installed('vimwiki')
+  let g:vimwiki_autowriteall = 0
+  let g:vimwiki_ext2syntax = {'.vmd': 'markdown',}
+  let g:vimwiki_folding = 'custom'
+  let g:vimwiki_hl_headers = 1
+  let g:vimwiki_list_ignore_newline = 0
+  let g:vimwiki_text_ignore_newline = 0
+  let g:vimwiki_list = [
+        \ {'path': s:share_dir . '/.vim/vimwiki/default/',
+        \ 'path_html': s:share_dir . '/.vim/vimwiki/default_html/',
+        \ 'ext': '.viki', 'auto_tags': 1},
+        \ {'path': s:share_dir . '/.vim/vimwiki/private/',
+        \ 'path_html': s:share_dir . '/.vim/vimwiki/private_html/',
+        \ 'ext': '.viki', 'auto_tags': 1},
+        \ ]
+endif "}}}
 
 " zeavim.vim {{{
 if s:is_installed('zeavim.vim')
@@ -831,6 +858,9 @@ augroup vimrc_loading
   autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
   " tex
   autocmd FileType tex setlocal shiftwidth=2 softtabstop=2
+  " vimwiki
+  autocmd FileType vimwiki setlocal shiftwidth=2 softtabstop=2 foldmethod=marker foldmarker=%%{{{,%%}}}
+  autocmd FileType vimwiki hi VimwikiDelText gui=strikethrough
 augroup END
 " }}}
 
