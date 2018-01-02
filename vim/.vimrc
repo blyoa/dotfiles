@@ -606,7 +606,7 @@ if s:is_installed('plantuml-syntax')
   let g:plantuml_executable_script = 'java -jar ' . expand('$HOME') . '/utils/bin/plantuml.jar -Tsvg'
 endif "}}}
 
-" quickhl {{{
+" vim-quickhl {{{
 if s:is_installed('vim-quickhl')
   " keymap
   nmap <Space>m <Plug>(quickhl-manual-this)
