@@ -170,6 +170,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vimwiki/vimwiki', {
       \ 'branch': 'dev',
       \ }
+Plug 'w0rp/ale'
 call plug#end()
 
 " }}}
@@ -317,6 +318,56 @@ let g:html_font = 'Inconsolata'',''Migu 1M'
 if s:is_installed('ack.vim')
   if executable('ag')
     let g:ackprg = 'ag --vimgrep'
+  endif
+endif "}}}
+
+" ale.vim {{{
+if s:is_installed('ale.vim')
+  let g:ale_lint_on_text_changed = 1
+  let g:ale_lint_delay=1000
+  let g:ale_sign_column_always = 0
+  let g:ale_sign_error = '>'
+  let g:ale_sign_warning = '!'
+  let g:ale_max_signs = 0
+
+  let g:ale_linters = {
+        \ 'c': ['clang', 'cppcheck'],
+        \ 'cpp': ['clang', 'cppcheck'],
+        \ }
+  let g:ale_fixers = {
+        \ 'c': ['clang-format'],
+        \ 'cpp': ['clang-format'],
+        \ 'javascript': ['eslint', 'prettier'],
+        \ 'rust': ['rustfmt'],
+        \ 'python': ['autopep8', 'isort'],
+        \ }
+
+  let g:ale_javascript_prettier_options = '--no-semi --single-quote --trailing-comma es5'
+  if executable('goimports')
+    let g:ale_fixers.go = ['goimports']
+  else
+    let g:ale_fixers.go = ['gofmt']
+  endif
+
+  let g:ale_c_cppcheck_options = '--enable=all'
+  let g:ale_cpp_cppcheck_options = '--enable=all'
+  let g:ale_cpp_clang_options = '--std=c++17 -Wall'
+  let g:ale_c_clangformat_options = '-style="{'
+        \ .'AccessModifierOffset: -4,'
+        \ .'AllowShortIfStatementsOnASingleLine: false,'
+        \ .'AllowShortLoopsOnASingleLine: false,'
+        \ .'BasedOnStyle: Google,'
+        \ .'IndentWidth: 4,'
+        \ .'}"'
+  let g:ale_python_flake8_options = '--ignore C0111'
+
+  nmap <F8> <Plug>(ale_fix)
+
+  if s:is_installed('vim-hier')
+    augroup ale_user_event_handling
+      autocmd!
+      autocmd User ALELint HierUpdate
+    augroup END
   endif
 endif "}}}
 
@@ -627,16 +678,8 @@ endif "}}}
 if s:is_installed('vim-clang')
   let g:clang_auto = 0
   let g:clang_c_options = '-std=c11'
-  let g:clang_cpp_options = '-std=c++14'
-
-  let g:clang_format_style = '{'
-        \ .'AccessModifierOffset: -4,'
-        \ .'AllowShortIfStatementsOnASingleLine: false,'
-        \ .'AllowShortLoopsOnASingleLine: false,'
-        \ .'BasedOnStyle: Google,'
-        \ .'IndentWidth: 4,'
-        \ .'}'
-
+  let g:clang_cpp_options = '-std=c++17'
+  let g:clang_diagsopt = ''
 endif "}}}
 
 " vim-go-extra {{{
