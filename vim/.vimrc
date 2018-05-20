@@ -601,8 +601,8 @@ if s:is_installed('open-browser.vim')
   " disable netrw's gx mapping
   let g:netw_nogx=1
   let g:openbrowser_search_engines = {
-              \ 'weblio': 'http://ejje.weblio.jp/content/{query}',
-              \ }
+        \ 'weblio': 'http://ejje.weblio.jp/content/{query}',
+        \ }
 
   " keymap
   nmap gx <Plug>(openbrowser-smart-search)
