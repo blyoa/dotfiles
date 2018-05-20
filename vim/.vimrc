@@ -150,6 +150,9 @@ Plug 'othree/html5.vim', {
 Plug 'pangloss/vim-javascript', {
       \ 'for': ['html', 'djangohtml', 'javascript'],
       \ }
+Plug 'posva/vim-vue', {
+      \ 'for': ['vue']
+      \ }
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
