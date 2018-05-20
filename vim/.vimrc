@@ -348,16 +348,19 @@ if s:is_installed('ale.vim')
         \ 'c': ['clang-format'],
         \ 'cpp': ['clang-format'],
         \ 'javascript': ['eslint', 'prettier'],
+        \ 'json': ['prettier'],
         \ 'rust': ['rustfmt'],
-        \ 'python': ['autopep8', 'isort'],
+        \ 'python': ['yapf', 'isort', 'autopep8'],
+        \ 'vue': ['eslint', 'prettier'],
         \ }
 
   let g:ale_javascript_prettier_options = '--no-semi --single-quote --trailing-comma es5'
   if executable('goimports')
-    let g:ale_fixers.go = ['goimports']
+    let g:ale_fixers.go = ['goimports', 'gofmt']
   else
     let g:ale_fixers.go = ['gofmt']
   endif
+  let g:ale_go_gofmt_options = '-s'
 
   let g:ale_c_cppcheck_options = '--enable=all'
   let g:ale_cpp_cppcheck_options = '--enable=all'
@@ -370,15 +373,9 @@ if s:is_installed('ale.vim')
         \ .'IndentWidth: 4,'
         \ .'}"'
   let g:ale_python_flake8_options = '--ignore C0111'
+  let g:ale_python_pylint_options = '--disable C0111,C0103,R0903'
 
   nmap <F8> <Plug>(ale_fix)
-
-  if s:is_installed('vim-hier')
-    augroup ale_user_event_handling
-      autocmd!
-      autocmd User ALELint HierUpdate
-    augroup END
-  endif
 endif "}}}
 
 " calendar.vim {{{
