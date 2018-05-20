@@ -453,6 +453,42 @@ if s:is_installed('incsearch.vim')
 
 endif "}}}
 
+" lightline.vim {{{
+if s:is_installed('lightline.vim')
+  let g:lightline={
+        \ 'colorscheme': 'Tomorrow_Night',
+        \ 'active': {
+        \   'left': [[], ['preview', 'filename', 'modified', 'readonly',]],
+        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
+        \ },
+        \ 'inactive': {
+        \   'left': [['filename', 'modified', 'readonly',]],
+        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
+        \ },
+        \ 'component': {
+        \  'filetype': '%{&ft}',
+        \  'fenc_ff': '%{(&fenc!=""?&fenc:&enc).(&bomb?"(BOM)":"").",".&ff}',
+        \  'filename': '%{expand("%:p:.")}',
+        \  'linenr': '%{printf("%3d/%d", line("."), line("$"))}',
+        \  'preview': '%w',
+        \  'readonly': '%r',
+        \  'winnr': '%{winnr()}',
+        \ },
+        \ 'component_visible_condition': {
+        \   'preview': '&previewwindow',
+        \ },
+        \ }
+
+  " avoid overwriting statusline ctrlp.vim
+  if s:is_installed(['ctrlp.vim'])
+    let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
+    function! CtrlPEnter() abort
+      let w:lightline = 0
+    endfunction
+  endif
+
+endif "}}}
+
 " memolist.vim {{{
 if s:is_installed('memolist.vim')
   " memodir
@@ -541,42 +577,6 @@ if s:is_installed('neocomplete.vim')
   endif
 endif " }}}
 
-" lightline.vim {{{
-if s:is_installed('lightline.vim')
-  let g:lightline={
-        \ 'colorscheme': 'Tomorrow_Night',
-        \ 'active': {
-        \   'left': [[], ['preview', 'filename', 'modified', 'readonly',]],
-        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
-        \ },
-        \ 'inactive': {
-        \   'left': [['filename', 'modified', 'readonly',]],
-        \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
-        \ },
-        \ 'component': {
-        \  'filetype': '%{&ft}',
-        \  'fenc_ff': '%{(&fenc!=""?&fenc:&enc).(&bomb?"(BOM)":"").",".&ff}',
-        \  'filename': '%{expand("%:p:.")}',
-        \  'linenr': '%{printf("%3d/%d", line("."), line("$"))}',
-        \  'preview': '%w',
-        \  'readonly': '%r',
-        \  'winnr': '%{winnr()}',
-        \ },
-        \ 'component_visible_condition': {
-        \   'preview': '&previewwindow',
-        \ },
-        \ }
-
-  " avoid overwriting statusline ctrlp.vim
-  if s:is_installed(['ctrlp.vim'])
-    let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
-    function! CtrlPEnter() abort
-      let w:lightline = 0
-    endfunction
-  endif
-
-endif "}}}
-
 " neosnippet.vim {{{
 if s:is_installed('neosnippet.vim')
   " addtional snippet directory
@@ -625,17 +625,6 @@ endif " }}}
 if s:is_installed('plantuml-syntax')
   let g:plantuml_executable_script = 'java -jar ' . expand('$HOME') . '/utils/bin/plantuml.jar -Tsvg'
 endif "}}}
-
-" vim-quickhl {{{
-if s:is_installed('vim-quickhl')
-  " keymap
-  nmap <Space>m <Plug>(quickhl-manual-this)
-  xmap <Space>m <Plug>(quickhl-manual-this)
-  nmap <Space>M <Plug>(quickhl-manual-reset)
-  xmap <Space>M <Plug>(quickhl-manual-reset)
-  nmap <Space>] <Plug>(quickhl-tag-toggle)
-
-endif " }}}
 
 " rust.vim {{{
 if s:is_installed('rust.vim')
@@ -752,6 +741,17 @@ if s:is_installed('vim-operator-surround')
   map <silent>sa <Plug>(operator-surround-append)
   map <silent>sd <Plug>(operator-surround-delete)
   map <silent>sr <Plug>(operator-surround-replace)
+
+endif " }}}
+
+" vim-quickhl {{{
+if s:is_installed('vim-quickhl')
+  " keymap
+  nmap <Space>m <Plug>(quickhl-manual-this)
+  xmap <Space>m <Plug>(quickhl-manual-this)
+  nmap <Space>M <Plug>(quickhl-manual-reset)
+  xmap <Space>M <Plug>(quickhl-manual-reset)
+  nmap <Space>] <Plug>(quickhl-tag-toggle)
 
 endif " }}}
 
