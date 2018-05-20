@@ -44,6 +44,8 @@ endif
 Plug 'Shougo/neosnippet.vim'
       \ |
       \ Plug 'Shougo/neosnippet-snippets'
+      \ |
+      \ Plug 'honza/vim-snippets'
 Plug 'Shougo/unite.vim'
       \ |
       \ Plug 'Shougo/junkfile.vim'
@@ -578,6 +580,8 @@ endif " }}}
 if s:is_installed('neosnippet.vim')
   " addtional snippet directory
   let g:neosnippet#snippets_directory=s:vimfiles . '/snippets'
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet = 1
 
   " keymap
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
