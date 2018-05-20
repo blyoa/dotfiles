@@ -207,7 +207,7 @@ set hlsearch
 set number
 set ruler
 set title
-set t_Co=256
+set termguicolors
 set display=lastline
 set showcmd
 set list
