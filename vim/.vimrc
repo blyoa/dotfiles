@@ -637,6 +637,13 @@ if s:is_installed('rust.vim')
 
 endif " }}}
 
+" tern_for_vim {{{
+if s:is_installed('tern_for_vim')
+  augroup vim_tern_for_vim_rc
+    autocmd!
+    autocmd FileType javascript nnoremap <silent> <buffer> gd :<C-u>TernDef<CR>
+endif " }}}
+
 " unite.vim {{{
 if s:is_installed('unite.vim')
   let g:unite_source_line_enable_highlight=1
