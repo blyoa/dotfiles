@@ -66,7 +66,6 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
-Plug 'aklt/plantuml-syntax'
 Plug 'blyoa/vim-nearest-g', {
       \ 'on': '<Plug>nearest-g:neighbor',
       \ }
@@ -99,6 +98,9 @@ Plug 'hail2u/vim-css3-syntax', {
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/vim-asterisk', {
       \ 'on': '<Plug>(asterisk-',
+      \ }
+Plug 'hokorobi/plantuml-syntax', {
+      \ 'branch': 'experiment',
       \ }
 Plug 'hynek/vim-python-pep8-indent', {
       \ 'for': ['python', 'python3', 'djangohtml'],
