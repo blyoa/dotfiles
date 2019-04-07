@@ -449,8 +449,6 @@ let g:tex_flavor = 'latex'
 " incsearch.vim {{{
 if s:is_installed('incsearch.vim')
   " keymap
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
 
 endif "}}}
