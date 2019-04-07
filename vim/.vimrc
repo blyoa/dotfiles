@@ -860,15 +860,21 @@ if s:is_installed('vimtex')
   let g:vimtex_imaps_enabled=0
   let g:vimtex_motion_matchparen = 0
   let g:vimtex_compiler_latexmk = {
-        \ 'backends': 'job',
+        \ 'backends': 'jobs',
         \ 'options' : [
-        \   '-pdfdvi',
+        \   '-gg',
         \   '-verbose',
         \   '-file-line-error',
         \   '-synctex=1',
         \   '-interaction=nonstopmode',
         \ ],
-        \}
+        \ }
+    let g:vimtex_compiler_engine = 'pdfdvi'
+    let g:vimtex_compiler_latexmk_engines = {
+        \ '_' : '-pdfdvi',
+        \ 'pdflatex': '-pdf',
+        \ 'pdfdvi' : '-pdfdvi',
+        \ }
 
   if executable('SumatraPDF')
     let g:vimtex_view_general_viewer = 'SumatraPDF'
