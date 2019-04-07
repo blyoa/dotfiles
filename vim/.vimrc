@@ -72,9 +72,6 @@ Plug 'blyoa/vim-nearest-g', {
 Plug 'blyoa/vim-promela-syntax', {
       \ 'for': 'promela'
       \ }
-Plug 'chrisbra/vim-diff-enhanced', {
-      \ 'on': ['EnhancedDiff', 'PatienceDiff'],
-      \ }
 Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -291,6 +288,9 @@ let g:markdown_fenced_languages = [
       \ 'yaml',
       \ 'zsh',
       \ ]
+
+" diff
+set diffopt+=internal,algorithm:histogram
 
 " misc
 set hidden
