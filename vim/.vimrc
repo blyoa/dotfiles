@@ -176,11 +176,9 @@ Plug 'tyru/capture.vim', {
       \ 'on': ['Capture',],
       \ }
 Plug 'tyru/caw.vim'
-Plug 'tyru/open-browser.vim', {
-      \ 'on': '<Plug>(openbrowser-',
-      \ }
-      \ | Plug 'kannokanno/previm', {
-      \     'for': ['markdown', 'mkd', 'rst'],
+Plug 'tyru/open-browser.vim'
+      \ | Plug 'previm/previm', {
+      \     'for': ['markdown', 'mkd', 'rst', 'asciidoc'],
       \   }
 Plug 'vim-scripts/matchit.zip'
 Plug 'vimwiki/vimwiki', {
