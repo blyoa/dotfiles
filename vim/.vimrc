@@ -36,16 +36,6 @@ endif
 " vim-plug {{{
 call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
-if has('lua')
-  Plug 'Shougo/neocomplete.vim'
-else
-  Plug 'Shougo/neocomplcache.vim'
-endif
-Plug 'Shougo/neosnippet.vim'
-      \ |
-      \ Plug 'Shougo/neosnippet-snippets'
-      \ |
-      \ Plug 'honza/vim-snippets'
 Plug 'Shougo/unite.vim'
       \ |
       \ Plug 'Shougo/junkfile.vim'
@@ -152,6 +142,12 @@ Plug 'pangloss/vim-javascript', {
 Plug 'posva/vim-vue', {
       \ 'for': ['vue']
       \ }
+Plug 'prabirshrestha/async.vim' |
+Plug 'prabirshrestha/asyncomplete.vim' |
+      \ Plug 'prabirshrestha/asyncomplete-neosnippet.vim' |
+      \ Plug 'Shougo/neosnippet.vim' |
+      \ Plug 'Shougo/neosnippet-snippets' |
+      \ Plug 'honza/vim-snippets'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
@@ -383,6 +379,26 @@ if s:is_installed('ale.vim')
   nmap <F8> <Plug>(ale_fix)
 endif "}}}
 
+" asyncomplete.vim {{{
+if s:is_installed('asyncomplete.vim')
+  let g:asyncomplete_smart_completion = 0
+  let g:asyncomplete_remove_duplicates = 0
+  imap <C-Space> <Plug>(asyncomplete_force_refresh)
+  inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
+
+  augroup asyncomplete_rc
+    autocmd!
+    if s:is_installed('asyncomplete-neosnippet.vim')
+      autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+           \ 'name': 'neosnippet',
+           \ 'whitelist': ['*'],
+           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+           \ }))
+    endif
+  augroup END
+
+endif "}}}
+
 " calendar.vim {{{
 if s:is_installed('calendar.vim')
   let g:calendar_first_day = 'sunday'
@@ -523,59 +539,6 @@ if s:is_installed('neocomplcache.vim')
 
 endif " }}}
 
-" neocomplete.vim {{{
-if s:is_installed('neocomplete.vim')
-  let g:neocomplete#enable_at_startup=1
-
-  " Enable heavy omni completion.
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
-
-  " c
-  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-  " cpp
-  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-  " golang
-  let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
-  " rust
-  let g:neocomplete#sources#omni#input_patterns.rust = '[^.[:digit:] *\t]\%(\.\|\::\)\%(\h\w*\)\?'
-  " tex
-  let g:neocomplete#sources#omni#input_patterns.tex =
-        \ '\v\\%('
-        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
-        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
-        \ . '|%(include|input)\s*\{[^{}]*'
-        \ . ')'
-
-  " python
-  if s:is_installed('jedi')
-    autocmd FileType python setlocal omnifunc=jedi#completions
-    let g:jedi#completions_enabled = 0
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#smart_auto_mappings = 0
-    let g:jedi#auto_initialization = 1
-    let g:jedi#rename_command = "<leader>R"
-    let g:jedi#popup_on_dot = 1
-    let g:jedi#force_py_version=3
-    let g:neocomplete#force_omni_input_patterns.python =
-          \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-  endif
-
-  if s:is_installed('vimwiki')
-    augroup neocomlete_vim_vimwiki_rc
-      autocmd!
-      autocmd FileType vimwiki setlocal omnifunc=Complete_wikifiles
-    augroup END
-  endif
-
-  if s:is_installed('tern_for_vim')
-    let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
-  endif
-endif " }}}
 
 " neosnippet.vim {{{
 if s:is_installed('neosnippet.vim')
