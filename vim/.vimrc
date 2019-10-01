@@ -143,7 +143,9 @@ Plug 'posva/vim-vue', {
       \ 'for': ['vue']
       \ }
 Plug 'prabirshrestha/async.vim' |
+Plug 'prabirshrestha/vim-lsp' |
 Plug 'prabirshrestha/asyncomplete.vim' |
+      \ Plug 'prabirshrestha/asyncomplete-lsp.vim' |
       \ Plug 'prabirshrestha/asyncomplete-neosnippet.vim' |
       \ Plug 'Shougo/neosnippet.vim' |
       \ Plug 'Shougo/neosnippet-snippets' |
@@ -334,11 +336,12 @@ endif "}}}
 
 " ale.vim {{{
 if s:is_installed('ale.vim')
+  let g:ale_disable_lsp = 1
   let g:ale_lint_on_text_changed = 1
   let g:ale_lint_delay=1000
   let g:ale_sign_column_always = 0
-  let g:ale_sign_error = '>'
-  let g:ale_sign_warning = '!'
+  let g:ale_sign_error = 'E>'
+  let g:ale_sign_warning = 'W>'
   let g:ale_max_signs = 0
 
   let g:ale_linters = {
@@ -688,11 +691,69 @@ if s:is_installed('vim-go')
 
   augroup vim_go_rc
     autocmd!
-    autocmd FileType go nmap <buffer> gd <Plug>(go-def)
-    autocmd FileType go nmap <buffer> K <Plug>(go-doc)
     autocmd FileType go nmap <buffer> <Leader>gi <Plug>(go-implements)
     autocmd FileType go nmap <buffer> <Leader>gr <Plug>(go-rename)
   augroup END
+endif "}}}
+
+" vim-lsp {{{
+if s:is_installed('vim-lsp')
+"   let g:lsp_auto_enable = 1
+  let g:lsp_async_completion = 1
+  let g:lsp_preview_float = 0
+  let g:lsp_signature_help_enabled = 0
+  let g:lsp_diagnostics_echo_cursor = 1
+  augroup vim_lsp_rc
+    autocmd!
+    if executable('clangd')
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['clangd']},
+            \ 'whitelist': ['c', 'cpp'],
+            \ })
+      autocmd FileType c,cpp call s:config_lsp()
+    endif
+    if executable('gopls')
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'gopls',
+            \ 'cmd': {server_info->['gopls', '--mode=stdio']},
+            \ 'whitelist': ['go'],
+            \ })
+      autocmd FileType go call s:config_lsp()
+    endif
+    if executable('vls')
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'vls',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'vls']},
+            \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+            \ 'whitelist': ['vue'],
+            \ })
+      autocmd FileType vue call s:config_lsp()
+    endif
+    if executable('pyls')
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->['pyls']},
+            \ 'whitelist': ['python'],
+            \ 'workspace_config': {'pyls': {
+            \   'plugins': {
+            \     'pycodestyle': {'enabled': v:false},
+            \     'pydocstyle': {'enabled': v:false},
+            \     'pyflakes': {'enabled': v:false},
+            \     'pylint': {'enabled': v:false},
+            \     'yapf': {'enabled': v:false},
+            \   }
+            \ }},
+            \ })
+      autocmd FileType python call s:config_lsp()
+    endif
+  augroup END
+
+  function! s:config_lsp()
+      nmap <buffer> gd <Plug>(lsp-definition)
+      nmap <buffer> K <Plug>(lsp-hover)
+      setlocal omnifunc=lsp#complete
+  endfunction
 endif "}}}
 
 " vim-nearest-g {{{
