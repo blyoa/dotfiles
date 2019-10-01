@@ -888,12 +888,16 @@ if s:is_installed('vimtex')
         \   '-interaction=nonstopmode',
         \ ],
         \ }
-    let g:vimtex_compiler_engine = 'pdfdvi'
     let g:vimtex_compiler_latexmk_engines = {
-        \ '_' : '-pdfdvi',
-        \ 'pdflatex': '-pdf',
-        \ 'pdfdvi' : '-pdfdvi',
-        \ }
+        \ '_'                : '-pdfdvi',
+        \ 'pdflatex'         : '-pdf',
+        \ 'dvipdfex'         : '-pdfdvi',
+        \ 'lualatex'         : '-lualatex',
+        \ 'xelatex'          : '-xelatex',
+        \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+        \ 'context (luatex)' : '-pdf -pdflatex=context',
+        \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+        \}
 
   if executable('SumatraPDF')
     let g:vimtex_view_general_viewer = 'SumatraPDF'
