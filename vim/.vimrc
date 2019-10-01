@@ -158,6 +158,7 @@ Plug 'rust-lang/rust.vim', {
       \ 'for': ['rust'],
       \ }
 Plug 't9md/vim-quickhl'
+Plug 'sgur/vim-editorconfig'
 Plug 'ternjs/tern_for_vim', {
       \ 'for': ['javascript'],
       \ 'do': 'npm install',
