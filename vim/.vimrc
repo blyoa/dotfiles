@@ -16,7 +16,7 @@ let s:plugin_root_dir = s:vimfiles . '/bundle'
 
 " functions {{{
 function! s:is_installed(plugname) abort
-  return !len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  return has_key(g:plugs, a:plugname) && isdirectory(g:plugs[a:plugname]['dir'])
 endfunction
 
 function! s:is_loaded(plugname) abort
@@ -456,12 +456,12 @@ if s:is_installed('ctrlp.vim')
   nnoremap <silent> [ctrlp]M :<C-u>CtrlPBookmarkDirAdd!<CR>
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
   " ctrlp-history
-  if s:is_installed(['ctrlp-history'])
+  if s:is_installed('ctrlp-history')
     nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdHistory<CR>
     nnoremap <silent> [ctrlp]/ :<C-u>CtrlPSearchHistory<CR>
   endif
   " ctrlp-register
-  if s:is_installed(['ctrlp-register'])
+  if s:is_installed('ctrlp-register')
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
   endif
 
@@ -514,7 +514,7 @@ if s:is_installed('lightline.vim')
         \ }
 
   " avoid overwriting statusline ctrlp.vim
-  if s:is_installed(['ctrlp.vim'])
+  if s:is_installed('ctrlp.vim')
     let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
     function! CtrlPEnter() abort
       let w:lightline = 0
@@ -553,7 +553,7 @@ if s:is_installed('memolist.vim')
   let g:memolist_memo_suffix='mkd'
 
   " settings to use unite
-  if !s:is_installed(['unite.vim'])
+  if !s:is_installed('unite.vim')
     let g:memolist_unite=1
     let g:memolist_unite_option='-auto-preview'
   endif
