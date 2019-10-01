@@ -115,6 +115,7 @@ Plug 'kana/vim-submode'
 Plug 'iamcco/markdown-preview.nvim', {
       \ 'do': { -> mkdp#util#install() }
       \ }
+Plug 'leafgarland/typescript-vim'
 Plug 'lervag/vimtex', {
       \ 'for': ['tex'],
       \ }
