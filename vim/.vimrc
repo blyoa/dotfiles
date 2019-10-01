@@ -339,24 +339,21 @@ if s:is_installed('ale.vim')
   let g:ale_linters = {
         \ 'c': ['clang', 'cppcheck'],
         \ 'cpp': ['clang', 'cppcheck'],
+        \ 'go': ['gobuild', 'golint', 'govet', 'gosimple'],
+        \ 'vimwiki': ['proselint', 'writegood'],
         \ }
   let g:ale_fixers = {
         \ 'c': ['clang-format'],
         \ 'cpp': ['clang-format'],
+        \ 'html': ['prettier'],
         \ 'javascript': ['eslint', 'prettier'],
+        \ 'markdown': ['prettier'],
+        \ 'typescript': ['tslint', 'eslint', 'prettier'],
         \ 'json': ['prettier'],
         \ 'rust': ['rustfmt'],
         \ 'python': ['yapf', 'isort', 'autopep8'],
         \ 'vue': ['eslint', 'prettier'],
         \ }
-
-  let g:ale_javascript_prettier_options = '--no-semi --single-quote --trailing-comma es5'
-  if executable('goimports')
-    let g:ale_fixers.go = ['goimports', 'gofmt']
-  else
-    let g:ale_fixers.go = ['gofmt']
-  endif
-  let g:ale_go_gofmt_options = '-s'
 
   let g:ale_c_cppcheck_options = '--enable=all'
   let g:ale_cpp_cppcheck_options = '--enable=all'
@@ -368,8 +365,27 @@ if s:is_installed('ale.vim')
         \ .'BasedOnStyle: Google,'
         \ .'IndentWidth: 4,'
         \ .'}"'
-  let g:ale_python_flake8_options = '--ignore C0111'
+
+  if executable('goimports')
+    let g:ale_fixers.go = ['goimports', 'gofmt']
+  else
+    let g:ale_fixers.go = ['gofmt']
+  endif
+  let g:ale_go_gofmt_options = '-s'
+
+  let g:ale_html_tidy_options = '-c --drop-empty-elements no'
+
+  let g:ale_java_javac_options = '-J-Duser.language=en'
+
+  let g:ale_javascript_prettier_options = '--no-semi --single-quote --trailing-comma es5'
+
+  let g:ale_languagetool_executable = 'languagetool-commandline'
+  let $REDPEN_HOME = expand('~/.redpen')
+
+  let g:ale_python_flake8_options = '--ignore C0111,D100,D101,D102,D103,D104,D105,D106,D107,E501,W503'
   let g:ale_python_pylint_options = '--disable C0111,C0103,R0903'
+  let g:ale_python_mypy_options = '--ignore-missing-imports'
+  let g:ale_python_black_options = '--skip-string-normalization'
 
   nmap <F8> <Plug>(ale_fix)
 endif "}}}
