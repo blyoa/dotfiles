@@ -223,6 +223,7 @@ let &statusline="%{expand('%:p:.')}\ %w%r\%m"
 
 " completion
 set pumheight=20
+set completeslash=slash
 
 " colorscheme
 syntax enable
