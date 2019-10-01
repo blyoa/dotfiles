@@ -102,8 +102,6 @@ Plug 'kana/vim-niceblock'
 Plug 'kana/vim-operator-user'
       \ |
       \ Plug 'kana/vim-operator-replace'
-      \ |
-      \ Plug 'rhysd/vim-operator-surround'
 Plug 'kana/vim-textobj-user'
       \ |
       \ Plug 'kana/vim-textobj-indent'
@@ -118,6 +116,7 @@ Plug 'mattn/emmet-vim', {
       \         'css', 'sass', 'scss', 'less'],
       \ }
 Plug 'mattn/sonictemplate-vim'
+Plug 'machakann/vim-sandwich'
 if executable('ag') || executable('ack')
   Plug 'mileszs/ack.vim', {
         \ 'on' : ['Ack', 'AckAdd', 'LAck', 'LAckAdd']
@@ -762,14 +761,6 @@ if s:is_installed('vim-operator-replace')
 
 endif " }}}
 
-" vim-operator-surround {{{
-if s:is_installed('vim-operator-surround')
-  " keymap
-  map <silent>sa <Plug>(operator-surround-append)
-  map <silent>sd <Plug>(operator-surround-delete)
-  map <silent>sr <Plug>(operator-surround-replace)
-
-endif " }}}
 
 " vim-quickhl {{{
 if s:is_installed('vim-quickhl')
@@ -843,6 +834,18 @@ if s:is_installed('vim-reanimate')
         \ call s:reanimate_edit_memo()
 
 endif "}}}
+
+" vim-sandwich {{{
+if s:is_installed('vim-sandwich')
+  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+  let g:sandwich#recipes += [{'buns' : ['「', '」']}]
+  let g:sandwich#recipes += [{'buns' : ['『', '』']}]
+  let g:sandwich#recipes += [{'buns' : ['【', '】']}]
+  let g:sandwich#recipes += [{'buns' : ['（', '）']}]
+  let g:sandwich#recipes += [{'buns' : ['〈', '〉']}]
+  let g:sandwich#recipes += [{'buns' : ['‘', '’']}]
+  let g:sandwich#recipes += [{'buns' : ['“', '”']}]
+endif " }}}
 
 " vim-submode {{{
 if s:is_installed('vim-submode')
