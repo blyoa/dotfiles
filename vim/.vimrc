@@ -623,7 +623,7 @@ endif " }}}
 
 " plantuml-syntax {{{
 if s:is_installed('plantuml-syntax')
-  let g:plantuml_executable_script = 'java -jar ' . expand('$HOME') . '/utils/bin/plantuml.jar -Tsvg'
+  let g:plantuml_executable_script = 'plantuml -Tsvg -charset UTF-8'
 endif "}}}
 
 " rust.vim {{{
