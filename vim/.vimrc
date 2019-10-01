@@ -183,11 +183,9 @@ Plug 'vimwiki/vimwiki', {
       \ }
 Plug 'w0rp/ale'
 call plug#end()
-
 " }}}
 
 filetype plugin indent on
-
 " }}}
 
 " basic settings {{{
@@ -430,7 +428,6 @@ if s:is_installed('caw.vim')
   " keymap
   nmap <Leader>c <Plug>(caw:hatpos:toggle)
   vmap <Leader>c <Plug>(caw:hatpos:toggle)
-
 endif " }}}
 
 " ctrlp.vim {{{
@@ -464,7 +461,6 @@ if s:is_installed('ctrlp.vim')
   if s:is_installed('ctrlp-register')
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
   endif
-
 endif "}}}
 
 " emmet-vim {{{
@@ -473,7 +469,6 @@ if s:is_installed('emmet-vim')
         \ 'variables': {
         \     'lang': 'ja',
         \ }}
-
 endif " }}}
 
 " ft-tex-plugin {{{
@@ -484,7 +479,6 @@ let g:tex_flavor = 'latex'
 if s:is_installed('incsearch.vim')
   " keymap
   map g/ <Plug>(incsearch-stay)
-
 endif "}}}
 
 " lightline.vim {{{
@@ -520,7 +514,6 @@ if s:is_installed('lightline.vim')
       let w:lightline = 0
     endfunction
   endif
-
 endif "}}}
 
 "  markdown-preview.nvim {{{
@@ -557,7 +550,6 @@ if s:is_installed('memolist.vim')
     let g:memolist_unite=1
     let g:memolist_unite_option='-auto-preview'
   endif
-
 endif " }}}
 
 " neocomplcache.vim {{{
@@ -571,7 +563,6 @@ if s:is_installed('neocomplcache.vim')
 
   " golang
   let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-
 endif " }}}
 
 
@@ -593,7 +584,6 @@ if s:is_installed('neosnippet.vim')
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \  : "\<TAB>"
-
 endif " }}}
 
 " openbrowser.vim {{{
@@ -618,7 +608,6 @@ if s:is_installed('open-browser.vim')
 
   nmap gs :<C-u>call <SID>weblio_search()<CR>
   vmap gs :<C-u>'<,'>call <SID>weblio_search()<CR>
-
 endif " }}}
 
 " plantuml-syntax {{{
@@ -663,13 +652,11 @@ if s:is_installed('unite.vim')
   nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=line line -start-insert -no-quit<CR>
   " grep
   nnoremap <silent> [unite]gr :<C-u>Unite -buffer-name=grep grep -start-insert -no-quit<CR>
-
 endif " }}}
 
 " unite-outline {{{
 if s:is_installed('unite-outline')
   nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
-
 endif "}}}
 
 " tsuquyomi {{{
@@ -690,7 +677,6 @@ if s:is_installed('vim-altr')
 
   " define
   call altr#define('%.go', '%_test.go')
-
 endif " }}}
 
 " vim-asterisk {{{
@@ -707,7 +693,6 @@ if s:is_installed('vim-asterisk')
   map gz* <Plug>(asterisk-gz*)
   map z#  <Plug>(asterisk-z#)
   map gz# <Plug>(asterisk-gz#)
-
 endif "}}}
 
 " vim-clang {{{
@@ -807,7 +792,6 @@ endif "}}}
 if s:is_installed('vim-operator-replace')
   " keymap
   map _ <Plug>(operator-replace)
-
 endif " }}}
 
 
@@ -819,7 +803,6 @@ if s:is_installed('vim-quickhl')
   nmap <Space>M <Plug>(quickhl-manual-reset)
   xmap <Space>M <Plug>(quickhl-manual-reset)
   nmap <Space>] <Plug>(quickhl-tag-toggle)
-
 endif " }}}
 
 " vim-quickrun {{{
@@ -881,7 +864,6 @@ if s:is_installed('vim-reanimate')
   command! -nargs=? -complete=customlist,s:save_point_completelist
         \ ReanimateEditMemo
         \ call s:reanimate_edit_memo()
-
 endif "}}}
 
 " vim-sandwich {{{
@@ -907,7 +889,6 @@ if s:is_installed('vim-submode')
   call submode#map('winsize', 'n', '', '<', '<C-w><')
   call submode#map('winsize', 'n', '', '+', '<C-w>+')
   call submode#map('winsize', 'n', '', '-', '<C-w>-')
-
 endif " }}}
 
 " vim-textobj-between {{{
@@ -920,7 +901,6 @@ if s:is_installed('vim-textobj-between')
   xmap aS <Plug>(textobj-between-a)
   omap iS <Plug>(textobj-between-i)
   xmap iS <Plug>(textobj-between-i)
-
 endif " }}}
 
 " vimtex {{{
@@ -955,7 +935,6 @@ if s:is_installed('vimtex')
   else
     let g:vimtex_view_enabled = 0
   endif
-
 endif "}}}
 
 " vimwiki {{{
@@ -1012,7 +991,6 @@ endfunction
 " autocmd {{{
 augroup vimrc_loading
   autocmd!
-
   " do not move when copen
   function! s:nomove_copen()
     let curbuf = bufwinnr('%')
