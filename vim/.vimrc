@@ -335,7 +335,6 @@ if s:is_installed('ale.vim')
   let g:ale_sign_column_always = 0
   let g:ale_sign_error = 'E>'
   let g:ale_sign_warning = 'W>'
-  let g:ale_max_signs = 0
 
   let g:ale_linters = {
         \ 'c': ['clang', 'cppcheck'],
