@@ -108,6 +108,9 @@ Plug 'kana/vim-textobj-user'
       \ |
       \ Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-submode'
+Plug 'iamcco/markdown-preview.nvim', {
+      \ 'do': { -> mkdp#util#install() }
+      \ }
 Plug 'lervag/vimtex', {
       \ 'for': ['tex'],
       \ }
@@ -515,6 +518,23 @@ if s:is_installed('lightline.vim')
   endif
 
 endif "}}}
+
+"  markdown-preview.nvim {{{
+if s:is_installed('markdown-preview.nvim')
+let g:mkdp_auto_close = 0
+let g:mkdp_command_for_global = 1
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {
+    \ },
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {}
+    \ }
+endif "  }}}
 
 " memolist.vim {{{
 if s:is_installed('memolist.vim')
