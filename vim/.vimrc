@@ -69,9 +69,6 @@ Plug 'ctrlpvim/ctrlp.vim'
       \ Plug 'blyoa/ctrlp-history'
       \ |
       \ Plug 'mattn/ctrlp-register'
-Plug 'davidhalter/jedi-vim', {
-      \ 'for': ['python', 'python3'],
-      \ }
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
@@ -99,9 +96,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align', {
       \ 'on': ['EasyAlign', 'LiveEasyAlign',
       \        '<Plug>EasyAlign', '<Plug>LiveEasyAlign'],
-      \ }
-Plug 'justmao945/vim-clang', {
-      \ 'for': ['c', 'cpp']
       \ }
 Plug 'kana/vim-altr'
 Plug 'kana/vim-niceblock'
