@@ -421,8 +421,8 @@ endif "}}}
 " caw.vim {{{
 if s:is_installed('caw.vim')
   " keymap
-  nmap <Leader>c <Plug>(caw:zeropos:toggle)
-  vmap <Leader>c <Plug>(caw:zeropos:toggle)
+  nmap <Leader>c <Plug>(caw:hatpos:toggle)
+  vmap <Leader>c <Plug>(caw:hatpos:toggle)
 
 endif " }}}
 
