@@ -332,8 +332,8 @@ if s:is_installed('ack.vim')
   endif
 endif "}}}
 
-" ale.vim {{{
-if s:is_installed('ale.vim')
+" ale {{{
+if s:is_installed('ale')
   let g:ale_disable_lsp = 1
   let g:ale_lint_on_text_changed = 1
   let g:ale_lint_delay=1000
