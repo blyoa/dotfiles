@@ -60,6 +60,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
+Plug 'andymass/vim-matchup'
 Plug 'blyoa/vim-nearest-g', {
       \ 'on': '<Plug>nearest-g:neighbor',
       \ }
@@ -782,6 +783,11 @@ if s:is_installed('vim-lsp')
       setlocal omnifunc=lsp#complete
   endfunction
 endif "}}}
+
+" vim-matchup {{{
+if s:is_installed('vim-matchup')
+  let g:matchup_matchparen_status_offscreen = 0
+endif " }}}
 
 " vim-nearest-g {{{
 if s:is_installed('vim-nearest-g')
