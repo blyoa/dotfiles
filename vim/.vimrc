@@ -36,10 +36,6 @@ endif
 " vim-plug {{{
 call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
-Plug 'Quramy/tsuquyomi', {
-      \ 'for': ['typescript'],
-      \ 'do': 'npm i -g typescript',
-      \ }
 Plug 'Shougo/unite.vim'
       \ |
       \ Plug 'Shougo/junkfile.vim'
@@ -661,16 +657,6 @@ endif " }}}
 if s:is_installed('unite-outline')
   nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
 endif "}}}
-
-" tsuquyomi {{{
-if s:is_installed('tsuquyomi')
-  let g:tsuquyomi_disable_default_mappings = 1
-
-  augroup tsuquyomi_rc
-    autocmd!
-    autocmd FileType typescript nmap <buffer> gd <Plug>(TsuquyomiDefinition)
-  augroup END
-endif " }}}
 
 " vim-altr {{{
 if s:is_installed('vim-altr')
