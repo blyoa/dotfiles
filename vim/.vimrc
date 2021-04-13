@@ -36,6 +36,7 @@ endif
 " vim-plug {{{
 call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
+Plug 'PProvost/vim-ps1'
 Plug 'Shougo/unite.vim'
       \ |
       \ Plug 'Shougo/junkfile.vim'
@@ -63,6 +64,7 @@ Plug 'blyoa/vim-nearest-g', {
 Plug 'blyoa/vim-promela-syntax', {
       \ 'for': 'promela'
       \ }
+Plug 'cespare/vim-toml'
 Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -71,8 +73,11 @@ Plug 'ctrlpvim/ctrlp.vim'
       \ |
       \ Plug 'mattn/ctrlp-register'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'digitaltoad/vim-pug'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
+Plug 'evanleck/vim-svelte'
+Plug 'gf3/peg.vim'
 Plug 'ap/vim-css-color'
 Plug 'glidenote/memolist.vim', {
       \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
