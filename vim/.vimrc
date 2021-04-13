@@ -74,7 +74,6 @@ Plug 'ctrlpvim/ctrlp.vim'
       \ Plug 'mattn/ctrlp-register'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'digitaltoad/vim-pug'
-Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'evanleck/vim-svelte'
 Plug 'gf3/peg.vim'
@@ -124,6 +123,12 @@ Plug 'lervag/vimtex', {
 Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
       \         'css', 'sass', 'scss', 'less'],
+      \ }
+Plug 'mattn/vim-goaddtags', {
+      \ 'for': ['go']
+      \ }
+Plug 'mattn/vim-goimpl', {
+      \ 'for': ['go']
       \ }
 Plug 'mattn/sonictemplate-vim'
 Plug 'machakann/vim-sandwich'
@@ -692,25 +697,6 @@ if s:is_installed('vim-clang')
   let g:clang_diagsopt = ''
 endif "}}}
 
-" vim-go {{{
-if s:is_installed('vim-go')
-  let g:go_fmt_autosave = 0
-  if executable('goimports')
-    let g:go_fmt_command='goimports'
-  endif
-
-  let g:go_gocode_socket_type = 'tcp'
-  let g:go_highlight_functions = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_build_constraints = 1
-
-  augroup vim_go_rc
-    autocmd!
-    autocmd FileType go nmap <buffer> <Leader>gi <Plug>(go-implements)
-    autocmd FileType go nmap <buffer> <Leader>gr <Plug>(go-rename)
-  augroup END
-endif "}}}
 
 " vim-lsp {{{
 if s:is_installed('vim-lsp')
