@@ -156,10 +156,6 @@ Plug 'rust-lang/rust.vim', {
       \ }
 Plug 't9md/vim-quickhl'
 Plug 'sgur/vim-editorconfig'
-Plug 'ternjs/tern_for_vim', {
-      \ 'for': ['javascript'],
-      \ 'do': 'npm install',
-      \ }
 Plug 'thinca/vim-qfreplace', {
       \ 'for': ['unite', 'quickfix'],
       \ }
@@ -622,13 +618,6 @@ if s:is_installed('rust.vim')
     autocmd Filetype rust command! RustPlay echoe 'diabled'
   augroup END
 
-endif " }}}
-
-" tern_for_vim {{{
-if s:is_installed('tern_for_vim')
-  augroup vim_tern_for_vim_rc
-    autocmd!
-    autocmd FileType javascript nnoremap <silent> <buffer> gd :<C-u>TernDef<CR>
 endif " }}}
 
 " unite.vim {{{
