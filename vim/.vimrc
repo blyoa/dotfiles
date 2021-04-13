@@ -521,6 +521,7 @@ endif "}}}
 if s:is_installed('markdown-preview.nvim')
 let g:mkdp_auto_close = 0
 let g:mkdp_command_for_global = 1
+let g:mkdp_page_title = '${name}'
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -528,6 +529,7 @@ let g:mkdp_preview_options = {
     \ },
     \ 'maid': {},
     \ 'disable_sync_scroll': 0,
+    \ 'disable_filename': 1,
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {}
