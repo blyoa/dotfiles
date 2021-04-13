@@ -338,6 +338,7 @@ if s:is_installed('ale')
   let g:ale_sign_column_always = 0
   let g:ale_sign_error = 'E>'
   let g:ale_sign_warning = 'W>'
+  let g:ale_sign_info = 'I>'
 
   let g:ale_linters = {
         \ 'c': ['clang', 'cppcheck'],
@@ -348,11 +349,16 @@ if s:is_installed('ale')
   let g:ale_fixers = {
         \ 'c': ['clang-format'],
         \ 'cpp': ['clang-format'],
+        \ 'css': ['prettier'],
+        \ 'scss': ['prettier'],
         \ 'html': ['prettier'],
         \ 'javascript': ['eslint', 'prettier'],
+        \ 'tex': ['latexindent'],
+        \ 'bib': ['bibclean'],
         \ 'markdown': ['prettier'],
         \ 'typescript': ['tslint', 'eslint', 'prettier'],
         \ 'json': ['prettier'],
+        \ 'yaml': ['prettier'],
         \ 'rust': ['rustfmt'],
         \ 'python': ['yapf', 'isort', 'autopep8'],
         \ 'vue': ['eslint', 'prettier'],
@@ -385,7 +391,7 @@ if s:is_installed('ale')
   let g:ale_languagetool_executable = 'languagetool-commandline'
   let $REDPEN_HOME = expand('~/.redpen')
 
-  let g:ale_python_flake8_options = '--ignore C0111,D100,D101,D102,D103,D104,D105,D106,D107,E501,W503'
+  let g:ale_python_flake8_options = '--ignore E124,C0111,D100,D101,D102,D103,D104,D105,D106,D107,E501,W503'
   let g:ale_python_pylint_options = '--disable C0111,C0103,R0903'
   let g:ale_python_mypy_options = '--ignore-missing-imports'
   let g:ale_python_black_options = '--skip-string-normalization'
