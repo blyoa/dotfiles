@@ -186,6 +186,7 @@ Plug 'tyru/open-browser.vim'
       \     'for': ['markdown', 'mkd', 'rst', 'asciidoc'],
       \   }
 Plug 'vim-scripts/matchit.zip'
+Plug 'vim-test/vim-test'
 Plug 'vimwiki/vimwiki', {
       \ 'branch': 'dev',
       \ }
@@ -906,6 +907,18 @@ if s:is_installed('vim-textobj-between')
   xmap aS <Plug>(textobj-between-a)
   omap iS <Plug>(textobj-between-i)
   xmap iS <Plug>(textobj-between-i)
+endif " }}}
+
+" vim-test {{{
+if s:is_installed('vim-test')
+  function! s:background_vimterminal(cmd)
+    silent call test#strategy#vimterminal(a:cmd)
+    wincmd p
+  endfunction
+  let g:test#custom_strategies = {'background-vimterminal': function('s:background_vimterminal')}
+
+  let test#strategy = 'vimterminal'
+
 endif " }}}
 
 " vimtex {{{
