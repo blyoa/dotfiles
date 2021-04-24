@@ -116,6 +116,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'lervag/vimtex', {
       \ 'for': ['tex'],
       \ }
+Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
@@ -963,6 +964,22 @@ if s:is_installed('vimwiki')
         \ 'path_html': s:share_dir . '/.vim/vimwiki/private_html/',
         \ 'ext': '.viki', 'auto_tags': 1},
         \ ]
+endif "}}}
+
+" vista.vim {{{
+if s:is_installed('vista.vim')
+  let g:vista_sidebar_position = 'vertical topleft'
+  let g:vista_icon_indent = ['\- ', '|- ']
+  let g:vista_fold_toggle_icons = ['+', '-']
+  let g:vista#renderer#enable_icon = 0
+
+  let g:vista_executive_for = {
+        \ 'c': 'vim_lsp',
+        \ 'cpp': 'vim_lsp',
+        \ 'go': 'vim_lsp',
+        \ 'javascript': 'vim_lsp',
+        \ 'typescript': 'vim_lsp',
+        \ }
 endif "}}}
 
 " zeavim.vim {{{
