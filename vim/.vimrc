@@ -37,16 +37,10 @@ endif
 call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
 Plug 'PProvost/vim-ps1'
+Plug 'Shougo/junkfile.vim'
 Plug 'Shougo/unite.vim'
-      \ | Plug 'Shougo/junkfile.vim'
       \ | Plug 'Shougo/neomru.vim'
-      \ | Plug 'Shougo/unite-help'
       \ | Plug 'Shougo/unite-outline'
-      \ | Plug 'Shougo/vimfiler', {
-      \   'on': ['VimFiler', 'VimFilerExplorer', 'VimFilerTab'],
-      \ }
-      \ | Plug 'osyo-manga/unite-quickfix'
-      \ | Plug 'ujihisa/unite-colorscheme'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
