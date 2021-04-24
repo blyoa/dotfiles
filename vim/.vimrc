@@ -774,6 +774,15 @@ if s:is_installed('vim-lsp')
   endfunction
 endif "}}}
 
+" vim-lsp-settings {{{
+let g:lsp_settings_filetype_python = ['pyls', 'pyls-ms', 'pyright-langserver']
+
+let g:lsp_settings_filetype_html = ['html-languageserver', 'tailwindcss-intellisense']
+let g:lsp_settings_filetype_css = ['css-languageserver', 'tailwindcss-intellisense']
+let g:lsp_settings_filetype_scss = ['css-languageserver', 'tailwindcss-intellisense']
+let g:lsp_settings_filetype_less = ['css-languageserver', 'tailwindcss-intellisense']
+" }}}
+
 " vim-matchup {{{
 if s:is_installed('vim-matchup')
   let g:matchup_matchparen_status_offscreen = 0
