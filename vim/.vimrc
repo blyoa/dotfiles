@@ -113,6 +113,11 @@ Plug 'kana/vim-textobj-user'
       \ |
       \ Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-submode'
+if has('win32') || has('win64')
+  Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': 'powershell.exe .\install.ps1' }
+else
+  Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+endif
 Plug 'iamcco/markdown-preview.nvim', {
       \ 'do': { -> mkdp#util#install() }
       \ }
@@ -413,6 +418,17 @@ if s:is_installed('asyncomplete.vim')
 
   augroup asyncomplete_rc
     autocmd!
+    if s:is_installed('asyncomplete-tabnine.vim')
+      autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+            \ 'name': 'tabnine',
+            \ 'allowlist': ['*'],
+            \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+            \ 'config': {
+              \   'line_limit': 1000,
+              \   'max_num_result': 20,
+              \  },
+              \ }))
+    endif
     if s:is_installed('asyncomplete-neosnippet.vim')
       autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
            \ 'name': 'neosnippet',
