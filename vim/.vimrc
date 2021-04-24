@@ -38,26 +38,20 @@ call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
 Plug 'PProvost/vim-ps1'
 Plug 'Shougo/unite.vim'
-      \ |
-      \ Plug 'Shougo/junkfile.vim'
-      \ |
-      \ Plug 'Shougo/neomru.vim'
-      \ |
-      \ Plug 'Shougo/unite-help'
-      \ |
-      \ Plug 'Shougo/unite-outline'
-      \ |
-      \ Plug 'Shougo/vimfiler', {
-      \ 'on': ['VimFiler', 'VimFilerExplorer', 'VimFilerTab'],
+      \ | Plug 'Shougo/junkfile.vim'
+      \ | Plug 'Shougo/neomru.vim'
+      \ | Plug 'Shougo/unite-help'
+      \ | Plug 'Shougo/unite-outline'
+      \ | Plug 'Shougo/vimfiler', {
+      \   'on': ['VimFiler', 'VimFilerExplorer', 'VimFilerTab'],
       \ }
-      \ |
-      \ Plug 'osyo-manga/unite-quickfix'
-      \ |
-      \ Plug 'ujihisa/unite-colorscheme'
+      \ | Plug 'osyo-manga/unite-quickfix'
+      \ | Plug 'ujihisa/unite-colorscheme'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
 Plug 'andymass/vim-matchup'
+Plug 'ap/vim-css-color'
 Plug 'blyoa/vim-nearest-g', {
       \ 'on': '<Plug>nearest-g:neighbor',
       \ }
@@ -68,16 +62,13 @@ Plug 'cespare/vim-toml'
 Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
-      \ |
-      \ Plug 'blyoa/ctrlp-history'
-      \ |
-      \ Plug 'mattn/ctrlp-register'
+      \ | Plug 'blyoa/ctrlp-history'
+      \ | Plug 'mattn/ctrlp-register'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'digitaltoad/vim-pug'
 Plug 'flazz/vim-colorschemes'
 Plug 'evanleck/vim-svelte'
 Plug 'gf3/peg.vim'
-Plug 'ap/vim-css-color'
 Plug 'glidenote/memolist.vim', {
       \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
       \ }
@@ -94,6 +85,9 @@ Plug 'hokorobi/plantuml-syntax', {
 Plug 'hynek/vim-python-pep8-indent', {
       \ 'for': ['python', 'python3', 'djangohtml'],
       \ }
+Plug 'iamcco/markdown-preview.nvim', {
+      \ 'do': { -> mkdp#util#install() }
+      \ }
 Plug 'itchyny/calendar.vim', {
       \ 'on': ['Calendar'],
       \ }
@@ -105,26 +99,24 @@ Plug 'junegunn/vim-easy-align', {
 Plug 'kana/vim-altr'
 Plug 'kana/vim-niceblock'
 Plug 'kana/vim-operator-user'
-      \ |
-      \ Plug 'kana/vim-operator-replace'
+      \ | Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-textobj-user'
-      \ |
-      \ Plug 'kana/vim-textobj-indent'
-      \ |
-      \ Plug 'thinca/vim-textobj-between'
+      \ | Plug 'kana/vim-textobj-indent'
+      \ | Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-submode'
 if has('win32') || has('win64')
   Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': 'powershell.exe .\install.ps1' }
 else
   Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
 endif
-Plug 'iamcco/markdown-preview.nvim', {
-      \ 'do': { -> mkdp#util#install() }
-      \ }
+Plug 'lambdalisue/fern.vim' |
+      \ Plug 'lambdalisue/fern-hijack.vim' |
+      \ Plug 'lambdalisue/fern-bookmark.vim' 
 Plug 'leafgarland/typescript-vim'
 Plug 'lervag/vimtex', {
       \ 'for': ['tex'],
       \ }
+Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
       \         'css', 'sass', 'scss', 'less'],
@@ -136,7 +128,9 @@ Plug 'mattn/vim-goimpl', {
       \ 'for': ['go']
       \ }
 Plug 'mattn/sonictemplate-vim'
-Plug 'machakann/vim-sandwich'
+Plug 'mattn/vim-xxdcursor', {
+      \ 'for': ['xxd'],
+      \ }
 if executable('ag') || executable('ack')
   Plug 'mileszs/ack.vim', {
         \ 'on' : ['Ack', 'AckAdd', 'LAck', 'LAckAdd']
@@ -155,14 +149,15 @@ Plug 'pangloss/vim-javascript', {
 Plug 'posva/vim-vue', {
       \ 'for': ['vue']
       \ }
-Plug 'prabirshrestha/async.vim' |
-Plug 'prabirshrestha/vim-lsp' |
-Plug 'prabirshrestha/asyncomplete.vim' |
-      \ Plug 'prabirshrestha/asyncomplete-lsp.vim' |
-      \ Plug 'prabirshrestha/asyncomplete-neosnippet.vim' |
-      \ Plug 'Shougo/neosnippet.vim' |
-      \ Plug 'Shougo/neosnippet-snippets' |
-      \ Plug 'honza/vim-snippets'
+Plug 'prabirshrestha/vim-lsp'
+      \ | Plug 'prabirshrestha/async.vim'
+      \ | Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+      \ | Plug 'prabirshrestha/asyncomplete-lsp.vim'
+      \ | Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+      \ | Plug 'Shougo/neosnippet.vim'
+      \ | Plug 'Shougo/neosnippet-snippets'
+      \ | Plug 'honza/vim-snippets'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
@@ -593,7 +588,6 @@ if s:is_installed('neocomplcache.vim')
   let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
 endif " }}}
 
-
 " neosnippet.vim {{{
 if s:is_installed('neosnippet.vim')
   " addtional snippet directory
@@ -714,7 +708,6 @@ if s:is_installed('vim-clang')
   let g:clang_diagsopt = ''
 endif "}}}
 
-
 " vim-lsp {{{
 if s:is_installed('vim-lsp')
 "   let g:lsp_auto_enable = 1
@@ -799,7 +792,6 @@ if s:is_installed('vim-operator-replace')
   " keymap
   map _ <Plug>(operator-replace)
 endif " }}}
-
 
 " vim-quickhl {{{
 if s:is_installed('vim-quickhl')
