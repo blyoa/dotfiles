@@ -185,6 +185,7 @@ Plug 'tyru/open-browser.vim'
       \     'for': ['markdown', 'mkd', 'rst', 'asciidoc'],
       \   }
 Plug 'vim-test/vim-test'
+Plug 'vim-voom/VOom'
 Plug 'vimwiki/vimwiki', {
       \ 'branch': 'dev',
       \ }
@@ -548,7 +549,7 @@ let g:tex_flavor = 'latex'
 "}}}
 
 " goyo.vim {{{
-if s:is_installed('goyo')
+if s:is_installed('goyo.vim')
   let g:goyo_width = 120
   function s:goyo_enter()
     if has('gui_running')
