@@ -53,6 +53,8 @@ Plug 'blyoa/vim-promela-syntax', {
       \ 'for': 'promela'
       \ }
 Plug 'cespare/vim-toml'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'cocopon/iceberg.vim'
 Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -60,7 +62,6 @@ Plug 'ctrlpvim/ctrlp.vim'
       \ | Plug 'mattn/ctrlp-register'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'digitaltoad/vim-pug'
-Plug 'flazz/vim-colorschemes'
 Plug 'evanleck/vim-svelte'
 Plug 'gf3/peg.vim'
 Plug 'glidenote/memolist.vim', {
@@ -226,7 +227,8 @@ set completeslash=slash
 syntax enable
 set synmaxcol=500
 if !s:is_windows || has('gui_running')
-  colorscheme Tomorrow-Night
+  colorscheme iceberg
+  hi! link Conceal Delimiter
 endif
 
 " window
@@ -500,7 +502,7 @@ endif "}}}
 " lightline.vim {{{
 if s:is_installed('lightline.vim')
   let g:lightline={
-        \ 'colorscheme': 'Tomorrow_Night',
+        \ 'colorscheme': 'iceberg',
         \ 'active': {
         \   'left': [[], ['preview', 'filename', 'modified', 'readonly',]],
         \   'right': [['linenr'], ['winnr'], ['filetype', 'fenc_ff',]],
