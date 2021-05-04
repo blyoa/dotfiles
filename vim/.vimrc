@@ -101,6 +101,7 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
       \ | Plug 'kana/vim-textobj-indent'
       \ | Plug 'thinca/vim-textobj-between'
+      \ | Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-submode'
 if s:is_windows
   Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': 'powershell.exe .\install.ps1' }
