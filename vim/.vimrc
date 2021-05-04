@@ -84,6 +84,8 @@ Plug 'hynek/vim-python-pep8-indent', {
 Plug 'iamcco/markdown-preview.nvim', {
       \ 'do': { -> mkdp#util#install() }
       \ }
+Plug 'inkarkat/vim-mark' |
+      \ Plug 'inkarkat/vim-ingo-library'
 Plug 'itchyny/calendar.vim', {
       \ 'on': ['Calendar'],
       \ }
@@ -164,7 +166,6 @@ Plug 'rhysd/vim-goyacc'
 Plug 'rust-lang/rust.vim', {
       \ 'for': ['rust'],
       \ }
-Plug 't9md/vim-quickhl'
 Plug 'sgur/vim-editorconfig'
 Plug 'thinca/vim-qfreplace', {
       \ 'for': ['unite', 'quickfix'],
@@ -776,6 +777,14 @@ let g:lsp_settings_filetype_scss = ['css-languageserver', 'tailwindcss-intellise
 let g:lsp_settings_filetype_less = ['css-languageserver', 'tailwindcss-intellisense']
 " }}}
 
+" vim-mark {{{
+if s:is_installed('vim-mark')
+  let g:mw_no_mappings = 1
+  nmap <Space>m <Plug>MarkSet
+  vmap <Space>m <Plug>MarkSet
+  nmap <Space>M <Plug>MarkAllClear
+endif " }}}
+
 " vim-markdown {{{
 if s:is_installed('vim-markdown')
   let g:vim_markdown_autowrite = 0
@@ -803,16 +812,6 @@ endif "}}}
 if s:is_installed('vim-operator-replace')
   " keymap
   map _ <Plug>(operator-replace)
-endif " }}}
-
-" vim-quickhl {{{
-if s:is_installed('vim-quickhl')
-  " keymap
-  nmap <Space>m <Plug>(quickhl-manual-this)
-  xmap <Space>m <Plug>(quickhl-manual-this)
-  nmap <Space>M <Plug>(quickhl-manual-reset)
-  xmap <Space>M <Plug>(quickhl-manual-reset)
-  nmap <Space>] <Plug>(quickhl-tag-toggle)
 endif " }}}
 
 " vim-quickrun {{{
