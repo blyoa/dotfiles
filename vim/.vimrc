@@ -819,6 +819,10 @@ if s:is_installed('vim-quickrun')
         \       'runner': 'job',
         \       'hook/output_encode/encoding': '&termencoding',
         \ },
+        \ 'asciidoc': {
+        \       'command': 'asciidoctor',
+        \       'cmdopt': '-r asciidoctor-pdf-cjk -r asciidoctor-diagram',
+        \ },
         \ 'c': {
         \       'cmdopt': '-std=c11',
         \ },
