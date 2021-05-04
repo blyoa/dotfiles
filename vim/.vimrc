@@ -90,6 +90,8 @@ Plug 'itchyny/calendar.vim', {
       \ 'on': ['Calendar'],
       \ }
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align', {
       \ 'on': ['EasyAlign', 'LiveEasyAlign',
       \        '<Plug>EasyAlign', '<Plug>LiveEasyAlign'],
@@ -545,6 +547,36 @@ endif " }}}
 let g:tex_flavor = 'latex'
 "}}}
 
+" goyo.vim {{{
+if s:is_installed('goyo')
+  let g:goyo_width = 120
+  function s:goyo_enter()
+    if has('gui_running')
+      set guioptions-=r
+    endif
+    if exists('g:vimtex_quickfix_mode')
+      let s:old_vimtex_quickfix_mode = g:vimtex_quickfix_mode
+      let g:vimtex_quickfix_mode = 0
+    endif
+  endfunction
+
+  function s:goyo_leave()
+    if has('gui_running')
+      set guioptions+=r
+    endif
+    if exists('g:vimtex_quickfix_mode') &&
+          \ exists('s:old_vimtex_quickfix_mode')
+      let g:vimtex_quickfix_mode = s:old_vimtex_quickfix_mode
+    endif
+  endfunction
+
+  augroup goyo_rc
+    autocmd!
+    autocmd User GoyoEnter nested call <SID>goyo_enter()
+    autocmd User GoyoLeave nested call <SID>goyo_leave()
+  augroup END
+endif " }}}
+
 " incsearch.vim {{{
 if s:is_installed('incsearch.vim')
   " keymap
@@ -585,6 +617,12 @@ if s:is_installed('lightline.vim')
     endfunction
   endif
 endif "}}}
+
+" limelight.vim {{{
+if s:is_installed('limelight.vim')
+  let g:limelight_default_coefficient = 0.8
+  let g:limelight_paragraph_span = 1
+endif " }}}
 
 "  markdown-preview.nvim {{{
 if s:is_installed('markdown-preview.nvim')
