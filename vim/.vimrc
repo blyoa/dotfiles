@@ -296,6 +296,11 @@ set nowildmenu
 set wildmode=list:longest,full
 set history=10000
 set cryptmethod=blowfish2
+
+" motion
+set nostartofline
+" }}}
+
 " syntax setting {{{
 function! s:asciidoc_syn() abort
   syn match myAsciidocTextAttribute /#\S.\{-}#/
