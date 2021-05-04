@@ -144,6 +144,9 @@ Plug 'othree/html5.vim', {
 Plug 'pangloss/vim-javascript', {
       \ 'for': ['html', 'djangohtml', 'javascript'],
       \ }
+Plug 'plasticboy/vim-markdown', {
+      \ 'for': ['markdown'],
+      \ }
 Plug 'posva/vim-vue', {
       \ 'for': ['vue']
       \ }
@@ -791,6 +794,19 @@ let g:lsp_settings_filetype_css = ['css-languageserver', 'tailwindcss-intellisen
 let g:lsp_settings_filetype_scss = ['css-languageserver', 'tailwindcss-intellisense']
 let g:lsp_settings_filetype_less = ['css-languageserver', 'tailwindcss-intellisense']
 " }}}
+
+" vim-markdown {{{
+if s:is_installed('vim-markdown')
+  let g:vim_markdown_autowrite = 0
+  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_frontmatter = 1
+
+  let g:vim_markdown_math = 1
+  let g:vim_markdown_strikethrough = 1
+
+  " disable gx remapping
+  nnoremap <Plug> <Plug>Markdown_OpenUrlUnderCursor
+endif " }}}
 
 " vim-matchup {{{
 if s:is_installed('vim-matchup')
