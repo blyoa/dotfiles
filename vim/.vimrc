@@ -296,6 +296,17 @@ set nowildmenu
 set wildmode=list:longest,full
 set history=10000
 set cryptmethod=blowfish2
+" syntax setting {{{
+function! s:asciidoc_syn() abort
+  syn match myAsciidocTextAttribute /#\S.\{-}#/
+  hi link myAsciidocTextAttribute Special
+  syn region asciidocList start=/^\s*\(-\|\*\{1,5}\)\s/ start=/^\s*\(\(\d\+\.\)\|\.\{1,5}\|\(\a\.\)\|\([ivxIVX]\+)\)\)\s\+/ start=/.\+\(:\{2,4}\|;;\)$/ end=/\(^[=*]\{4,}$\)\@=/ end=/\(^\(+\|--\)\?\s*$\)\@=/ contains=asciidocList.\+,asciidocQuoted.*,asciidocMacroAttributes,asciidocAttribute,myAsciidocTextAttribute
+endfunction
+
+augroup asciidoc_rc
+  autocmd!
+  autocmd BufReadPost,Syntax *.adoc call s:asciidoc_syn()
+augroup END
 " }}}
 
 " keymap {{{
