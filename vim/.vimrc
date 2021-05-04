@@ -1,11 +1,11 @@
 if !1 | finish | endif
 
-" flags {{{
-let s:is_windows=has('win16') || has('win32') || has('win64')
-let s:is_cygwin=has('win32unix')
-" }}}
 
 " variables {{{
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_mac = has('macunix')
+
 let s:share_dir='~/Dropbox/sync'
 let s:vimfiles='~/.vim'
 " for portable use
@@ -98,7 +98,7 @@ Plug 'kana/vim-textobj-user'
       \ | Plug 'kana/vim-textobj-indent'
       \ | Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-submode'
-if has('win32') || has('win64')
+if s:is_windows
   Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': 'powershell.exe .\install.ps1' }
 else
   Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
