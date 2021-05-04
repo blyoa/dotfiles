@@ -181,7 +181,6 @@ Plug 'tyru/open-browser.vim'
       \ | Plug 'previm/previm', {
       \     'for': ['markdown', 'mkd', 'rst', 'asciidoc'],
       \   }
-Plug 'vim-scripts/matchit.zip'
 Plug 'vim-test/vim-test'
 Plug 'vimwiki/vimwiki', {
       \ 'branch': 'dev',
