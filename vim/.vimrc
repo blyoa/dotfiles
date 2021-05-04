@@ -158,7 +158,6 @@ Plug 'prabirshrestha/asyncomplete.vim'
       \ | Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
       \ | Plug 'Shougo/neosnippet.vim'
       \ | Plug 'Shougo/neosnippet-snippets'
-      \ | Plug 'honza/vim-snippets'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
@@ -729,55 +728,38 @@ endif "}}}
 
 " vim-lsp {{{
 if s:is_installed('vim-lsp')
-"   let g:lsp_auto_enable = 1
   let g:lsp_async_completion = 1
   let g:lsp_preview_float = 0
+  let g:lsp_documentation_float = 0
+  let g:lsp_preview_keep_focus = 1
   let g:lsp_signature_help_enabled = 0
   let g:lsp_diagnostics_echo_cursor = 1
   augroup vim_lsp_rc
     autocmd!
-    if executable('clangd')
-      autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'clangd',
-            \ 'cmd': {server_info->['clangd']},
-            \ 'whitelist': ['c', 'cpp'],
-            \ })
-      autocmd FileType c,cpp call s:config_lsp()
-    endif
-    if executable('gopls')
-      autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'gopls',
-            \ 'cmd': {server_info->['gopls', '--mode=stdio']},
-            \ 'whitelist': ['go'],
-            \ })
-      autocmd FileType go call s:config_lsp()
-    endif
-    if executable('vls')
-      autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'vls',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'vls']},
-            \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-            \ 'whitelist': ['vue'],
-            \ })
-      autocmd FileType vue call s:config_lsp()
-    endif
-    if executable('pyls')
-      autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'pyls',
-            \ 'cmd': {server_info->['pyls']},
-            \ 'whitelist': ['python'],
-            \ 'workspace_config': {'pyls': {
-            \   'plugins': {
-            \     'pycodestyle': {'enabled': v:false},
-            \     'pydocstyle': {'enabled': v:false},
-            \     'pyflakes': {'enabled': v:false},
-            \     'pylint': {'enabled': v:false},
-            \     'yapf': {'enabled': v:false},
-            \   }
-            \ }},
-            \ })
-      autocmd FileType python call s:config_lsp()
-    endif
+    autocmd User lsp_buffer_enabled call s:config_lsp()
+    let g:lsp_settings = {}
+    let g:lsp_settings['efm-langserver'] = {'disabled': v:false}
+
+    let g:lsp_settings['pyls'] = {
+          \ 'config': {'pyls': {
+          \   'plugins': {
+          \     'pycodestyle': {'enabled': v:false},
+          \     'pydocstyle': {'enabled': v:false},
+          \     'pyflakes': {'enabled': v:false},
+          \     'pylint': {'enabled': v:false},
+          \     'yapf': {'enabled': v:false},
+          \   }
+          \ }},
+          \ 'workspace_config': {'pyls': {
+          \   'plugins': {
+          \     'pycodestyle': {'enabled': v:false},
+          \     'pydocstyle': {'enabled': v:false},
+          \     'pyflakes': {'enabled': v:false},
+          \     'pylint': {'enabled': v:false},
+          \     'yapf': {'enabled': v:false},
+          \   }
+          \ }}
+          \ }
   augroup END
 
   function! s:config_lsp()
