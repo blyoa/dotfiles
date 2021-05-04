@@ -162,6 +162,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
+Plug 'rhysd/vim-goyacc'
 Plug 'rust-lang/rust.vim', {
       \ 'for': ['rust'],
       \ }
