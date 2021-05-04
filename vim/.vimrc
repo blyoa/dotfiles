@@ -725,6 +725,11 @@ if s:is_installed('vim-clang')
   let g:clang_diagsopt = ''
 endif "}}}
 
+" vim-easy-align {{{
+if s:is_installed('vim-easy-align')
+    let g:easy_align_ignore_groups = []
+endif "}}}
+
 " vim-lsp {{{
 if s:is_installed('vim-lsp')
   let g:lsp_async_completion = 1
