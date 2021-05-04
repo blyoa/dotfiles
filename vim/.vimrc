@@ -452,6 +452,37 @@ if s:is_installed('asyncomplete.vim')
     endif
   augroup END
 
+  let s:source_priority = {
+        \ 'asyncomplete_lsp_.*': 1,
+        \ 'neosnippet': 2,
+        \ 'buffer': 3,
+        \ 'file': 4,
+        \ }
+  function! s:get_priority(sname)
+    for [sn, pr] in items(s:source_priority)
+      if a:sname =~# sn
+        return pr
+      endif
+    endfor
+    return -1
+  endfunction
+
+  function! s:asyncomplete_preprocessor(options, matches) abort
+    let items = []
+    for [source_name, matches] in items(a:matches)
+      for item in matches['items']
+        if stridx(item['word'], a:options['base']) == 0
+          let item['priority'] =
+                \ s:get_priority(source_name)
+          call add(items, item)
+        endif
+      endfor
+    endfor
+
+    let items = sort(items, {a, b -> a['priority'] - b['priority']})
+    call asyncomplete#preprocess_complete(a:options, items)
+  endfunction
+  let g:asyncomplete_preprocessor = [function('s:asyncomplete_preprocessor')]
 endif "}}}
 
 " calendar.vim {{{
