@@ -57,7 +57,6 @@ Plug 'blyoa/vim-promela-syntax', {
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'cocopon/iceberg.vim'
-Plug 'cocopon/vaffle.vim'
 Plug 'cohama/vim-hier'
 Plug 'ctrlpvim/ctrlp.vim'
       \ | Plug 'blyoa/ctrlp-history'
