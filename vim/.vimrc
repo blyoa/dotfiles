@@ -968,12 +968,20 @@ if s:is_installed('vimwiki')
   let g:vimwiki_list_ignore_newline = 0
   let g:vimwiki_text_ignore_newline = 0
   let g:vimwiki_list = [
-        \ {'path': s:share_dir . '/.vim/vimwiki/default/',
-        \ 'path_html': s:share_dir . '/.vim/vimwiki/default_html/',
-        \ 'ext': '.viki', 'auto_tags': 1},
-        \ {'path': s:share_dir . '/.vim/vimwiki/private/',
-        \ 'path_html': s:share_dir . '/.vim/vimwiki/private_html/',
-        \ 'ext': '.viki', 'auto_tags': 1},
+        \ {
+        \   'path': s:share_dir . '/.vim/vimwiki/default/',
+        \   'path_html': s:share_dir . '/.vim/vimwiki/default_html/',
+        \   'syntax': 'markdown',
+        \   'ext': '.vmd',
+        \   'auto_tags': 1,
+        \ },
+        \ {
+        \   'path': s:share_dir . '/.vim/vimwiki/private/',
+        \   'path_html': s:share_dir . '/.vim/vimwiki/private_html/',
+        \   'syntax': 'markdown',
+        \   'ext': '.vmd',
+        \   'auto_tags': 1,
+        \ },
         \ ]
 endif "}}}
 
