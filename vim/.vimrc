@@ -25,7 +25,6 @@ endfunction
 " }}}
 
 " initialization {{{
-" language
 language C
 set langmenu=none
 
@@ -497,7 +496,6 @@ endif "}}}
 
 " caw.vim {{{
 if s:is_installed('caw.vim')
-  " keymap
   nmap <Leader>c <Plug>(caw:hatpos:toggle)
   vmap <Leader>c <Plug>(caw:hatpos:toggle)
 endif " }}}
@@ -505,7 +503,6 @@ endif " }}}
 " ctrlp.vim {{{
 if s:is_installed('ctrlp.vim')
   let g:ctrlp_show_hidden = 0
-  " enable extensions
   let g:ctrlp_extensions=['mixed']
 
   " disable switch buffer
@@ -515,7 +512,6 @@ if s:is_installed('ctrlp.vim')
     let g:ctrlp_user_command = 'files -a -i="(\.git|\.hg|\.svn|_darcs|\.bzr|node_modules)$" %s'
   endif
 
-  " keymap
   let g:ctrlp_map=''
   nnoremap [ctrlp] <Nop>
   nmap  <C-p> [ctrlp]
@@ -524,12 +520,12 @@ if s:is_installed('ctrlp.vim')
   nnoremap <silent> [ctrlp]m :<C-u>CtrlPBookmarkDir<CR>
   nnoremap <silent> [ctrlp]M :<C-u>CtrlPBookmarkDirAdd!<CR>
   nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
-  " ctrlp-history
+
   if s:is_installed('ctrlp-history')
     nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdHistory<CR>
     nnoremap <silent> [ctrlp]/ :<C-u>CtrlPSearchHistory<CR>
   endif
-  " ctrlp-register
+
   if s:is_installed('ctrlp-register')
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
   endif
@@ -579,7 +575,6 @@ endif " }}}
 
 " incsearch.vim {{{
 if s:is_installed('incsearch.vim')
-  " keymap
   map g/ <Plug>(incsearch-stay)
 endif "}}}
 
@@ -609,7 +604,7 @@ if s:is_installed('lightline.vim')
         \ },
         \ }
 
-  " avoid overwriting statusline ctrlp.vim
+  " avoid overwriting statusline by ctrlp.vim
   if s:is_installed('ctrlp.vim')
     let g:ctrlp_buffer_func = {'enter': 'CtrlPEnter'}
     function! CtrlPEnter() abort
@@ -652,7 +647,6 @@ if s:is_installed('memolist.vim')
     let g:memolist_path=expand(s:vimfiles . '/memolist')
   endif
 
-  " suffix type
   let g:memolist_memo_suffix='mkd'
 
   " settings to use unite
@@ -666,7 +660,7 @@ endif " }}}
 if s:is_installed('neocomplcache.vim')
   let g:neocomplcache_enable_at_startup=1
 
-  " Enable heavy omni completion.
+  " enable heavy omni completion.
   if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
   endif
@@ -677,12 +671,10 @@ endif " }}}
 
 " neosnippet.vim {{{
 if s:is_installed('neosnippet.vim')
-  " addtional snippet directory
   let g:neosnippet#snippets_directory=s:vimfiles . '/snippets'
   let g:neosnippet#enable_snipmate_compatibility = 1
   let g:neosnippet#enable_completed_snippet = 1
 
-  " keymap
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
   xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -703,7 +695,6 @@ if s:is_installed('open-browser.vim')
         \ 'weblio': 'http://ejje.weblio.jp/content/{query}',
         \ }
 
-  " keymap
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
 
@@ -738,21 +729,14 @@ endif " }}}
 if s:is_installed('unite.vim')
   let g:unite_source_line_enable_highlight=1
 
-  " keymap
   nnoremap [unite] <Nop>
   nmap  <Space>u [unite]
 
-  " resume
   nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
-  " buffer
   nnoremap <silent> [unite]b :<C-u>Unite buffer file_mru -start-insert<CR>
-  " change
   nnoremap <silent> [unite]g; :<C-u>Unite -buffer-name=change change<CR>
-  " jump
   nnoremap <silent> [unite]g<C-o> :<C-u>Unite -buffer-name=jump jump<CR>
-  " line
   nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=line line -start-insert -no-quit<CR>
-  " grep
   nnoremap <silent> [unite]gr :<C-u>Unite -buffer-name=grep grep -start-insert -no-quit<CR>
 endif " }}}
 
@@ -763,7 +747,6 @@ endif "}}}
 
 " vim-altr {{{
 if s:is_installed('vim-altr')
-  " keymap
   nmap <F2> <Plug>(altr-forward)
   nmap <S-F2> <Plug>(altr-back)
 
@@ -890,13 +873,11 @@ endif "}}}
 
 " vim-operator-replace {{{
 if s:is_installed('vim-operator-replace')
-  " keymap
   map _ <Plug>(operator-replace)
 endif " }}}
 
 " vim-quickrun {{{
 if s:is_installed('vim-quickrun')
-  " async run
   let g:quickrun_config={
         \ '_': {
         \       'runner': 'job',
@@ -919,7 +900,6 @@ if s:is_installed('vim-quickrun')
         \       'hook/cd/directory': '%S:h',
         \ }}
 
-  " keymap
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : '\<C-c>'
 endif " }}}
 
@@ -989,7 +969,6 @@ if s:is_installed('vim-textobj-between')
   " disable default keymap
   let g:textobj_between_no_default_key_mappings=1
 
-  " keymap
   omap aS <Plug>(textobj-between-a)
   xmap aS <Plug>(textobj-between-a)
   omap iS <Plug>(textobj-between-i)
