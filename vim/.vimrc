@@ -965,6 +965,13 @@ if s:is_installed('vim-submode')
   call submode#map('winsize', 'n', '', '-', '<C-w>-')
 endif " }}}
 
+" vim-table-mode {{{
+if s:is_installed('vim-table-mode')
+  let g:table_mode_disable_mappings = 1
+  let g:table_mode_disable_tableize_mappings = 1
+  let g:table_mode_map_prefix = '[tablemode]'
+endif " }}}
+
 " vim-textobj-between {{{
 if s:is_installed('vim-textobj-between')
   " disable default keymap
