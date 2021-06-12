@@ -901,6 +901,7 @@ if s:is_installed('vim-quickrun')
         \ }}
 
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : '\<C-c>'
+  map <Leader>r <Plug>(quickrun)
 endif " }}}
 
 " vim-racer {{{
