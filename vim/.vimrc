@@ -303,6 +303,10 @@ set wildmode=list:longest,full
 set history=10000
 set cryptmethod=blowfish2
 
+" grep
+set grepprg=rg\ --vimgrep\ --no-heading
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
 " motion
 set nostartofline
 " }}}
