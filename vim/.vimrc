@@ -155,11 +155,11 @@ Plug 'posva/vim-vue', {
       \ }
 Plug 'prabirshrestha/vim-lsp'
       \ | Plug 'mattn/vim-lsp-settings'
+      \ | Plug 'hrsh7th/vim-vsnip'
+      \ | Plug 'hrsh7th/vim-vsnip-integ'
+      \ | Plug 'rafamadriz/friendly-snippets'
 Plug 'prabirshrestha/asyncomplete.vim'
-      \ | Plug 'prabirshrestha/asyncomplete-lsp.vim'
-      \ | Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
-      \ | Plug 'Shougo/neosnippet.vim'
-      \ | Plug 'Shougo/neosnippet-snippets'
+     \ | Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
@@ -444,13 +444,6 @@ if s:is_installed('asyncomplete.vim')
               \  },
               \ }))
     endif
-    if s:is_installed('asyncomplete-neosnippet.vim')
-      autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-           \ 'name': 'neosnippet',
-           \ 'whitelist': ['*'],
-           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-           \ }))
-    endif
   augroup END
 
   let s:source_priority = {
@@ -667,24 +660,6 @@ if s:is_installed('neocomplcache.vim')
 
   " golang
   let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-endif " }}}
-
-" neosnippet.vim {{{
-if s:is_installed('neosnippet.vim')
-  let g:neosnippet#snippets_directory=s:vimfiles . '/snippets'
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  let g:neosnippet#enable_completed_snippet = 1
-
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \  : pumvisible() ? "\<C-n>": "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \  : "\<TAB>"
 endif " }}}
 
 " openbrowser.vim {{{
@@ -993,6 +968,18 @@ if s:is_installed('vim-test')
 
   let test#strategy = 'vimterminal'
 
+endif " }}}
+
+" vim-vsnip {{{
+if s:is_installed('vim-vsnip')
+  imap <expr> <C-k> complete_info(['selected']).selected != -1 ? 
+       \ '<C-y>' : (vsnip#available() ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>')
+  smap <expr> <C-k> complete_info(['selected']).selected != -1 ? 
+       \ '<C-y>' : (vsnip#available() ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>')
+  imap <expr> <C-l> complete_info(['selected']).selected != -1 ? 
+       \ '<C-y>' : (vsnip#available() ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>')
+  smap <expr> <C-l> complete_info(['selected']).selected != -1 ? 
+       \ '<C-y>' : (vsnip#available() ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>')
 endif " }}}
 
 " vimtex {{{
