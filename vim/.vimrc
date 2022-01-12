@@ -789,9 +789,10 @@ if s:is_installed('vim-lsp')
   function! s:config_lsp()
       nmap <buffer> gd <Plug>(lsp-definition)
       nmap <buffer> gD <Plug>(lsp-type-definition)
-      nmap <buffer> K <Plug>(lsp-hover)
-      nmap <buffer> <Leader>la <Plug>(lsp-action)
-      nmap <buffer> <Leader>li <Plug>(lsp-implemantation)
+      nmap <buffer> K <Plug>(lsp-hover-preview)
+      nmap <buffer> <Leader>la <Plug>(lsp-code-action)
+      vnoremap <buffer> <Leader>la :LspCodeAction<CR>
+      nmap <buffer> <Leader>li <Plug>(lsp-implementation)
       nmap <buffer> <Leader>lr <Plug>(lsp-references)
       nmap <buffer> <Leader>lR <Plug>(lsp-rename)
       setlocal omnifunc=lsp#complete
