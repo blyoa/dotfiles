@@ -428,7 +428,7 @@ endif "}}}
 if s:is_installed('asyncomplete.vim')
   let g:asyncomplete_smart_completion = 0
   let g:asyncomplete_remove_duplicates = 0
-  imap <C-Space> <Plug>(asyncomplete_force_refresh)
+  imap <C-@> <Plug>(asyncomplete_force_refresh)
   inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
 
   augroup asyncomplete_rc
