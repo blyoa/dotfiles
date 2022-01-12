@@ -958,6 +958,11 @@ endif " }}}
 
 " vim-test {{{
 if s:is_installed('vim-test')
+  nnoremap <Leader>tt :<C-u>TestNearest<CR>
+  nnoremap <Leader>tf :<C-u>TestFile<CR>
+  nnoremap <Leader>tl :<C-u>TestLast<CR>
+  let test#vim#term_position = ''
+
   function! s:background_vimterminal(cmd)
     silent call test#strategy#vimterminal(a:cmd)
     wincmd p
