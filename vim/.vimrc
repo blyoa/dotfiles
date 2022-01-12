@@ -489,6 +489,11 @@ endif " }}}
 if s:is_installed('ctrlp.vim')
   let g:ctrlp_show_hidden = 0
   let g:ctrlp_extensions=['mixed']
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|cache)$|node_modules$',
+    \ 'file': '\v\.(exe|so|dll)$|\..*\.sw[a-z]$',
+    \ }
+
 
   " disable switch buffer
   let g:ctrlp_switch_buffer = ''
