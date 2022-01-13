@@ -70,6 +70,7 @@ Plug 'glidenote/memolist.vim', {
 Plug 'hail2u/vim-css3-syntax', {
       \ 'for': ['css', 'sass', 'scss', 'less'],
       \ }
+Plug 'hashivim/vim-terraform'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/vim-asterisk', {
       \ 'on': '<Plug>(asterisk-',
