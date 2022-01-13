@@ -491,7 +491,8 @@ endif " }}}
 
 " ctrlp.vim {{{
 if s:is_installed('ctrlp.vim')
-  let g:ctrlp_show_hidden = 0
+  let g:ctrlp_mruf_max = 2000
+  let g:ctrlp_show_hidden = 1
   let g:ctrlp_extensions=['mixed']
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|cache)$|node_modules$',
