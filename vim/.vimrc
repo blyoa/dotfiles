@@ -319,8 +319,10 @@ set history=10000
 set cryptmethod=blowfish2
 
 " grep
-set grepprg=rg\ --vimgrep\ --no-heading
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --sort-files
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " motion
 set nostartofline
