@@ -45,6 +45,15 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {
       \ 'do': 'make',
       \ }
+Plug 'Shougo/ddc.vim'
+      \ | Plug 'vim-denops/denops.vim'
+      \ | Plug 'Shougo/ddc-ui-native'
+      \ | Plug 'Shougo/ddc-matcher_head'
+      \ | Plug 'Shougo/ddc-sorter_rank'
+      \ | Plug 'LumaKernel/ddc-tabnine'
+      \ | Plug 'Shougo/ddc-around'
+      \ | Plug 'Shougo/ddc-mocword'
+      \ | Plug 'shun/ddc-vim-lsp'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'blyoa/vim-nearest-g', {
@@ -105,11 +114,6 @@ Plug 'kana/vim-textobj-user'
       \ | Plug 'thinca/vim-textobj-between'
       \ | Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-submode'
-if s:is_windows
-  Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': 'powershell.exe .\install.ps1' }
-else
-  Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
-endif
 Plug 'lambdalisue/fern.vim' |
       \ Plug 'lambdalisue/fern-hijack.vim' |
       \ Plug 'lambdalisue/fern-bookmark.vim' 
@@ -154,8 +158,6 @@ Plug 'prabirshrestha/vim-lsp'
       \ | Plug 'hrsh7th/vim-vsnip'
       \ | Plug 'hrsh7th/vim-vsnip-integ'
       \ | Plug 'rafamadriz/friendly-snippets'
-Plug 'prabirshrestha/asyncomplete.vim'
-     \ | Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
@@ -424,61 +426,6 @@ if s:is_installed('ale')
   nmap <F8> <Plug>(ale_fix)
 endif "}}}
 
-" asyncomplete.vim {{{
-if s:is_installed('asyncomplete.vim')
-  let g:asyncomplete_smart_completion = 0
-  let g:asyncomplete_remove_duplicates = 0
-  imap <C-@> <Plug>(asyncomplete_force_refresh)
-  inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
-
-  augroup asyncomplete_rc
-    autocmd!
-    if s:is_installed('asyncomplete-tabnine.vim')
-      autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
-            \ 'name': 'tabnine',
-            \ 'allowlist': ['*'],
-            \ 'completor': function('asyncomplete#sources#tabnine#completor'),
-            \ 'config': {
-              \   'line_limit': 1000,
-              \   'max_num_result': 20,
-              \  },
-              \ }))
-    endif
-  augroup END
-
-  let s:source_priority = {
-        \ 'asyncomplete_lsp_.*': 1,
-        \ 'neosnippet': 2,
-        \ 'buffer': 3,
-        \ 'file': 4,
-        \ }
-  function! s:get_priority(sname)
-    for [sn, pr] in items(s:source_priority)
-      if a:sname =~# sn
-        return pr
-      endif
-    endfor
-    return -1
-  endfunction
-
-  function! s:asyncomplete_preprocessor(options, matches) abort
-    let items = []
-    for [source_name, matches] in items(a:matches)
-      for item in matches['items']
-        if stridx(item['word'], a:options['base']) == 0
-          let item['priority'] =
-                \ s:get_priority(source_name)
-          call add(items, item)
-        endif
-      endfor
-    endfor
-
-    let items = sort(items, {a, b -> a['priority'] - b['priority']})
-    call asyncomplete#preprocess_complete(a:options, items)
-  endfunction
-  let g:asyncomplete_preprocessor = [function('s:asyncomplete_preprocessor')]
-endif "}}}
-
 " calendar.vim {{{
 if s:is_installed('calendar.vim')
   let g:calendar_first_day = 'sunday'
@@ -528,6 +475,46 @@ if s:is_installed('ctrlp.vim')
   if s:is_installed('ctrlp-register')
     nnoremap <silent> [ctrlp]r :<C-u>CtrlPRegister<CR>
   endif
+endif "}}}
+
+" ddc.vim {{{
+if s:is_installed('ddc.vim')
+  inoremap <expr> <C-@> ddc#map#manual_complete()
+  call ddc#custom#patch_global('ui', 'native')
+  call ddc#custom#patch_global('sources', ['around', 'tabnine', 'mocword', 'vim-lsp', 'vsnip'])
+  call ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+          \   'matchers': ['matcher_head'],
+          \   'sorters': ['sorter_rank'],
+          \   'minAutoCompleteLength': 1,
+          \ },
+        \ 'around': {
+          \   'mark': '[around]',
+          \   'maxItems': 2,
+          \ },
+        \ 'tabnine': {
+          \   'mark': '[tabnine]',
+          \   'maxItems': 5,
+          \   'isVolatile': v:true,
+          \ },
+        \ 'mocword': {
+          \   'mark': '[mocword]',
+          \   'maxItems': 2,
+          \   'minAutoCompleteLength': 2,
+          \   'isVolatile': v:true,
+          \ },
+        \ 'vsnip': {
+          \   'mark': '[snip]',
+          \   'minAutoCompleteLength': 1,
+          \ },
+        \ 'vim-lsp': {
+          \   'mark': '[lsp]',
+          \   'dup': 'keep',
+          \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+          \   'minAutoCompleteLength': 1,
+          \ },
+        \ })
+  call ddc#enable()
 endif "}}}
 
 " emmet-vim {{{
