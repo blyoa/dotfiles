@@ -249,10 +249,8 @@ set completeslash=slash
 " colorscheme
 syntax enable
 set synmaxcol=500
-if !s:is_windows || has('gui_running')
-  colorscheme iceberg
-  hi! link Conceal Delimiter
-endif
+colorscheme iceberg
+hi! link Conceal Delimiter
 
 " window
 set splitbelow
