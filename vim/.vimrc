@@ -221,6 +221,21 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
 
+" comes from :h tmux-integration
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  set ttymouse=sgr
+
+  let &t_BE = "\<Esc>[?2004h"
+  let &t_BD = "\<Esc>[?2004l"
+  let &t_PS = "\<Esc>[200~"
+  let &t_PE = "\<Esc>[201~"
+
+  execute "silent! set <xUp>=\<Esc>[@;*A"
+  execute "silent! set <xDown>=\<Esc>[@;*B"
+  execute "silent! set <xRight>=\<Esc>[@;*C"
+  execute "silent! set <xLeft>=\<Esc>[@;*D"
+endif
+
 " statusline
 set laststatus=2
 let &statusline="%{expand('%:p:.')}\ %w%r\%m"
