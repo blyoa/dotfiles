@@ -38,6 +38,7 @@ endif
 call plug#begin(s:plugin_root_dir)
 Plug 'KabbAmine/zeavim.vim'
 Plug 'PProvost/vim-ps1'
+Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/junkfile.vim'
 Plug 'Shougo/unite.vim'
       \ | Plug 'Shougo/neomru.vim'
@@ -455,6 +456,23 @@ if s:is_installed('caw.vim')
   vmap <Leader>c <Plug>(caw:hatpos:toggle)
 endif " }}}
 
+" context_filetype.vim {{{
+if s:is_installed('context_filetype.vim')
+  let g:context_filetype#filetypes = {
+        \ 'vimwiki': [
+        \   {
+        \     'start' : '^\s*```\s*\(\h\w*\)',
+        \     'end' : '^\s*```$',
+        \     'filetype' : '\1',
+        \   },
+        \   {
+        \     'start' : '^\s*{{{\s*\(\h\w*\)',
+        \     'end' : '^\s*}}}$',
+        \     'filetype' : '\1',
+        \   },
+        \ ]}
+endif " }}}
+
 " ctrlp.vim {{{
 if s:is_installed('ctrlp.vim')
   let g:ctrlp_mruf_max = 2000
@@ -529,7 +547,9 @@ if s:is_installed('ddc.vim')
           \   'minAutoCompleteLength': 1,
           \ },
         \ })
-  call ddc#enable()
+  call ddc#enable({
+        \ 'context_filetype': 'context_filetype'
+        \ })
 endif "}}}
 
 " emmet-vim {{{
