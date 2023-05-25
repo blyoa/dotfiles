@@ -167,9 +167,7 @@ Plug 'rust-lang/rust.vim', {
       \ 'for': ['rust'],
       \ }
 Plug 'sgur/vim-editorconfig'
-Plug 'thinca/vim-qfreplace', {
-      \ 'for': ['unite', 'quickfix'],
-      \ }
+Plug 'thinca/vim-qfreplace'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-ref'
 Plug 'tpope/vim-fugitive'
