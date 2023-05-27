@@ -89,6 +89,7 @@ zinit light-mode for \
 
 zinit light agkozak/zsh-z
 
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
