@@ -18,7 +18,7 @@ setopt hist_ignore_space
 # }}}
 
 # autoload {{{
-autoload -Uz compinit; compinit
+autoload -Uz compinit
 autoload -Uz colors; colors
 autoload -Uz add-zsh-hook
 # }}}
@@ -94,9 +94,24 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+
+zinit light-mode as'program' from'gh-r' \
+  mv'rtx* -> rtx' \
+  atclone'mkdir -p ~/.local/share/rtx/completions &&
+         ./rtx completion zsh > ~/.local/share/rtx/completions/_rtx' \
+  atpull'%atclone' \
+  pick'$ZPFX/bin/rtx' \
+  for jdxcode/rtx
 # }}}
 
-# vim: foldmethod=marker
+# plugin settings {{{
+eval "$(rtx activate zsh)"
+fpath=(~/.local/share/rtx/completions/_rtx $fpath)
+# }}}
+
+compinit
 
 # added by travis gem
 [ -f /home/vagrant/.travis/travis.sh ] && source /home/vagrant/.travis/travis.sh
+
+# vim: foldmethod=marker
