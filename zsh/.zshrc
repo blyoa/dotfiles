@@ -88,6 +88,7 @@ zinit light-mode for \
 # }}}
 
 zinit light agkozak/zsh-z
+zinit light reegnz/jq-zsh-plugin
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/history-search-multi-word
