@@ -65,6 +65,8 @@ alias dir='ls --color=auto --format=vertical'
 
 alias du='du -h'
 alias df='df -h'
+
+alias ghq-cd='cd $(ghq list -p | peco)'
 # }}}
 
 # zplug {{{
