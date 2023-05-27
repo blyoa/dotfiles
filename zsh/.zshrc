@@ -69,27 +69,26 @@ alias df='df -h'
 alias ghq-cd='cd $(ghq list -p | peco)'
 # }}}
 
-# zplug {{{
-source ~/.zplug/init.zsh
-zplug "rupa/z", use:z.sh, nice:10
-#zplug "peco/peco", as:command, from:gh-r
-zplug "zsh-users/zsh-completions", as:command
-#"zplug "riywo/anyenv", as:command, dir:"~/.anyenv", use:bin, if:"[[ $OSTYPE == *linux* ]]"
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# zinit {{{
+# zinit installer {{{
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P '%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f'
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+        print -P '%F{33}▓▒░ %F{34}Installation successful.%f%b' || \
+        print -P '%F{160}▓▒░ The clone has failed.%f%b'
 fi
 
-zplug load --verbose
+. "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit light-mode for \
+  zdharma-continuum/zinit-annex-{'readurl','bin-gem-node','patch-dl','rust'}
 # }}}
 
-# plugin settings {{{
-if type anyenv 2>/dev/null 2>&1; then
-    eval "$(anyenv init - zsh)"
-fi
+zinit light rupa/z
+zinit light zsh-users/zsh-completions
 # }}}
 
 # vim: foldmethod=marker
