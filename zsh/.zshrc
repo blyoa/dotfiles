@@ -88,6 +88,7 @@ zinit light-mode for \
 # }}}
 
 zinit light agkozak/zsh-z
+zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 # }}}
 
