@@ -87,7 +87,7 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-{'readurl','bin-gem-node','patch-dl','rust'}
 # }}}
 
-zinit light rupa/z
+zinit light agkozak/zsh-z
 zinit light zsh-users/zsh-completions
 # }}}
 
