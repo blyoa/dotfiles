@@ -95,13 +95,12 @@ zinit light zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
-zinit light-mode as'program' from'gh-r' \
-  mv'rtx* -> rtx' \
+zinit light-mode as'program' from'gh-r' bpick'*.tar.gz' \
   atclone'mkdir -p ~/.local/share/rtx/completions &&
-         ./rtx completion zsh > ~/.local/share/rtx/completions/_rtx' \
+          ./rtx/bin/rtx completion zsh > ~/.local/share/rtx/completions/_rtx' \
   atpull'%atclone' \
-  pick'$ZPFX/bin/rtx' \
-  for jdxcode/rtx
+  pick'rtx/bin/rtx' \
+  for jdx/rtx
 # }}}
 
 # plugin settings {{{
