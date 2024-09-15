@@ -1006,16 +1006,21 @@ if s:is_installed('vim-test')
   nnoremap <Leader>tt :<C-u>TestNearest<CR>
   nnoremap <Leader>tf :<C-u>TestFile<CR>
   nnoremap <Leader>tl :<C-u>TestLast<CR>
-  let test#vim#term_position = ''
+  let test#vim#term_position = 'botright'
 
   function! s:background_vimterminal(cmd)
     silent call test#strategy#vimterminal(a:cmd)
     wincmd p
   endfunction
-  let g:test#custom_strategies = {'background-vimterminal': function('s:background_vimterminal')}
 
-  let test#strategy = 'vimterminal'
+  function! s:custom_mapped_vimterminal(cmd)
+    let term_position = get(g:, 'test#vim#term_position', 'botright')
+    call term_start(!s:is_windows ? ['/bin/sh', '-c', a:cmd] : ['cmd.exe', '/c', a:cmd], {'term_name': a:cmd})
+    noremap <buffer> <Enter> :bd<CR>
+  endfunction
 
+  let g:test#custom_strategies = {'custom_mapped_vimterminal': function('s:custom_mapped_vimterminal')}
+  let test#strategy = 'custom_mapped_vimterminal'
 endif " }}}
 
 " vim-vsnip {{{
