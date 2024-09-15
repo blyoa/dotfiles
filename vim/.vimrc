@@ -317,6 +317,10 @@ set wildmode=list:longest,full
 set history=10000
 set cryptmethod=blowfish2
 
+if exists('&jumpoptions')
+  set jumpoptions=stack
+endif
+
 " grep
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --no-heading\ --sort-files
