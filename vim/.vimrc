@@ -381,6 +381,7 @@ if s:is_installed('ale')
   let g:ale_sign_error = 'E>'
   let g:ale_sign_warning = 'W>'
   let g:ale_sign_info = 'I>'
+  let g:ale_virtualtext_cursor = 1
   let g:ale_fix_on_save = 1
   let g:ale_fix_on_save_ignore = {
         \ 'markdown': ['prettier'],
