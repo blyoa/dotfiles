@@ -474,7 +474,7 @@ if s:is_installed('ctrlp.vim')
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_extensions=['mixed']
   let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|cache)$|node_modules$',
+    \ 'dir':  '\v[\/]\.(git|hg|svn|cache|mypy_cache)$|node_modules$',
     \ 'file': '\v\.(exe|so|dll)$|\..*\.sw[a-z]|\.DS_Store$',
     \ }
 
