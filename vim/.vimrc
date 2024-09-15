@@ -807,11 +807,15 @@ endif "}}}
 " vim-lsp {{{
 if s:is_installed('vim-lsp')
   let g:lsp_async_completion = 1
-  let g:lsp_preview_float = 0
   let g:lsp_documentation_float = 0
   let g:lsp_preview_keep_focus = 1
+  let g:lsp_preview_float = 0
   let g:lsp_signature_help_enabled = 1
   let g:lsp_diagnostics_echo_cursor = 1
+  let g:lsp_diagnostics_echo_delay = 100
+  let g:lsp_diagnostics_virtual_text_enabled = 0
+  let g:lsp_diagnostics_float_cursor = 1
+  let g:lsp_diagnostics_float_delay = 100
   augroup vim_lsp_rc
     autocmd!
     autocmd User lsp_buffer_enabled call s:config_lsp()
