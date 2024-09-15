@@ -432,8 +432,6 @@ if s:is_installed('ale')
   let g:ale_python_flake8_options = '--ignore E124,C0111,D100,D101,D102,D103,D104,D105,D106,D107,E501,W503'
   let g:ale_python_pylint_options = '--disable C0111,C0103,R0903'
   let g:ale_python_mypy_options = '--ignore-missing-imports'
-  let g:ale_python_black_options = '--skip-string-normalization'
-
   nmap <F8> <Plug>(ale_fix)
 endif "}}}
 
