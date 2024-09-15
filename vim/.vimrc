@@ -854,6 +854,9 @@ if s:is_installed('vim-lsp')
   augroup END
 
   function! s:config_lsp()
+      if &ft ==# 'fern'
+        return
+      endif
       nmap <buffer> gd <Plug>(lsp-definition)
       nmap <buffer> gD <Plug>(lsp-type-definition)
       nmap <buffer> K <Plug>(lsp-hover-preview)
