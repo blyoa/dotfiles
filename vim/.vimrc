@@ -1,6 +1,5 @@
 if !1 | finish | endif
 
-
 " variables {{{
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin = has('win32unix')
