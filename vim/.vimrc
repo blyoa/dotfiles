@@ -224,6 +224,9 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   let &t_PS = "\<Esc>[200~"
   let &t_PE = "\<Esc>[201~"
 
+  let &t_Ts = "\e[9m"
+  let &t_Te = "\e[29m"
+
   execute "silent! set <xUp>=\<Esc>[@;*A"
   execute "silent! set <xDown>=\<Esc>[@;*B"
   execute "silent! set <xRight>=\<Esc>[@;*C"
