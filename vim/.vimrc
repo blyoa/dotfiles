@@ -822,6 +822,15 @@ if s:is_installed('vim-lsp')
     let g:lsp_settings = {}
     let g:lsp_settings['efm-langserver'] = {'disabled': v:false}
 
+    let g:lsp_settings['gopls'] = {
+          \ 'workspace_config': {
+          \   'staticcheck': v:true,
+          \   'formatting': {
+          \     'gofumpt': v:true,
+          \   },
+          \ },
+          \ }
+
     let g:lsp_settings['pyls'] = {
           \ 'config': {'pyls': {
           \   'plugins': {
