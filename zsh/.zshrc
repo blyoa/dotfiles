@@ -92,6 +92,7 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-{'readurl','bin-gem-node','patch-dl','rust'}
 # }}}
 
+zinit light mollifier/cd-gitroot
 zinit light agkozak/zsh-z
 zinit light reegnz/jq-zsh-plugin
 
