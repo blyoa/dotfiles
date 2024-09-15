@@ -567,6 +567,7 @@ if s:is_installed('emmet-vim')
         \ 'variables': {
         \     'lang': 'ja',
         \ }}
+  let g:user_emmet_leader_key = '<C-,>'
 endif " }}}
 
 " ft-tex-plugin {{{
