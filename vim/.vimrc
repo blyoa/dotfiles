@@ -7,8 +7,6 @@ let s:is_mac = has('macunix')
 
 let s:share_dir='~/Dropbox/sync'
 let s:vimfiles='~/.vim'
-" for portable use
-"let s:vimfiles=$VIM . '/.vim'
 
 let s:plugin_root_dir = s:vimfiles . '/bundle'
 " }}}
