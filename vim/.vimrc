@@ -133,6 +133,7 @@ Plug 'mattn/sonictemplate-vim'
 Plug 'mattn/vim-xxdcursor', {
       \ 'for': ['xxd'],
       \ }
+Plug 'ojroques/vim-oscyank'
 Plug 'osyo-manga/vim-reanimate', {
       \ 'on': ['ReanimateLoad', 'ReanimateLoadLatest',
       \        'ReanimateSave', 'ReanimateSwitch'],
@@ -899,6 +900,25 @@ endif "}}}
 if s:is_installed('vim-operator-replace')
   map _ <Plug>(operator-replace)
 endif " }}}
+
+" vim-oscyank {{{
+if s:is_installed('vim-oscyank')
+  let g:oscyank_silent = 1
+
+  if !has('nvim') && !has('clipboard_working')
+    let s:vim_osc_yank_registers = ['', '+', '*']
+    function! s:vim_osc_yank_callback(event)
+      if a:event.operator == 'y' && index(s:vim_osc_yank_registers, a:event.regname) != -1
+        call OSCYankRegister(a:event.regname)
+      endif
+    endfunction
+
+    augroup VimOSCYankPost
+      autocmd!
+      autocmd TextYankPost * call s:vim_osc_yank_callback(v:event)
+    augroup END
+  endif
+endif
 
 " vim-quickrun {{{
 if s:is_installed('vim-quickrun')
