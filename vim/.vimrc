@@ -411,10 +411,14 @@ if s:is_installed('ale')
         \ .'IndentWidth: 4,'
         \ .'}"'
 
+  let g:ale_fixers.go = []
   if executable('goimports')
-    let g:ale_fixers.go = ['goimports', 'gofmt']
+    let g:ale_fixers.go = ['goimports']
+  endif
+  if executable('gofumpt')
+    let g:ale_fixers.go = add(g:ale_fixers.go, 'gofumpt')
   else
-    let g:ale_fixers.go = ['gofmt']
+    let g:ale_fixers.go = add(g:ale_fixers.go, 'gofmt')
   endif
   let g:ale_go_gofmt_options = '-s'
 
