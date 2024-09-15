@@ -432,6 +432,7 @@ if s:is_installed('ale')
   let g:ale_python_flake8_options = '--ignore E124,C0111,D100,D101,D102,D103,D104,D105,D106,D107,E501,W503'
   let g:ale_python_pylint_options = '--disable C0111,C0103,R0903'
   let g:ale_python_mypy_options = '--ignore-missing-imports'
+
   nmap <F8> <Plug>(ale_fix)
 endif "}}}
 
@@ -469,6 +470,7 @@ endif " }}}
 " ctrlp.vim {{{
 if s:is_installed('ctrlp.vim')
   let g:ctrlp_mruf_max = 2000
+  let g:ctrlp_max_files=0
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_extensions=['mixed']
   let g:ctrlp_custom_ignore = {
