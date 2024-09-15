@@ -871,7 +871,7 @@ endif "}}}
 
 " vim-lsp-settings {{{
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
-let g:lsp_settings_filetype_python = ['pyls', 'pyls-ms', 'pyright-langserver']
+let g:lsp_settings_filetype_python = ['pyright-langserver']
 
 let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'eslint-language-server']
 let g:lsp_settings_filetype_javascriptreact = ['typescript-language-server', 'eslint-language-server']
