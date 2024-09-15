@@ -1100,6 +1100,10 @@ if s:is_installed('vimtex')
     let g:vimtex_view_general_viewer = 'SumatraPDF'
     let g:vimtex_view_general_options = '-reuse-instance -inverse-search "\"' . $VIM . '\gvim.exe\" -n --remote-silent +\%l \"\%f\"" -forward-search @tex @line @pdf'
     let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+  elseif !empty(glob('/Applications/Skim.app'))
+    let g:vimtex_view_method = 'skim'
+    let g:vimtex_view_skim_sync = 1
+    let g:vimtex_view_skim_activate = 0
   else
     let g:vimtex_view_enabled = 0
   endif
