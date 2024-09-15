@@ -389,6 +389,7 @@ if s:is_installed('ale')
         \ 'tex': ['latexindent'],
         \ 'bib': ['bibclean'],
         \ 'markdown': ['prettier', 'textlint'],
+        \ 'nix': ['nixfmt'],
         \ 'typescript': ['eslint', 'prettier'],
         \ 'typescriptreact': ['eslint', 'prettier'],
         \ 'javascriptreact': ['eslint', 'prettier'],
