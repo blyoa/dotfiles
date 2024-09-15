@@ -100,6 +100,7 @@ Plug 'itchyny/calendar.vim', {
       \ 'on': ['Calendar'],
       \ }
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-qfedit'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align', {
