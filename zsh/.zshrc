@@ -101,16 +101,16 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
 zinit light-mode as'program' from'gh-r' bpick'*.tar.gz' \
-  atclone'mkdir -p ~/.local/share/rtx/completions &&
-          ./rtx/bin/rtx completion zsh > ~/.local/share/rtx/completions/_rtx' \
+  atclone'mkdir -p ~/.local/share/mise/completions &&
+          ./mise/bin/mise completion zsh > ~/.local/share/mise/completions/_mise' \
   atpull'%atclone' \
-  pick'rtx/bin/rtx' \
-  for jdx/rtx
+  pick'mise/bin/mise' \
+  for jdx/mise
 # }}}
 
 # plugin settings {{{
-eval "$(rtx activate zsh)"
-fpath=(~/.local/share/rtx/completions/_rtx $fpath)
+eval "$(mise activate zsh)"
+fpath=(~/.local/share/mise/completions/_mise $fpath)
 # }}}
 
 compinit
