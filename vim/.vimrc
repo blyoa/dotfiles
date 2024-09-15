@@ -307,7 +307,7 @@ let g:markdown_fenced_languages = [
       \ ]
 
 " diff
-set diffopt+=internal,algorithm:histogram
+set diffopt+=internal,algorithm:histogram,indent-heuristic
 
 " misc
 set hidden
