@@ -865,6 +865,9 @@ if s:is_installed('vim-lsp')
       nmap <buffer> <Leader>li <Plug>(lsp-implementation)
       nmap <buffer> <Leader>lr <Plug>(lsp-references)
       nmap <buffer> <Leader>lR <Plug>(lsp-rename)
+      if &ft ==# 'tex'
+        return
+      endif
       setlocal omnifunc=lsp#complete
   endfunction
 endif "}}}
