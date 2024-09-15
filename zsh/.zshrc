@@ -14,7 +14,12 @@ setopt extended_glob
 setopt auto_pushd
 setopt pushd_ignore_dups
 
+setopt extended_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
 setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt share_history
 # }}}
 
 # autoload {{{
