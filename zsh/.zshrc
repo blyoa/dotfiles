@@ -116,7 +116,4 @@ fpath=(~/.local/share/mise/completions/_mise $fpath)
 
 compinit
 
-# added by travis gem
-[ -f /home/vagrant/.travis/travis.sh ] && source /home/vagrant/.travis/travis.sh
-
 # vim: foldmethod=marker
