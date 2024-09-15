@@ -39,12 +39,6 @@ Plug 'KabbAmine/zeavim.vim'
 Plug 'PProvost/vim-ps1'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/junkfile.vim'
-Plug 'Shougo/unite.vim'
-      \ | Plug 'Shougo/neomru.vim'
-      \ | Plug 'Shougo/unite-outline'
-Plug 'Shougo/vimproc.vim', {
-      \ 'do': 'make',
-      \ }
 Plug 'Shougo/ddc.vim'
       \ | Plug 'vim-denops/denops.vim'
       \ | Plug 'Shougo/ddc-ui-native'
@@ -668,12 +662,6 @@ if s:is_installed('memolist.vim')
   endif
 
   let g:memolist_memo_suffix='mkd'
-
-  " settings to use unite
-  if !s:is_installed('unite.vim')
-    let g:memolist_unite=1
-    let g:memolist_unite_option='-auto-preview'
-  endif
 endif " }}}
 
 " neocomplcache.vim {{{
@@ -747,25 +735,12 @@ if s:is_installed('rust.vim')
 
 endif " }}}
 
-" unite.vim {{{
-if s:is_installed('unite.vim')
-  let g:unite_source_line_enable_highlight=1
-
-  nnoremap [unite] <Nop>
-  nmap  <Space>u [unite]
-
-  nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
-  nnoremap <silent> [unite]b :<C-u>Unite buffer file_mru -start-insert<CR>
-  nnoremap <silent> [unite]g; :<C-u>Unite -buffer-name=change change<CR>
-  nnoremap <silent> [unite]g<C-o> :<C-u>Unite -buffer-name=jump jump<CR>
-  nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=line line -start-insert -no-quit<CR>
-  nnoremap <silent> [unite]gr :<C-u>Unite -buffer-name=grep grep -start-insert -no-quit<CR>
+" sonictemplate-vim {{{
+if s:is_installed('sonictemplate-vim')
+  let g:sonictemplate_key = '<C-,>'
+  let g:sonictemplate_intelligent_key = '<C-,>'
+  let g:sonictemplate_postfix_key = '<C-,>'
 endif " }}}
-
-" unite-outline {{{
-if s:is_installed('unite-outline')
-  nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline -start-insert<CR>
-endif "}}}
 
 " vim-altr {{{
 if s:is_installed('vim-altr')
