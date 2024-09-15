@@ -940,12 +940,7 @@ if s:is_installed('vim-quickrun')
         \ 'cpp': {
         \       'cmdopt': '-std=c++17',
         \ },
-        \ 'go.test': {
-        \       'cmdopt': 'test -v',
-        \       'command': 'go',
-        \       'exec': '%c %o',
-        \       'hook/cd/directory': '%S:h',
-        \ }}
+        \ }
 
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : '\<C-c>'
   map <Leader>r <Plug>(quickrun)
@@ -1183,7 +1178,6 @@ augroup vimrc_loading
   " golang
   autocmd FileType go setlocal noexpandtab
   autocmd Filetype go if exists(':GoPlay') | delcommand GoPlay | endif
-  autocmd BufWinEnter,BufNewFile *_test.go setlocal filetype=go.test
   " vim
   autocmd FileType vim setlocal shiftwidth=2 softtabstop=2
   " html
