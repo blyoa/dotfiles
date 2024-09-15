@@ -48,6 +48,7 @@ Plug 'Shougo/ddc.vim'
       \ | Plug 'Shougo/ddc-source-around'
       \ | Plug 'Shougo/ddc-source-mocword'
       \ | Plug 'shun/ddc-source-vim-lsp'
+      \ | Plug 'uga-rosa/ddc-source-vsnip'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'blyoa/vim-nearest-g', {
