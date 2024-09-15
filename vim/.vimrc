@@ -426,8 +426,6 @@ if s:is_installed('ale')
 
   let g:ale_java_javac_options = '-J-Duser.language=en'
 
-  let g:ale_javascript_prettier_options = '--no-semi --single-quote --trailing-comma es5'
-
   let g:ale_languagetool_executable = 'languagetool-commandline'
   let $REDPEN_HOME = expand('~/.redpen')
 
