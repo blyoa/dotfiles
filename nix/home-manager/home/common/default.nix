@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ../../apps/gh
     ../../apps/git
     ../../apps/tig
   ];
@@ -39,7 +40,6 @@
       wget
 
       # git
-      gh
       ghq
 
       # image and media processing, and diagram generation
