@@ -4,6 +4,10 @@
   ...
 }:
 {
+  imports = [
+    ../../apps/git
+  ];
+
   programs = {
     home-manager.enable = true;
   };
@@ -36,8 +40,6 @@
       # git
       gh
       ghq
-      git
-      git-lfs
       tig
 
       # image and media processing, and diagram generation
