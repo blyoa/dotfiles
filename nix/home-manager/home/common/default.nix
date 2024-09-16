@@ -8,6 +8,7 @@
     ../../apps/gh
     ../../apps/git
     ../../apps/tig
+    ../../apps/vim
   ];
 
   programs = {
