@@ -6,6 +6,7 @@
 {
   imports = [
     ../../apps/git
+    ../../apps/tig
   ];
 
   programs = {
@@ -40,7 +41,6 @@
       # git
       gh
       ghq
-      tig
 
       # image and media processing, and diagram generation
       exiftool
