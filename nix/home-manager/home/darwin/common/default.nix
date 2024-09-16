@@ -9,6 +9,7 @@
   imports = [
     ../../common
     ../../../fonts
+    ../../../apps/karabiner-elements
   ];
 
   home.username = "${params.userName}";
