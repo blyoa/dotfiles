@@ -8,6 +8,7 @@
     ../../apps/gh
     ../../apps/git
     ../../apps/tig
+    ../../apps/tmux
     ../../apps/vim
     ../../apps/zsh
   ];
@@ -66,7 +67,6 @@
 
       # terminal and system utils
       bottom
-      tmux
 
       # docker and kubernetes
       hadolint
