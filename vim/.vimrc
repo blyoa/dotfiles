@@ -157,6 +157,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
       \ }
+Plug 'rbtnn/vim-ambiwidth'
 Plug 'rhysd/vim-goyacc'
 Plug 'rust-lang/rust.vim', {
       \ 'for': ['rust'],
@@ -192,7 +193,7 @@ let &termencoding=&encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,euc-jp,cp932
 set fileformats=unix,dos,mac
-set ambiwidth=double
+set ambiwidth=single
 
 " IME
 if has('multi_byte_ime')
