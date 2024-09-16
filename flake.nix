@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     mocword = {
       url = "github:blyoa/nix-mocword";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +28,7 @@
       nixpkgs,
       flake-utils,
       home-manager,
+      nix-darwin,
       ...
     }@inputs:
     let
@@ -66,6 +72,11 @@
                 ]
               else
                 [ ];
+          };
+
+          darwinConfigurations.${params.hostName} = nix-darwin.lib.darwinSystem {
+            inherit pkgs;
+            modules = [ ./nix/system/darwin ];
           };
         };
       }
