@@ -9,6 +9,7 @@
     ../../apps/git
     ../../apps/tig
     ../../apps/vim
+    ../../apps/zsh
   ];
 
   programs = {
@@ -66,7 +67,6 @@
       # terminal and system utils
       bottom
       tmux
-      zsh
 
       # docker and kubernetes
       hadolint
