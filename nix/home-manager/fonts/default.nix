@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   ricty = import ./ricty { inherit pkgs; };
+  ricty-nerd-fonts = import ./ricty-nerd-fonts { inherit pkgs; };
 in
 {
   home.packages = with pkgs; [
@@ -14,6 +15,7 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     ricty
+    ricty-nerd-fonts
     roboto
     roboto-serif
   ];
