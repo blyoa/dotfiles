@@ -567,6 +567,11 @@ if s:is_installed('emmet-vim')
   let g:user_emmet_leader_key = '<C-,>'
 endif " }}}
 
+" fern.vim {{{
+if s:is_installed('fern.vim')
+  nnoremap <silent> <Leader>f. <Cmd>Fern -drawer -toggle .<CR>
+endif " }}}
+
 " ft-tex-plugin {{{
 let g:tex_flavor = 'latex'
 "}}}
