@@ -120,4 +120,9 @@ fi
 
 compinit
 
+# plugin settings after compinit {{{
+if command -v gh > /dev/null; then
+  eval "$(gh completion -s zsh)"
+fi
+# }}}
 # vim: foldmethod=marker
