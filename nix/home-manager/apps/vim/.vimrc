@@ -411,6 +411,7 @@ if s:is_installed('ale')
         \ 'lua': ['stylua'],
         \ 'rust': ['rustfmt'],
         \ 'python': ['ruff', 'autopep8', 'ruff_format'],
+        \ 'terraform': ['terraform'],
         \ 'vue': ['eslint', 'prettier'],
         \ }
 
