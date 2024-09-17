@@ -52,10 +52,10 @@ Plug 'ap/vim-css-color'
 Plug 'blyoa/vim-nearest-g', {
       \ 'on': '<Plug>nearest-g:neighbor',
       \ }
+Plug 'blyoa/qfselect.vim'
 Plug 'blyoa/vim-promela-syntax', {
       \ 'for': 'promela'
       \ }
-Plug 'blyoa/qfselect.vim'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'cocopon/iceberg.vim'
