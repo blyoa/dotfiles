@@ -497,10 +497,6 @@ if s:is_installed('ctrlp.vim')
   " disable switch buffer
   let g:ctrlp_switch_buffer = ''
 
-  if executable('files')
-    let g:ctrlp_user_command = 'files -a -i="(\.git|\.hg|\.svn|_darcs|\.bzr|node_modules)$" %s'
-  endif
-
   let g:ctrlp_map=''
   nnoremap [ctrlp] <Nop>
   nmap  <C-p> [ctrlp]
