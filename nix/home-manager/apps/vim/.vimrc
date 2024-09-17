@@ -408,6 +408,7 @@ if s:is_installed('ale')
         \ 'javascriptreact': ['eslint', 'prettier'],
         \ 'json': ['prettier'],
         \ 'yaml': ['prettier'],
+        \ 'lua': ['stylua'],
         \ 'rust': ['rustfmt'],
         \ 'python': ['yapf', 'isort', 'autopep8'],
         \ 'vue': ['eslint', 'prettier'],
