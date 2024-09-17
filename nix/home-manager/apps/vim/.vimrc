@@ -431,9 +431,9 @@ if s:is_installed('ale')
     let g:ale_fixers.go = ['goimports']
   endif
   if executable('gofumpt')
-    let g:ale_fixers.go = add(g:ale_fixers.go, 'gofumpt')
+    call add(g:ale_fixers.go, 'gofumpt')
   else
-    let g:ale_fixers.go = add(g:ale_fixers.go, 'gofmt')
+    call add(g:ale_fixers.go, 'gofmt')
   endif
   let g:ale_go_gofmt_options = '-s'
 
