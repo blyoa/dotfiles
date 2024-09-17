@@ -724,6 +724,12 @@ if s:is_installed('plantuml-syntax')
   let g:plantuml_executable_script = 'plantuml -Tsvg -charset UTF-8'
 endif "}}}
 
+" previm {{{
+if s:is_installed('previm')
+  let g:previm_enable_realtime = 1
+  let g:previm_show_header = 0
+endif "}}}
+
 " qfselect.vim {{{
 if s:is_installed('qfselect.vim')
   augroup qfselect_init
