@@ -109,9 +109,11 @@ zinit light-mode as'program' from'gh-r' bpick'*.tar.gz' \
   for jdx/mise
 # }}}
 
-# plugin settings {{{
-eval "$(mise activate zsh)"
-fpath=(~/.local/share/mise/completions/_mise $fpath)
+# plugin settings before compinit {{{
+if command -v mise > /dev/null; then
+  eval "$(mise activate zsh)"
+  fpath=(~/.local/share/mise/completions/_mise $fpath)
+fi
 # }}}
 
 compinit
