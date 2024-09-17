@@ -1202,7 +1202,13 @@ augroup vimrc_loading
     copen
     execute curbuf . 'wincmd w'
   endfunction
+  function! s:nomove_lopen()
+    let curbuf = bufwinnr('%')
+    lopen
+    execute curbuf . 'wincmd w'
+  endfunction
   autocmd QuickfixCmdPost make,grep,grepadd,vimgrep call s:nomove_copen()
+  autocmd QuickfixCmdPost lgrep,lgrepadd,lvimgrep call s:nomove_lopen()
 
   " FileType
   " golang
