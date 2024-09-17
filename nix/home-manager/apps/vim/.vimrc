@@ -866,6 +866,7 @@ if s:is_installed('vim-lsp')
       nmap <buffer> <Leader>li <Plug>(lsp-implementation)
       nmap <buffer> <Leader>lr <Plug>(lsp-references)
       nmap <buffer> <Leader>lR <Plug>(lsp-rename)
+      nmap <buffer> <Leader>lf <Plug>(lsp-document-format)
       if &ft ==# 'tex'
         return
       endif
