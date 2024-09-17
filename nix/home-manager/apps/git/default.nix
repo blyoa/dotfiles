@@ -16,6 +16,7 @@
         autocrlf = false;
         editor = "vim";
         excludesFile = "${./.gitignore_global}";
+        ignorecase = false;
         precomposeunicode = true;
       };
 
