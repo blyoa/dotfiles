@@ -933,7 +933,7 @@ if s:is_installed('vim-oscyank')
       autocmd TextYankPost * call s:vim_osc_yank_callback(v:event)
     augroup END
   endif
-endif
+endif " }}}
 
 " vim-quickrun {{{
 if s:is_installed('vim-quickrun')
