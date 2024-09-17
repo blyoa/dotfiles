@@ -410,7 +410,7 @@ if s:is_installed('ale')
         \ 'yaml': ['prettier'],
         \ 'lua': ['stylua'],
         \ 'rust': ['rustfmt'],
-        \ 'python': ['yapf', 'isort', 'autopep8'],
+        \ 'python': ['ruff', 'autopep8', 'ruff_format'],
         \ 'vue': ['eslint', 'prettier'],
         \ }
 
