@@ -434,8 +434,8 @@ if s:is_installed('ale')
     call add(g:ale_fixers.go, 'gofumpt')
   else
     call add(g:ale_fixers.go, 'gofmt')
+    let g:ale_go_gofmt_options = '-s'
   endif
-  let g:ale_go_gofmt_options = '-s'
 
   let g:ale_html_tidy_options = '-c --drop-empty-elements no'
 
