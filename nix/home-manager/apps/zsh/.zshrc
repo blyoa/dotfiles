@@ -22,6 +22,8 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt share_history
+
+setopt interactivecomments
 # }}}
 
 # autoload {{{
