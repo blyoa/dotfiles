@@ -7,6 +7,7 @@
   imports = [
     ../../apps/gh
     ../../apps/git
+    ../../apps/latexmk
     ../../apps/tig
     ../../apps/tmux
     ../../apps/vim
