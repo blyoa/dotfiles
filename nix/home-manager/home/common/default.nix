@@ -77,7 +77,12 @@
       aws-sam-cli
       awscli2
       circleci-cli
-      google-cloud-sdk
+      (google-cloud-sdk.withExtraComponents (
+        with google-cloud-sdk.components;
+        [
+          gke-gcloud-auth-plugin
+        ]
+      ))
 
       # AI uools
       ollama
