@@ -29,6 +29,7 @@
       tree
 
       # text processing and data manipulation
+      fzf
       jq
       peco
       yq
