@@ -10,6 +10,8 @@
     ../../common
     ../../../fonts
     ../../../apps/karabiner-elements
+
+    ./disable-default-hotkeys.nix
   ];
 
   home.username = "${params.userName}";
