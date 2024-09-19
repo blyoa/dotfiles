@@ -113,6 +113,9 @@ Plug 'lambdalisue/fern.vim' |
       \ Plug 'lambdalisue/fern-hijack.vim' |
       \ Plug 'lambdalisue/fern-bookmark.vim' 
 Plug 'leafgarland/typescript-vim'
+Plug 'leafOfTree/vim-vue-plugin', {
+      \ 'for': ['vue']
+      \ }
 Plug 'lervag/vimtex', {
       \ 'for': ['tex'],
       \ }
@@ -145,9 +148,6 @@ Plug 'pangloss/vim-javascript', {
       \ }
 Plug 'plasticboy/vim-markdown', {
       \ 'for': ['markdown'],
-      \ }
-Plug 'posva/vim-vue', {
-      \ 'for': ['vue']
       \ }
 Plug 'prabirshrestha/vim-lsp'
       \ | Plug 'mattn/vim-lsp-settings'
