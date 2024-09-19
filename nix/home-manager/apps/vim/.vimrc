@@ -733,21 +733,20 @@ endif "}}}
 " qfselect.vim {{{
 if s:is_installed('qfselect.vim')
   augroup qfselect_init
-  function! s:set_qfselect_keymaps() abort
-    nmap <buffer> si <Plug>(qfselect-select:edit)
-    nmap <buffer> sI <Plug>(qfselect-select:edit:keep-cursor)
+    function! s:set_qfselect_keymaps() abort
+      nmap <buffer> si <Plug>(qfselect-select:edit)
+      nmap <buffer> sI <Plug>(qfselect-select:edit:keep-cursor)
 
-    nmap <buffer> ss <Plug>(qfselect-select:split)
-    nmap <buffer> sS <Plug>(qfselect-select:split:keep-cursor)
+      nmap <buffer> ss <Plug>(qfselect-select:split)
+      nmap <buffer> sS <Plug>(qfselect-select:split:keep-cursor)
 
-    nmap <buffer> sv <Plug>(qfselect-select:vsplit)
-    nmap <buffer> sV <Plug>(qfselect-select:vsplit:keep-cursor)
-  endfunction
+      nmap <buffer> sv <Plug>(qfselect-select:vsplit)
+      nmap <buffer> sV <Plug>(qfselect-select:vsplit:keep-cursor)
+    endfunction
 
-  autocmd!
-  autocmd FileType qf call s:set_qfselect_keymaps()
-augroup END
-
+    autocmd!
+    autocmd FileType qf call s:set_qfselect_keymaps()
+  augroup END
 endif "}}}
 
 " rust.vim {{{
