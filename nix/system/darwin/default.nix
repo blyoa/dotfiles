@@ -35,6 +35,10 @@
     '';
   };
 
+  security = {
+    pam.enableSudoTouchIdAuth = true;
+  };
+
   programs = {
     bash.enable = false;
   };
