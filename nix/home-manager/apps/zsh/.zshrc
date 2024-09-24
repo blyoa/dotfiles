@@ -114,10 +114,14 @@ zinit light-mode as'program' from'gh-r' bpick'*.tar.gz' \
 # }}}
 
 # plugin settings before compinit {{{
+# mise
 if command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
   fpath=(~/.local/share/mise/completions/_mise $fpath)
 fi
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # }}}
 
 compinit
