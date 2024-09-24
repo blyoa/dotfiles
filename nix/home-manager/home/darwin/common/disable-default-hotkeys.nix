@@ -1,8 +1,8 @@
 { lib, ... }:
 let
   # ```bash
-  # plutil -convert json ~/Library/Preferences/com.apple.symbolichotkeys.plist \
-  #   -o com.apple.symbolichotkeys.plist
+  # cp ~/Library/Preferences/com.apple.symbolichotkeys.plist com.apple.symbolichotkeys.plist
+  # plutil -convert json com.apple.symbolichotkeys.plist
   # jq '.AppleSymbolicHotKeys | to_entries | map(select(.value.enabled == 0) | {"key": .key, "value": .value }) | sort_by(.key|tonumber) | from_entries ' \
   #   < com.apple.symbolichotkeys.plist
   # ```
