@@ -11,6 +11,7 @@
     ../../apps/tig
     ../../apps/tmux
     ../../apps/vim
+    ../../apps/wezterm
     ../../apps/zsh
   ];
 
