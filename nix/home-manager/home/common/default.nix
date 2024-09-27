@@ -64,6 +64,7 @@
       gopass
       jwt-cli
       openssl
+      sops
 
       # compression and archiving
       p7zip
