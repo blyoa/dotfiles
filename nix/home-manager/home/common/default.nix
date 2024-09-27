@@ -59,6 +59,7 @@
       qrencode
 
       # security and encryption
+      age
       gnupg
       gopass
       jwt-cli
