@@ -22,5 +22,6 @@ in
     ])
     ++ [
       inputs.gen-shin-gothic.packages.${pkgs.system}.default
+      inputs.gen-jyuu-gothic.packages.${pkgs.system}.default
     ];
 }

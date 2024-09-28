@@ -18,6 +18,68 @@
         "type": "github"
       }
     },
+    "gen-jyuu-gothic": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "gen-jyuu-gothic": "gen-jyuu-gothic_2",
+        "gen-jyuu-gothic-l": "gen-jyuu-gothic-l",
+        "gen-jyuu-gothic-x": "gen-jyuu-gothic-x",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727504447,
+        "narHash": "sha256-KO3TWg9gtpYNsdmAt2oo3nTRnBf713yqbZ7PgbQcB6E=",
+        "owner": "blyoa",
+        "repo": "nix-font-gen-jyuu-gothic",
+        "rev": "33c6c5044a45219d7122361ef71dde856db7e096",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blyoa",
+        "repo": "nix-font-gen-jyuu-gothic",
+        "type": "github"
+      }
+    },
+    "gen-jyuu-gothic-l": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-W/6Je/JKw+sCk15zdskEz2HMZ3WTKtC0MMphabcMbe4=",
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8635/genjyuugothic-l-20150607.7z"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8635/genjyuugothic-l-20150607.7z"
+      }
+    },
+    "gen-jyuu-gothic-x": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-b/mGb2Hh+ZhnfeD8biyvWYYajZzbKFFFaslUGi4BKtY=",
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8638/genjyuugothic-x-20150607.7z"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8638/genjyuugothic-x-20150607.7z"
+      }
+    },
+    "gen-jyuu-gothic_2": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-FF4pXrHoYTLpcKV8PomQKoKZFQWD0p5Vr2RiOstOGHY=",
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8636/genjyuugothic-20150607.7z"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8636/genjyuugothic-20150607.7z"
+      }
+    },
     "gen-shin-gothic": {
       "inputs": {
         "flake-utils": [
@@ -136,6 +198,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "gen-jyuu-gothic": "gen-jyuu-gothic",
         "gen-shin-gothic": "gen-shin-gothic",
         "home-manager": "home-manager",
         "mocword": "mocword",
