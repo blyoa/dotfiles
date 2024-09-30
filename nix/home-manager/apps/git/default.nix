@@ -32,6 +32,10 @@
         useForceIfIncludes = true;
       };
 
+      rebase = {
+        autoSquash = true;
+      };
+
       url = {
         "git@github.com:".insteadOf = "https://github.com/";
       };
