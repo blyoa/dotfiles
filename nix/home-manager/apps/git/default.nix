@@ -34,6 +34,7 @@
 
       rebase = {
         autoSquash = true;
+        autoStash = true;
       };
 
       url = {
