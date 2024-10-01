@@ -28,6 +28,10 @@
         algorithm = "histogram";
       };
 
+      fetch = {
+        prune = true;
+      };
+
       push = {
         useForceIfIncludes = true;
       };
