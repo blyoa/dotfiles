@@ -8,6 +8,7 @@
     ../../apps/gh
     ../../apps/git
     ../../apps/latexmk
+    ../../apps/mise
     ../../apps/tig
     ../../apps/tmux
     ../../apps/vim
