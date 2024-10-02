@@ -1,0 +1,31 @@
+[tools]
+# programming languages and runtime tools
+deno = "latest"
+go = "latest"
+java = "temurin-21"
+node = "lts"
+perl = "latest"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+
+# linters and formatters
+actionlint = "latest"
+gofumpt = "latest"
+golangci-lint	= "latest"
+shellcheck = "latest"
+staticcheck = "latest"
+
+# database tools
+duckdb = "latest"
+mysql = "latest"
+sqlite = "latest"
+
+# editors and command line utils
+vim = "latest"
+
+[plugins]
+duckdb = "https://github.com/asdf-community/asdf-duckdb"
+
+[settings]
+experimental = true
