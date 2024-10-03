@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ../../apps/direnv
     ../../apps/gh
     ../../apps/git
     ../../apps/latexmk
