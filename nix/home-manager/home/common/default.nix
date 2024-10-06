@@ -33,6 +33,7 @@
       tree
 
       # text processing and data manipulation
+      dasel
       fzf
       jq
       peco
