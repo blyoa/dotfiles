@@ -33,6 +33,10 @@
         prune = true;
       };
 
+      pull = {
+        rebase = true;
+      };
+
       push = {
         useForceIfIncludes = true;
       };
