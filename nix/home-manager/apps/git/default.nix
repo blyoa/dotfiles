@@ -18,6 +18,7 @@
         excludesFile = "${./.gitignore_global}";
         ignorecase = false;
         precomposeunicode = true;
+        quotePath = false;
       };
 
       commit = {
