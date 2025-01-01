@@ -53,3 +53,11 @@ Temporary Items
 # Node
 # ----
 node_modules/
+
+
+# Private files
+# -------------
+_local_note/
+.local_note/
+_private_note/
+.private_note/
