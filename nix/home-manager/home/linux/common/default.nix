@@ -1,7 +1,7 @@
 { pkgs, ... }@args:
 {
   imports = [
-    ./no-fonts
+    ./no-fonts.nix
     ../../../fonts
   ];
 }
