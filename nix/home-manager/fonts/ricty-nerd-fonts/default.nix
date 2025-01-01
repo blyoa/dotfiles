@@ -18,6 +18,10 @@ pkgs.stdenvNoCC.mkDerivation rec {
     python312Packages.fontforge
   ];
 
+  patchPhase = ''
+    patchShebangs --build ./font-patcher
+  '';
+
   buildPhase = ''
     cp ${ricty}/share/fonts/truetype/ricty/Ricty-*.ttf .
 
