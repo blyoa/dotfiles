@@ -16,6 +16,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
     fontforge
     python3
     python312Packages.fontforge
+    python312Packages.fonttools
   ];
 
   patchPhase = ''
@@ -29,6 +30,18 @@ pkgs.stdenvNoCC.mkDerivation rec {
       echo 'patch to' $f
       ./font-patcher -c $f -out dist/;
     done;
+
+    pushd dist/
+
+    ttx -t 'OS/2' Ricty*.ttf
+    for f in Ricty*.ttx; do
+      sed -i 's/^\(\s\+<xAvgCharWidth\s\+value="\)[0-9]\+\(".*\)$/\1500\2/g' "$f"
+      mv "''${f%.ttx}.ttf" "''${f%.ttx}-orig.ttf"
+      ttx -m "''${f%.ttx}-orig.ttf" "$f" -o "''${f%.ttx}.ttf" 
+    done
+    rm *-orig.ttf
+
+    popd
   '';
 
   installPhase = ''
