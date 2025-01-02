@@ -13,5 +13,9 @@
   home.homeDirectory = "/home/${params.userName}";
   home.stateVersion = "24.11";
 
-  home.packages = params.additionalPackages;
+  home.packages =
+    (with pkgs; [
+      trash-cli
+    ])
+    ++ params.additionalPackages;
 }
