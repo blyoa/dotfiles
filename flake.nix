@@ -45,7 +45,6 @@
     }@inputs:
     let
       params = import ./nix/params { };
-      isWSL = builtins.pathExists /proc/sys/fs/binfmt_misc/WSLInterop;
     in
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -74,10 +73,6 @@
                   [
                     ./nix/home-manager/home/darwin/x86_64
                   ]
-              else if pkgs.stdenv.isLinux && isWSL then
-                [
-                  ./nix/home-manager/home/linux/wsl
-                ]
               else if pkgs.stdenv.isLinux then
                 [
                   ./nix/home-manager/home/linux/common
