@@ -27,7 +27,6 @@ pkgs.stdenvNoCC.mkDerivation rec {
     cp ${ricty}/share/fonts/truetype/ricty/Ricty-*.ttf .
 
     for f in Ricty-*.ttf; do
-      echo 'patch to' $f
       ./font-patcher -c $f -out dist/;
     done;
 
