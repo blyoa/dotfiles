@@ -37,6 +37,11 @@
       url = "github:blyoa/nix-font-ricty-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ricty-nerdfont = {
+      url = "github:blyoa/nix-font-ricty-nerdfont";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -59,6 +64,7 @@
           config.allowUnfree = true;
           overlays = [
             inputs.ricty-overlay.overlays.default
+            inputs.ricty-nerdfont.overlays.default
           ];
         };
       in
