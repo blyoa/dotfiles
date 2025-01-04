@@ -195,6 +195,26 @@
         "type": "github"
       }
     },
+    "ricty-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735991649,
+        "narHash": "sha256-iKtNGt7TNN7XBaoRrvH9Ajq1mxE7GyWD04wYaNUPDCk=",
+        "owner": "blyoa",
+        "repo": "nix-font-ricty-overlay",
+        "rev": "bb702e5eb177d80daef72511d5d5a1385000cf82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blyoa",
+        "repo": "nix-font-ricty-overlay",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -203,7 +223,8 @@
         "home-manager": "home-manager",
         "mocword": "mocword",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "ricty-overlay": "ricty-overlay"
       }
     },
     "systems": {
