@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 let
-  ricty = import ./ricty { inherit pkgs; };
   ricty-nerd-fonts = import ./ricty-nerd-fonts { inherit pkgs; };
 in
 {
