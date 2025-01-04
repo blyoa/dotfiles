@@ -195,6 +195,26 @@
         "type": "github"
       }
     },
+    "ricty-nerdfont": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736001960,
+        "narHash": "sha256-ZK3vxjZRwUUX4cJK1hn4/ypd1gRQEjE0CXeR2jChfWQ=",
+        "owner": "blyoa",
+        "repo": "nix-font-ricty-nerdfont",
+        "rev": "a0f56fb71c1f28ee896bb9ae74eb8e037e1a3e30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blyoa",
+        "repo": "nix-font-ricty-nerdfont",
+        "type": "github"
+      }
+    },
     "ricty-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -224,6 +244,7 @@
         "mocword": "mocword",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "ricty-nerdfont": "ricty-nerdfont",
         "ricty-overlay": "ricty-overlay"
       }
     },

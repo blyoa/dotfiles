@@ -1,7 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  ricty-nerd-fonts = import ./ricty-nerd-fonts { inherit pkgs; };
-in
 {
   home.packages =
     (with pkgs; [
@@ -15,7 +12,7 @@ in
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       ricty
-      ricty-nerd-fonts
+      ricty-nerdfont
       roboto
       roboto-serif
     ])
