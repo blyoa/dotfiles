@@ -103,6 +103,19 @@ fi
 # }}}
 
 # zinit {{{
+os=unknown
+case "$(uname -s)" in
+  (Darwin)
+    os=darwin
+    ;;
+  (Linux)
+    os=linux
+    ;;
+  (MINGW* | MSYS*)
+    os=windows
+    ;;
+esac
+
 # zinit installer {{{
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P '%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f'
@@ -129,7 +142,12 @@ zinit light zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
-zinit light-mode as'program' from'gh-r' bpick'*.tar.gz' \
+if [ "$os" = "windows" ]; then 
+  mise_bpick='*windows*.zip'
+else
+  mise_bpick='*.tar.gz'
+fi
+zinit light-mode as'program' from'gh-r' bpick"$mise_bpick" \
   atclone'mkdir -p ~/.local/share/mise/completions &&
           ./mise/bin/mise completion zsh > ~/.local/share/mise/completions/_mise' \
   atpull'%atclone' \
@@ -144,7 +162,7 @@ if command -v direnv > /dev/null; then
 fi
 
 # mise
-if command -v mise > /dev/null; then
+if [ "$os" != "windows" ] && command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
   fpath=(~/.local/share/mise/completions/_mise $fpath)
 fi
