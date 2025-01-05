@@ -96,6 +96,10 @@ alias du='du -h'
 alias df='df -h'
 
 alias ghq-cd='cd $(ghq list -p | peco)'
+
+if command -v explorer.exe > /dev/null; then
+  alias open='explorer.exe'
+fi
 # }}}
 
 # zinit {{{
