@@ -1,5 +1,5 @@
 # environment variables and parameters {{{
-export LANG=en_US.UTF-8
+export LANG=C.UTF-8
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
