@@ -222,11 +222,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735991649,
-        "narHash": "sha256-iKtNGt7TNN7XBaoRrvH9Ajq1mxE7GyWD04wYaNUPDCk=",
+        "lastModified": 1736086125,
+        "narHash": "sha256-KKm/gudJZR8wLAARAqNHttKd/oew63LcGImXonKMbUA=",
         "owner": "blyoa",
         "repo": "nix-font-ricty-overlay",
-        "rev": "bb702e5eb177d80daef72511d5d5a1385000cf82",
+        "rev": "ba60bf1fa78e013a7fabd95036d0a4808238fee9",
         "type": "github"
       },
       "original": {
