@@ -1,5 +1,26 @@
+# flags {{{
+os=unknown
+case "$(uname -s)" in
+  (Darwin)
+    os=darwin
+    ;;
+  (Linux)
+    os=linux
+    ;;
+  (MINGW* | MSYS*)
+    os=windows
+    ;;
+esac
+# }}}
+
 # environment variables and parameters {{{
-export LANG=C.UTF-8
+if [ "$os" = "darwin" ]; then 
+  export LANG=en_US.UTF-8
+  export LC_COLLATE=C
+  export LC_TIME=C
+else
+  export LANG=C.UTF-8
+fi
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
