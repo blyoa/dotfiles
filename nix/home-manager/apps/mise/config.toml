@@ -24,8 +24,5 @@ sqlite = "latest"
 # editors and command line utils
 vim = "latest"
 
-[alias]
-duckdb = "https://github.com/asdf-community/asdf-duckdb"
-
 [settings]
 experimental = true
