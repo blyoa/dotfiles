@@ -144,6 +144,8 @@ zinit light zsh-users/zsh-completions
 
 if [ "$os" = "windows" ]; then 
   mise_bpick='*windows*.zip'
+elif [ "$os" = "linux" ]; then
+  mise_bpick='*x64.tar.gz'
 else
   mise_bpick='*.tar.gz'
 fi
