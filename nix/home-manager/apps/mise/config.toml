@@ -9,6 +9,9 @@ python = "latest"
 ruby = "latest"
 rust = "latest"
 
+# package managers
+uv = "latest"
+
 # linters and formatters
 actionlint = "latest"
 gofumpt = "latest"
