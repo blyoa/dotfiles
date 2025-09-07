@@ -42,7 +42,6 @@ Plug 'Shougo/ddc.vim'
       \ | Plug 'Shougo/ddc-ui-native'
       \ | Plug 'Shougo/ddc-matcher_head'
       \ | Plug 'Shougo/ddc-sorter_rank'
-      \ | Plug 'LumaKernel/ddc-tabnine'
       \ | Plug 'Shougo/ddc-source-around'
       \ | Plug 'Shougo/ddc-source-mocword'
       \ | Plug 'shun/ddc-source-vim-lsp'
@@ -521,7 +520,7 @@ endif "}}}
 if s:is_installed('ddc.vim')
   inoremap <expr> <C-@> ddc#map#manual_complete()
   call ddc#custom#patch_global('ui', 'native')
-  call ddc#custom#patch_global('sources', ['around', 'tabnine', 'mocword', 'vim-lsp', 'vsnip'])
+  call ddc#custom#patch_global('sources', ['around', 'mocword', 'vim-lsp', 'vsnip'])
   call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
           \   'matchers': ['matcher_head'],
@@ -531,11 +530,6 @@ if s:is_installed('ddc.vim')
         \ 'around': {
           \   'mark': '[around]',
           \   'maxItems': 2,
-          \ },
-        \ 'tabnine': {
-          \   'mark': '[tabnine]',
-          \   'maxItems': 5,
-          \   'isVolatile': v:true,
           \ },
         \ 'mocword': {
           \   'mark': '[mocword]',
