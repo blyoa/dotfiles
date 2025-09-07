@@ -26,6 +26,7 @@ sqlite = "latest"
 
 # editors and command line utils
 vim = "latest"
+pnpm = "latest"
 
 [settings]
 experimental = true
