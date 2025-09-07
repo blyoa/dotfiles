@@ -125,6 +125,7 @@ Plug 'mattn/emmet-vim', {
       \ 'for': ['html', 'djangohtml',
       \         'css', 'sass', 'scss', 'less'],
       \ }
+Plug 'mattn/vim-typespec'
 Plug 'mattn/vim-goaddtags', {
       \ 'for': ['go']
       \ }
