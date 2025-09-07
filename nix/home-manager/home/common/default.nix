@@ -37,7 +37,7 @@
       fzf
       glow
       jq
-      yq
+      yq-go
 
       # network
       curl
