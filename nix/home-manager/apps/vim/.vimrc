@@ -826,6 +826,12 @@ if s:is_installed('vim-lsp')
     let g:lsp_settings = {}
     let g:lsp_settings['efm-langserver'] = {'disabled': v:false}
 
+    let g:lsp_settings['typos-lsp'] = {
+          \ 'disabled': v:false,
+          \ "initialization_options": {
+          \   "diagnosticSeverity": "Warning",
+          \ },
+          \ }
     let g:lsp_settings['gopls'] = {
           \ 'workspace_config': {
           \   'staticcheck': v:true,
