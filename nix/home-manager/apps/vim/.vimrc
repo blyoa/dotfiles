@@ -65,6 +65,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'digitaltoad/vim-pug'
 Plug 'evanleck/vim-svelte'
+Plug 'ggml-org/llama.vim'
 Plug 'gf3/peg.vim'
 Plug 'glidenote/memolist.vim', {
       \ 'on': ['MemoNew', 'MemoList', 'MemoGrep'],
@@ -570,6 +571,13 @@ endif " }}}
 " ft-tex-plugin {{{
 let g:tex_flavor = 'latex'
 "}}}
+
+" ggml-org/llama.vim {{{
+if s:is_installed('llama.vim')
+  let g:llama_config = {
+        \ 'show_info': v:false
+        \ }
+endif
 
 " goyo.vim {{{
 if s:is_installed('goyo.vim')
