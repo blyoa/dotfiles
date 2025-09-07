@@ -97,7 +97,7 @@ alias dir='ls --color=auto --format=vertical'
 alias du='du -h'
 alias df='df -h'
 
-alias ghq-cd='cd $(ghq list -p | peco)'
+alias ghq-cd='cd $(ghq list -p | CLICOLOR_FORCE=1 fzf --reverse --ansi --preview="glow -s tokyo-night {}/README.md")'
 
 if command -v explorer.exe > /dev/null; then
   alias open='explorer.exe'
