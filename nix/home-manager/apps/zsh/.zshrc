@@ -14,6 +14,8 @@ esac
 # }}}
 
 # environment variables and parameters {{{
+export EDITOR=vim
+
 if [ "$os" = "darwin" ]; then 
   export LANG=en_US.UTF-8
   export LC_COLLATE=C
