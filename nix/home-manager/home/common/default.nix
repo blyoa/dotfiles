@@ -35,8 +35,8 @@
       # text processing and data manipulation
       dasel
       fzf
+      glow
       jq
-      peco
       yq
 
       # network
