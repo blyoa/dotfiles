@@ -44,7 +44,7 @@ Plug 'Shougo/ddc.vim'
       \ | Plug 'Shougo/ddc-sorter_rank'
       \ | Plug 'Shougo/ddc-source-around'
       \ | Plug 'Shougo/ddc-source-mocword'
-      \ | Plug 'shun/ddc-source-vim-lsp'
+      \ | Plug 'Shougo/ddc-source-lsp'
       \ | Plug 'uga-rosa/ddc-source-vsnip'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
@@ -153,7 +153,6 @@ Plug 'plasticboy/vim-markdown', {
 Plug 'prabirshrestha/vim-lsp'
       \ | Plug 'mattn/vim-lsp-settings'
       \ | Plug 'hrsh7th/vim-vsnip'
-      \ | Plug 'hrsh7th/vim-vsnip-integ'
       \ | Plug 'rafamadriz/friendly-snippets'
 Plug 'racer-rust/vim-racer', {
       \ 'for': ['rust'],
@@ -522,7 +521,7 @@ endif "}}}
 if s:is_installed('ddc.vim')
   inoremap <expr> <C-@> ddc#map#manual_complete()
   call ddc#custom#patch_global('ui', 'native')
-  call ddc#custom#patch_global('sources', ['around', 'mocword', 'vim-lsp', 'vsnip'])
+  call ddc#custom#patch_global('sources', ['around', 'mocword', 'lsp', 'vsnip'])
   call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
           \   'matchers': ['matcher_head'],
@@ -543,13 +542,22 @@ if s:is_installed('ddc.vim')
           \   'mark': '[snip]',
           \   'minAutoCompleteLength': 1,
           \ },
-        \ 'vim-lsp': {
+        \ 'lsp': {
           \   'mark': '[lsp]',
           \   'dup': 'keep',
           \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
           \   'minAutoCompleteLength': 1,
           \ },
         \ })
+  call ddc#custom#patch_global('sourceParams', {
+        \ 'lsp': {
+        \   'lspEngine': 'vim-lsp',
+        \   'snippetEngine': denops#callback#register({
+        \     body -> vsnip#anonymous(body)
+        \ }),
+        \ 'enableAdditionalTextEdit': v:true,
+        \ 'enableResolveItem': v:true,
+        \ }})
   call ddc#enable({
         \ 'context_filetype': 'context_filetype'
         \ })
