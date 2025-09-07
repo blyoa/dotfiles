@@ -95,7 +95,7 @@
 
       # AI uools
       ollama
-      openai-whisper-cpp
+      whisper-cpp
 
       # other tools
       cmake
