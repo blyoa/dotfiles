@@ -101,6 +101,7 @@
       cmake
       hwatch
       hyperfine
+      typos
       watchexec
     ])
     ++ [
