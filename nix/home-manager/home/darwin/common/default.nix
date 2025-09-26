@@ -21,7 +21,7 @@
   targets.darwin = {
     defaults = {
       NSGlobalDomain = {
-        InitialKeyRepeat = 25;
+        InitialKeyRepeat = 12;
         KeyRepeat = 1;
         NSAutomaticPeriodSubstitutionEnabled = false;
       };
