@@ -22,7 +22,7 @@
     defaults = {
       NSGlobalDomain = {
         InitialKeyRepeat = 25;
-        KeyRepeat = 2;
+        KeyRepeat = 1;
         NSAutomaticPeriodSubstitutionEnabled = false;
       };
 
