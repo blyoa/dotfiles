@@ -43,7 +43,6 @@ Plug 'Shougo/ddc.vim'
       \ | Plug 'Shougo/ddc-matcher_head'
       \ | Plug 'Shougo/ddc-sorter_rank'
       \ | Plug 'Shougo/ddc-source-around'
-      \ | Plug 'Shougo/ddc-source-mocword'
       \ | Plug 'Shougo/ddc-source-lsp'
       \ | Plug 'uga-rosa/ddc-source-vsnip'
 Plug 'andymass/vim-matchup'
@@ -521,7 +520,7 @@ endif "}}}
 if s:is_installed('ddc.vim')
   inoremap <expr> <C-@> ddc#map#manual_complete()
   call ddc#custom#patch_global('ui', 'native')
-  call ddc#custom#patch_global('sources', ['around', 'mocword', 'lsp', 'vsnip'])
+  call ddc#custom#patch_global('sources', ['around', 'lsp', 'vsnip'])
   call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
           \   'matchers': ['matcher_head'],
@@ -531,12 +530,6 @@ if s:is_installed('ddc.vim')
         \ 'around': {
           \   'mark': '[around]',
           \   'maxItems': 2,
-          \ },
-        \ 'mocword': {
-          \   'mark': '[mocword]',
-          \   'maxItems': 2,
-          \   'minAutoCompleteLength': 2,
-          \   'isVolatile': v:true,
           \ },
         \ 'vsnip': {
           \   'mark': '[snip]',
