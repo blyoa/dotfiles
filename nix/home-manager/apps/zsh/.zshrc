@@ -85,6 +85,40 @@ bindkey '^[[1~' beginning-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[[4~' end-of-line
 bindkey '^U' backward-kill-line
+
+_fzf-path-widget() { # {{{
+  local raw_token unquoted_token search_root selected replacement
+  local -a words
+
+  words=("${(z)LBUFFER}")
+  raw_token=${words[-1]}
+  unquoted_token=${(Q)raw_token}
+  unquoted_token=${~unquoted_token}
+  # [[ $unquoted_token == "~"* ]] && unquoted_token="${unquoted_token/#\~/$HOME}"
+
+  if [[ -n $unquoted_token && -d $unquoted_token ]]; then
+    search_root=$unquoted_token
+  elif [[ -n $unquoted_token && -e $unquoted_token ]]; then
+    search_root=${unquoted_token:h}
+  else
+    search_root="."
+  fi
+
+  selected=$(fd . -- "$search_root" | fzf --reverse --height=20%)
+  [[ -z $selected ]] && { zle redisplay; return }
+
+  replacement=${(q-)selected}
+  if [[ -n $raw_token ]]; then
+    LBUFFER="${LBUFFER:0:$((${#LBUFFER}-${#raw_token}))}$replacement"
+  else
+    LBUFFER+="$replacement"
+  fi
+
+  zle autosuggest-clear 2>/dev/null
+  zle redisplay
+}
+zle -N _fzf-path-widget # }}}
+bindkey '^T' _fzf-path-widget
 # }}}
 
 # aliases {{{
