@@ -132,6 +132,22 @@ let
       fi
     '';
   };
+  rm-merged-branches = pkgs.writeShellApplication {
+    name = "rm-merged-branches";
+    runtimeInputs = with pkgs; [
+      findutils
+      gnugrep
+      gnused
+    ];
+    text = ''
+      branches_to_remove=$(git branch --merged | grep -v -E '^(\*|\+)' || true)
+      if [ -z "$branches_to_remove" ]; then
+        echo "No merged branches to remove."
+      else
+        xargs git branch -d <<< "$branches_to_remove"
+      fi
+    '';
+  };
 in
 {
   programs.git = {
@@ -194,6 +210,7 @@ in
       alias = {
         "sw" = "!${fzf-git-switch}/bin/fzf-git-switch";
         "rbb" = "!${fzf-git-rebase-branch}/bin/fzf-git-rebase-branch";
+        "rm-merged" = "!${rm-merged-branches}/bin/rm-merged-branches";
       };
     };
   };
