@@ -109,6 +109,26 @@ let
       main "$@"
     '';
   };
+  fzf-git-rebase-branch = pkgs.writeShellApplication {
+    name = "fzf-git-rebase-branch";
+    runtimeInputs = with pkgs; [
+      fzf
+      gnugrep
+      gnused
+    ];
+    text = ''
+      if [ $# -gt 0 ]; then
+        exec git rebase "$@"
+      fi
+
+      current_branch=$(git branch --show-current)
+      selected_branch=$(git for-each-ref --format="%(refname)" refs/heads/ refs/remotes/ \
+        | grep -v -E "^refs/remotes/.*/HEAD$" \
+        | grep -v -E "^$current_branch$" \
+        | sed -E "s#refs/(heads|remotes)/##" \
+        | fzf --reverse --height 20% --exit-0 --preview "git log --oneline --graph --color=always --decorate {1}" --preview-window=right:50%)
+      if [ -n "$selected_branch" ]; then
+        git rebase "$selected_branch" "$@"
       fi
     '';
   };
@@ -173,6 +193,7 @@ in
 
       alias = {
         "sw" = "!${fzf-git-switch}/bin/fzf-git-switch";
+        "rbb" = "!${fzf-git-rebase-branch}/bin/fzf-git-rebase-branch";
       };
     };
   };
