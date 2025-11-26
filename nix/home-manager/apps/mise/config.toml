@@ -1,4 +1,7 @@
 [tools]
+# completion
+usage = "latest"
+
 # programming languages and runtime tools
 deno = "latest"
 go = "latest"
