@@ -202,7 +202,7 @@ fi
 # mise
 if [ "$os" != "windows" ] && command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
-  fpath=(~/.local/share/mise/completions/_mise $fpath)
+  fpath=(~/.local/share/mise/completions $fpath)
 fi
 
 # zsh-autosuggestions
