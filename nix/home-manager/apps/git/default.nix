@@ -154,10 +154,12 @@ in
     enable = true;
     lfs.enable = true;
 
-    userName = params.git.userName;
-    userEmail = params.git.userEmail;
+    settings = {
+      user = {
+        name = params.git.userName;
+        email = params.git.userEmail;
+      };
 
-    extraConfig = {
       init = {
         defaultBranch = "main";
       };
