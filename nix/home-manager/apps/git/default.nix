@@ -209,6 +209,10 @@ in
         ];
       };
 
+      extensions = {
+        worktreeConfig = true;
+      };
+
       alias = {
         "sw" = "!${fzf-git-switch}/bin/fzf-git-switch";
         "rbb" = "!${fzf-git-rebase-branch}/bin/fzf-git-rebase-branch";
