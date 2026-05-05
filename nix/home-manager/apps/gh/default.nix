@@ -9,6 +9,7 @@
       aliases = {
         co = "pr checkout";
       };
+      telemetry = "disabled";
     };
 
     extensions = with pkgs; [
