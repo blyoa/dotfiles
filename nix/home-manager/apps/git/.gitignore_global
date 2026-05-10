@@ -62,4 +62,5 @@ _local_note
 _private_note
 .private_note
 
+.vimrc_local
 mise.toml
