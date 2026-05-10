@@ -54,6 +54,10 @@ Temporary Items
 # ----
 node_modules/
 
+# Obsidian
+# --------
+.obsidian
+
 
 # Private files
 # -------------
