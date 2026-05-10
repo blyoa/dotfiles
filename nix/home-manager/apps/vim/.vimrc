@@ -822,9 +822,11 @@ if s:is_installed('vim-lsp')
   let g:lsp_diagnostics_virtual_text_enabled = 0
   let g:lsp_diagnostics_float_cursor = 1
   let g:lsp_diagnostics_float_delay = 100
+
+  let s:capabilities_to_be_disabled = {}
+
   augroup vim_lsp_rc
     autocmd!
-    autocmd User lsp_buffer_enabled call s:config_lsp()
     let g:lsp_settings = {}
     let g:lsp_settings['efm-langserver'] = {'disabled': v:false}
 
@@ -863,6 +865,26 @@ if s:is_installed('vim-lsp')
           \   }
           \ }}
           \ }
+
+    " ast-grep
+    autocmd User lsp_setup call lsp#register_server({
+         \ 'name': 'ast-grep',
+         \ 'cmd': {server_info->['sg', 'lsp']},
+         \ 'allowlist': ['*'],
+         \ 'root_uri':{server_info->lsp#utils#path_to_uri(
+         \ lsp#utils#find_nearest_parent_file_directory(
+         \   lsp#utils#get_buffer_path(),
+         \   ['sgconfig.yml', '.sgconfig.yml']
+         \ ))},
+         \ })
+    let s:capabilities_to_be_disabled = {
+         \ 'ast-grep': {
+         \   'hoverProvider': v:false,
+         \ },
+         \ }
+
+
+    autocmd User lsp_buffer_enabled call s:config_lsp()
   augroup END
 
   function! s:config_lsp()
@@ -882,11 +904,22 @@ if s:is_installed('vim-lsp')
         return
       endif
       setlocal omnifunc=lsp#complete
+
+      for [l:server, l:overrides] in items(s:capabilities_to_be_disabled)
+        let l:capabilities = lsp#get_server_capabilities(l:server)
+        if empty(l:capabilities)
+          continue
+        endif
+        for [l:capability, l:value] in items(l:overrides)
+          let l:capabilities[l:capability] = l:value
+        endfor
+      endfor
   endfunction
 endif "}}}
 
 " vim-lsp-settings {{{
-let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+let g:lsp_settings_filetype_go = ['gopls',]
+" let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
 let g:lsp_settings_filetype_python = ['pyright-langserver']
 
 let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'eslint-language-server']
