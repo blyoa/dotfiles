@@ -50,6 +50,7 @@
 
       # git
       ghq
+      git-absorb
 
       # image and media processing, and diagram generation
       exiftool
