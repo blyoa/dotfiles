@@ -179,6 +179,7 @@ in
 
       diff = {
         algorithm = "histogram";
+        colorMoved = "zebra";
       };
 
       fetch = {
