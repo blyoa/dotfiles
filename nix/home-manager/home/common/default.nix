@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ../../apps/delta
     ../../apps/direnv
     ../../apps/gh
     ../../apps/git
