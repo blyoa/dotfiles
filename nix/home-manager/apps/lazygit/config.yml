@@ -1,0 +1,78 @@
+gui:
+  sidePanelWidth: 0.2
+  scrollHeight: 10
+
+keybinding:
+  universal:
+    scrollDownMain-alt2: '<ctrl+d>'
+    scrollUpMain-alt2: '<ctrl+u>'
+    confirmInEditor: [<meta+enter>, <ctrl+enter>, <ctrl+s>]
+  files:
+    viewResetOptions: <disabled>
+
+git:
+  pagers:
+    - pager: >-
+        delta --paging=never
+        --hyperlinks
+        --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      colorArg: always
+    - pager: >-
+        delta --paging=never --side-by-side
+        --hyperlinks
+        --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      colorArg: always
+
+  log:
+    order: topo-order
+    showGraph: always
+
+customCommands:
+  - key: '<ctrl+f>'
+    context: 'commits'
+    prompts:
+      - type: 'confirm'
+        title: 'Fixup commit (no-verify)'
+        body: 'Create fixup commit for {{printf "%.8s" .SelectedLocalCommit.Hash}} with --no-verify?'
+    command: 'git commit --fixup={{.SelectedLocalCommit.Hash}} --no-verify'
+    output: terminal
+    description: 'Fixup commit (no-verify)'
+  - key: '<ctrl+a>'
+    description: 'Git absorb'
+    commandMenu:
+      - key: 'a'
+        context: 'files'
+        command: 'git absorb'
+        description: 'Absorb staged changes into branch commits'
+        output: popup
+        loadingText: 'Absorbing...'
+      - key: 'r'
+        context: 'files'
+        description: 'Absorb staged changes and rebase'
+        prompts:
+          - type: 'confirm'
+            title: 'Absorb and Rebase'
+            body: 'Rewrites history. Continue?'
+        command: 'GIT_SEQUENCE_EDITOR=: git absorb --and-rebase'
+        output: terminal
+        loadingText: 'Absorbing and rebasing...'
+      - key: 'a'
+        context: 'commits'
+        description: 'Absorb into commits up to selected'
+        prompts:
+          - type: 'confirm'
+            title: 'Absorb'
+            body: 'Absorb staged changes up to {{printf "%.8s" .SelectedLocalCommit.Hash}}?'
+        command: 'git absorb --base {{.SelectedLocalCommit.Hash}}'
+        output: popup
+        loadingText: 'Absorbing...'
+      - key: 'r'
+        context: 'commits'
+        description: 'Absorb into commits up to selected and rebase'
+        prompts:
+          - type: 'confirm'
+            title: 'Absorb and Rebase'
+            body: 'Absorb up to {{printf "%.8s" .SelectedLocalCommit.Hash}} and rebase. Rewrites history. Continue?'
+        command: 'GIT_SEQUENCE_EDITOR=: git absorb --base {{.SelectedLocalCommit.Hash}} --and-rebase'
+        output: terminal
+        loadingText: 'Absorbing and rebasing...'

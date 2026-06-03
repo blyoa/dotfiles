@@ -10,6 +10,7 @@
     ../../apps/gh
     ../../apps/git
     ../../apps/latexmk
+    ../../apps/lazygit
     ../../apps/mise
     ../../apps/tig
     ../../apps/tmux
@@ -30,6 +31,7 @@
       # file operations and search
       bat
       fd
+      # mcat
       ripgrep
       tree
 
@@ -52,6 +54,7 @@
       # git
       ghq
       git-absorb
+      git-filter-repo
 
       # image and media processing, and diagram generation
       exiftool
@@ -84,8 +87,8 @@
       kubectx
 
       # dev services
-      aws-sam-cli
-      awscli2
+      # aws-sam-cli
+      # awscli2
       circleci-cli
       (google-cloud-sdk.withExtraComponents (
         with google-cloud-sdk.components;
@@ -96,17 +99,19 @@
       ))
 
       # AI uools
-      ollama
+      # ollama
       whisper-cpp
+      # llama-cpp
 
       # other tools
       cmake
+      gnused
       hwatch
       hyperfine
       typos
       watchexec
     ])
     ++ [
-      inputs.mocword.packages.${pkgs.system}.default
+      # inputs.mocword.packages.${pkgs.system}.default
     ];
 }
